@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juliana Niapoh - Consultante Data & IA</title>
+    <title>Juliana Niapoh - Data Analyst Junior</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -25,11 +26,11 @@
             padding: 0 24px;
         }
 
-        /* Header professionnel */
+        /* Header professionnel avec navigation */
         .header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 60px 0;
+            padding: 60px 0 120px;
             position: relative;
             overflow: hidden;
         }
@@ -46,9 +47,39 @@
             opacity: 0.1;
         }
 
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 8px 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-item {
+            display: inline-block;
+            margin: 0 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(59, 130, 246, 0.8);
+            transform: scale(1.05);
+        }
+
         .header-content {
             display: grid;
-            grid-template-columns: 200px 1fr;
+            grid-template-columns: 180px 1fr;
             gap: 40px;
             align-items: center;
             position: relative;
@@ -56,73 +87,75 @@
         }
 
         .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 20px;
+            width: 160px;
+            height: 160px;
+            border-radius: 15px;
             background: linear-gradient(135deg, #3b82f6, #06b6d4);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 600;
             color: white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             position: relative;
         }
 
         .profile-image::after {
             content: 'Photo à ajouter';
             position: absolute;
-            bottom: -30px;
+            bottom: -25px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             opacity: 0.7;
             white-space: nowrap;
         }
 
         .header-info h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             background: linear-gradient(135deg, #ffffff, #e2e8f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #06b6d4;
             font-weight: 600;
             margin-bottom: 16px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .tagline {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 400;
             opacity: 0.9;
-            margin-bottom: 24px;
-            max-width: 600px;
+            margin-bottom: 20px;
+            max-width: 550px;
+            line-height: 1.6;
         }
 
         .availability {
             display: inline-flex;
             align-items: center;
             background: rgba(6, 182, 212, 0.2);
-            padding: 8px 16px;
-            border-radius: 50px;
+            padding: 6px 14px;
+            border-radius: 20px;
             border: 1px solid #06b6d4;
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .availability-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: #06b6d4;
             border-radius: 50%;
-            margin-right: 8px;
+            margin-right: 6px;
             animation: pulse 2s infinite;
         }
 
@@ -131,43 +164,78 @@
             50% { opacity: 0.5; }
         }
 
-        /* Section principale */
+        /* Contenu principal avec onglets */
         .main-content {
             background: white;
-            margin: -40px auto 0;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin: -60px auto 40px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             overflow: hidden;
             position: relative;
             z-index: 10;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            min-height: 800px;
-        }
-
-        .left-content {
-            padding: 60px;
-        }
-
-        .sidebar {
+        /* Système d'onglets professionnel */
+        .tabs-container {
             background: #f1f5f9;
-            padding: 60px 40px;
-            border-left: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 40px;
         }
 
-        /* Sections */
-        .section {
-            margin-bottom: 50px;
+        .tabs {
+            display: flex;
+            overflow-x: auto;
         }
 
+        .tab {
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            color: #64748b;
+            min-width: fit-content;
+        }
+
+        .tab.active {
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+            background: white;
+            margin: 0 -1px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .tab:hover {
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .tab-content {
+            padding: 50px;
+            display: none;
+            min-height: 600px;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Titres de sections */
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 24px;
+            margin-bottom: 30px;
             position: relative;
             padding-left: 20px;
         }
@@ -179,134 +247,90 @@
             top: 50%;
             transform: translateY(-50%);
             width: 4px;
-            height: 24px;
+            height: 28px;
             background: linear-gradient(135deg, #3b82f6, #06b6d4);
             border-radius: 2px;
         }
 
-        /* Phrase d'accroche */
-        .elevator-pitch {
+        /* VALUE PROPOSITION */
+        .value-prop {
             background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            padding: 32px;
-            border-radius: 16px;
+            padding: 30px;
+            border-radius: 15px;
             border-left: 4px solid #3b82f6;
             margin-bottom: 40px;
             position: relative;
         }
 
-        .elevator-pitch::before {
+        .value-prop::before {
             content: '💡';
             position: absolute;
-            top: 16px;
-            right: 20px;
+            top: 20px;
+            right: 25px;
             font-size: 1.5rem;
         }
 
-        .elevator-pitch h3 {
+        .value-prop h3 {
             color: #3b82f6;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-size: 1.1rem;
         }
 
-        .elevator-pitch p {
+        .value-prop p {
             font-size: 1.1rem;
             color: #475569;
             font-weight: 500;
+            line-height: 1.7;
         }
 
-        /* Expérience */
-        .experience-item {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .experience-item:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-
-        .exp-title {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #0f172a;
-            margin-bottom: 4px;
-        }
-
-        .exp-company {
-            color: #3b82f6;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .exp-period {
-            background: #3b82f6;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        .exp-highlights {
+        /* FICHE TECHNIQUE SIDEBAR */
+        .profile-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
         }
 
-        .highlight {
-            display: flex;
-            align-items: center;
-            color: #475569;
-            font-size: 0.95rem;
+        .tech-sidebar {
+            background: #f8fafc;
+            padding: 0;
+            border-radius: 15px;
+            height: fit-content;
+            border: 1px solid #e2e8f0;
         }
 
-        .highlight::before {
-            content: '▶';
-            color: #06b6d4;
-            margin-right: 8px;
-            font-size: 0.8rem;
-        }
-
-        /* Sidebar - Fiche technique */
         .tech-card {
             background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+        }
+
+        .tech-card:last-child {
+            margin-bottom: 20px;
         }
 
         .tech-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #0f172a;
             margin-bottom: 20px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .tech-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
+            padding: 10px 0;
+            border-bottom: 1px solid #f8fafc;
         }
 
         .tech-item:last-child {
@@ -316,41 +340,45 @@
         .tech-label {
             font-weight: 600;
             color: #475569;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .tech-value {
             font-weight: 500;
             color: #0f172a;
+            font-size: 0.85rem;
         }
 
-        /* Compétences avec niveaux */
+        /* COMPÉTENCES AVEC NIVEAUX */
         .skill-group {
-            margin-bottom: 24px;
+            margin-bottom: 25px;
         }
 
         .skill-group h4 {
             font-weight: 600;
             color: #3b82f6;
-            margin-bottom: 12px;
-            font-size: 1rem;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .skill-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .skill-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #475569;
         }
 
         .skill-level {
             display: flex;
-            gap: 2px;
+            gap: 3px;
         }
 
         .skill-dot {
@@ -364,19 +392,213 @@
             background: linear-gradient(135deg, #3b82f6, #06b6d4);
         }
 
-        /* Contact stylé */
-        .contact-grid {
+        /* EXPÉRIENCE PROFESSIONNELLE */
+        .experience-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .exp-period {
+            background: #3b82f6;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #0f172a;
+            margin-bottom: 8px;
+            margin-right: 120px;
+        }
+
+        .exp-company {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .exp-highlights {
             display: grid;
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .highlight {
+            display: flex;
+            align-items: flex-start;
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .highlight::before {
+            content: '▶';
+            color: #06b6d4;
+            margin-right: 10px;
+            font-size: 0.7rem;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* PROJETS GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header {
+            height: 120px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .project-description {
+            color: #475569;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            background: #3b82f6;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* CONTACT PROFESSIONNEL */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-form {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .contact-info {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            height: fit-content;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            padding: 12px 16px;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
             background: white;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            border: 1px solid #f1f5f9;
             transition: all 0.3s ease;
         }
 
@@ -386,9 +608,15 @@
         }
 
         .contact-icon {
-            width: 20px;
-            margin-right: 12px;
-            color: #3b82f6;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
         }
 
         .contact-text {
@@ -397,27 +625,172 @@
             font-weight: 500;
         }
 
-        /* Certifications */
-        .cert-badge {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin: 4px;
-            display: inline-block;
+        /* CHATBOT MODERNE */
+        .chatbot {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
         }
 
-        /* Responsive */
+        .chatbot-toggle {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 320px;
+            height: 450px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #f8fafc;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .message.bot {
+            background: white;
+            align-self: flex-start;
+            border: 1px solid #e2e8f0;
+        }
+
+        .message.user {
+            background: #3b82f6;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chatbot-input {
+            padding: 15px 20px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 10px;
+            background: white;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.85rem;
+        }
+
+        .chatbot-input button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        /* TESTIMONIAL */
+        .testimonial {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid #3b82f6;
+            margin: 30px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #3b82f6;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
-            .content-grid {
+            .profile-layout,
+            .contact-layout {
                 grid-template-columns: 1fr;
             }
             
-            .sidebar {
-                border-left: none;
-                border-top: 1px solid #e2e8f0;
+            .tech-sidebar {
+                order: -1;
             }
             
             .header-content {
@@ -425,32 +798,70 @@
                 text-align: center;
                 gap: 30px;
             }
-            
-            .header h1 {
-                font-size: 2.5rem;
-            }
         }
 
         @media (max-width: 768px) {
-            .left-content, .sidebar {
-                padding: 40px 30px;
+            .header {
+                padding: 40px 0 80px;
             }
             
-            .container {
-                padding: 0 16px;
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .main-content {
+                margin: -40px 16px 20px;
+            }
+            
+            .tab-content {
+                padding: 30px 25px;
+            }
+            
+            .tabs-container {
+                padding: 0 20px;
+            }
+            
+            .tabs {
+                gap: 0;
+            }
+            
+            .tab {
+                padding: 15px 12px;
+                font-size: 0.85rem;
             }
             
             .exp-period {
                 position: static;
-                margin-top: 8px;
+                margin-bottom: 10px;
                 display: inline-block;
+            }
+            
+            .exp-title {
+                margin-right: 0;
+            }
+            
+            .nav {
+                right: 15px;
+                top: 15px;
+                padding: 6px 15px;
+            }
+            
+            .nav-item {
+                margin: 0 8px;
+                padding: 6px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .chatbot-window {
+                width: 280px;
+                right: -25px;
             }
         }
 
-        /* Animations subtiles */
+        /* ANIMATIONS */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: all 0.6s ease;
         }
 
@@ -458,44 +869,29 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Indicateur de scroll */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: #f1f5f9;
-            z-index: 1000;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #06b6d4);
-            width: 0%;
-            transition: width 0.1s ease;
-        }
     </style>
 </head>
 <body>
-    <!-- Indicateur de progression -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress" id="scrollProgress"></div>
-    </div>
+    <!-- Navigation flottante -->
+    <nav class="nav">
+        <a class="nav-item active" data-tab="profil">Profil</a>
+        <a class="nav-item" data-tab="competences">Skills</a>
+        <a class="nav-item" data-tab="experience">Expérience</a>
+        <a class="nav-item" data-tab="projets">Projets</a>
+        <a class="nav-item" data-tab="contact">Contact</a>
+    </nav>
 
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="profile-image">
-                    JN
-                </div>
+                <div class="profile-image">JN</div>
                 <div class="header-info">
                     <h1>JULIANA NIAPOH</h1>
-                    <div class="title">Consultante Data & Intelligence Artificielle</div>
+                    <div class="title">Data Analyst Junior</div>
                     <p class="tagline">
-                        Experte en transformation digitale et solutions data-driven, je conçois et pilote des projets IA stratégiques pour optimiser les performances business et accélérer l'innovation.
+                        Diplômée Master Data Management avec 2+ années d'alternance chez SNCF et ORANO. 
+                        Je transforme les données en insights actionnables pour optimiser les performances business.
                     </p>
                     <div class="availability">
                         <div class="availability-dot"></div>
@@ -506,242 +902,616 @@
         </div>
     </header>
 
-    <!-- Contenu principal -->
+    <!-- Contenu principal avec onglets -->
     <div class="container">
         <div class="main-content">
-            <div class="content-grid">
-                <!-- Contenu principal -->
-                <div class="left-content">
-                    <!-- Elevator Pitch -->
-                    <div class="elevator-pitch fade-in">
-                        <h3>Value Proposition</h3>
-                        <p>
-                            <strong>Je transforme les défis data en opportunités business.</strong> Avec 2+ années d'expérience chez des leaders comme SNCF et ORANO, je maîtrise l'art de faire converger IA, méthodologies agiles et vision stratégique pour délivrer des solutions à fort impact ROI.
-                        </p>
+            <!-- Système d'onglets -->
+            <div class="tabs-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="profil">
+                        <i class="fas fa-user"></i>
+                        Profil & Formation
+                    </div>
+                    <div class="tab" data-tab="competences">
+                        <i class="fas fa-cogs"></i>
+                        Compétences Techniques
+                    </div>
+                    <div class="tab" data-tab="experience">
+                        <i class="fas fa-briefcase"></i>
+                        Expérience Professionnelle
+                    </div>
+                    <div class="tab" data-tab="projets">
+                        <i class="fas fa-laptop-code"></i>
+                        Projets & Réalisations
+                    </div>
+                    <div class="tab" data-tab="contact">
+                        <i class="fas fa-envelope"></i>
+                        Contact & Disponibilités
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenu Profil -->
+            <div class="tab-content active" id="profil">
+                <div class="profile-layout">
+                    <div class="main-profile">
+                        <h2 class="section-title">À Propos & Objectifs Professionnels</h2>
+                        
+                        <div class="value-prop">
+                            <h3>Value Proposition</h3>
+                            <p>
+                                <strong>Future experte Data & IA en quête de son premier CDI.</strong> 
+                                Formée aux dernières technologies (Python, ML, SQL) avec une expérience terrain solide acquise 
+                                chez des leaders industriels. Je recherche un poste de Data Analyst pour contribuer 
+                                à la transformation digitale d'une entreprise innovante.
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 40px;">
+                            <h3 style="color: #3b82f6; margin-bottom: 20px; font-size: 1.2rem;">Mon Parcours & Ambitions</h3>
+                            <p style="margin-bottom: 20px; line-height: 1.7; color: #475569;">
+                                Passionnée par les données depuis mes études en DUT STID, j'ai choisi de me spécialiser en Data Management 
+                                pour maîtriser les enjeux actuels de l'IA et du Big Data. Mes expériences en alternance chez SNCF et ORANO 
+                                m'ont permis de développer une vision pratique de la transformation digitale et de comprendre les besoins métiers.
+                            </p>
+                            <p style="line-height: 1.7; color: #475569;">
+                                <strong>Ma force :</strong> Allier compétences techniques solides et approche métier pour traduire les besoins business 
+                                en solutions data concrètes. Je recherche un environnement stimulant où mettre mon potentiel au service 
+                                de projets à fort impact.
+                            </p>
+                        </div>
+
+                        <div class="testimonial">
+                            <p class="testimonial-text">
+                                "Juliana a fait preuve d'une grande autonomie et d'un esprit analytique remarquable. 
+                                Sa capacité à s'adapter rapidement aux nouveaux outils et sa vision business ont été des atouts précieux pour notre équipe."
+                            </p>
+                            <p class="testimonial-author">- Manager SNCF Connect & Tech</p>
+                        </div>
                     </div>
 
-                    <!-- Expérience -->
-                    <section class="section fade-in">
-                        <h2 class="section-title">Expérience Professionnelle</h2>
+                    <!-- Sidebar technique -->
+                    <div class="tech-sidebar">
+                        <div class="tech-card">
+                            <h3><i class="fas fa-clipboard-list"></i> Fiche Technique</h3>
+                            <div class="tech-item">
+                                <span class="tech-label">Statut</span>
+                                <span class="tech-value">En recherche CDI</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Expérience</span>
+                                <span class="tech-value">2+ années alternance</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Secteurs</span>
+                                <span class="tech-value">Ferroviaire, Nucléaire</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Mobilité</span>
+                                <span class="tech-value">Île-de-France</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">Niveau</span>
+                                <span class="tech-value">Junior/Confirmé</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-card">
+                            <h3><i class="fas fa-graduation-cap"></i> Formation</h3>
+                            <div class="tech-item">
+                                <span class="tech-label">2023-2025</span>
+                                <span class="tech-value">Master Data Management</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">2022-2023</span>
+                                <span class="tech-value">Bachelor E-commerce</span>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-label">2020-2022</span>
+                                <span class="tech-value">DUT STID</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-card">
+                            <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                            <div style="text-align: center; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                                <span style="background: #3b82f6; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">Python Data</span>
+                                <span style="background: #06b6d4; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">SQL Expert</span>
+                                <span style="background: #8b5cf6; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">ChatGPT & IA</span>
+                                <span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">Excel Avancé</span>
+                                <span style="background: #f59e0b; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">Web Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenu Compétences -->
+            <div class="tab-content" id="competences">
+                <div class="profile-layout">
+                    <div class="main-profile">
+                        <h2 class="section-title">Stack Technique & Expertise</h2>
                         
-                        <div class="experience-item">
-                            <div class="exp-period">2024-2025</div>
-                            <div class="exp-title">Consultante Projet Numérique Senior</div>
-                            <div class="exp-company">SNCF Connect & Tech • Secteur Ferroviaire</div>
-                            <div class="exp-highlights">
-                                <div class="highlight">Pilotage de la transformation digitale DSI (méthodologie Agile/Scrum)</div>
-                                <div class="highlight">Réduction de 30% des délais de communication via portail collaboratif</div>
-                                <div class="highlight">Amélioration de 15% de la satisfaction utilisateur</div>
-                                <div class="highlight">Support technique niveau 3 et conduite du changement</div>
-                                <div class="highlight">Animation de formations cross-fonctionnelles</div>
-                                <div class="highlight">Rédaction de cahiers des charges stratégiques</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                                <h3 style="color: #3b82f6; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fas fa-database"></i> Data Science & Analyse
+                                </h3>
+                                <div class="skill-item">
+                                    <span class="skill-name">Python (Pandas, NumPy)</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">SQL (PostgreSQL, MySQL)</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">R & Statistiques</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Machine Learning</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                                <h3 style="color: #06b6d4; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fas fa-chart-bar"></i> Visualisation & BI
+                                </h3>
+                                <div class="skill-item">
+                                    <span class="skill-name">Power BI</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Jupyter Notebook</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Matplotlib/Streamlit</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Tableau</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                                <h3 style="color: #8b5cf6; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fas fa-project-diagram"></i> Gestion de Projet
+                                </h3>
+                                <div class="skill-item">
+                                    <span class="skill-name">Méthodologie Agile/Scrum</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Jira/Confluence</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Kanban/Trello</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Gestion d'équipe</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                                <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fas fa-code"></i> Développement
+                                </h3>
+                                <div class="skill-item">
+                                    <span class="skill-name">HTML5/CSS3</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">JavaScript</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">WordPress</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Git/GitHub</span>
+                                    <div class="skill-level">
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot active"></div>
+                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-sidebar">
+                        <div class="tech-card">
+                            <h3><i class="fas fa-brain"></i> Soft Skills</h3>
+                            <div style="text-align: left;">
+                                <div style="margin-bottom: 12px; color: #475569;">• Esprit d'analyse</div>
+                                <div style="margin-bottom: 12px; color: #475569;">• Collaboration équipe</div>
+                                <div style="margin-bottom: 12px; color: #475569;">• Adaptabilité</div>
+                                <div style="margin-bottom: 12px; color: #475569;">• Résolution problèmes</div>
+                                <div style="margin-bottom: 12px; color: #475569;">• Communication claire</div>
+                                <div style="margin-bottom: 12px; color: #475569;">• Autonomie</div>
                             </div>
                         </div>
 
-                        <div class="experience-item">
-                            <div class="exp-period">2022-2023</div>
-                            <div class="exp-title">Consultante Data & Projets Digitaux</div>
-                            <div class="exp-company">ORANO • Secteur Nucléaire</div>
-                            <div class="exp-highlights">
-                                <div class="highlight">Audit et optimisation des flux de données critiques</div>
-                                <div class="highlight">Conception de solutions de visualisation avancées</div>
-                                <div class="highlight">Coordination d'équipes techniques pluridisciplinaires</div>
-                                <div class="highlight">Développement d'outils de pilotage décisionnel</div>
-                                <div class="highlight">Formation des équipes aux nouveaux outils</div>
-                                <div class="highlight">Création de guides et documentation technique</div>
+                        <div class="tech-card">
+                            <h3><i class="fas fa-language"></i> Langues</h3>
+                            <div class="tech-item">
+                                <span class="tech-label">Français</span>
+                                <span class="tech-value">Natif</span>
                             </div>
-                        </div>
-                    </section>
-
-                    <!-- Projets -->
-                    <section class="section fade-in">
-                        <h2 class="section-title">Projets Techniques Clés</h2>
-                        
-                        <div class="experience-item">
-                            <div class="exp-title">IA Student Assistance Platform</div>
-                            <div class="exp-company">Développement & NLP</div>
-                            <div class="exp-highlights">
-                                <div class="highlight">Architecture solution d'assistance intelligente</div>
-                                <div class="highlight">Implémentation algorithmes NLP avancés</div>
-                                <div class="highlight">Interface utilisateur adaptive</div>
+                            <div class="tech-item">
+                                <span class="tech-label">Anglais</span>
+                                <span class="tech-value">Professionnel</span>
                             </div>
                         </div>
 
-                        <div class="experience-item">
-                            <div class="exp-title">Dashboard RH Analytics</div>
-                            <div class="exp-company">Python • Data Visualization</div>
-                            <div class="exp-highlights">
-                                <div class="highlight">Développement outil de pilotage RH (Python/Streamlit)</div>
-                                <div class="highlight">Visualisations avancées (Pandas, Matplotlib)</div>
-                                <div class="highlight">Cycle complet : Analyse → Développement → Production</div>
+                        <div class="tech-card">
+                            <h3><i class="fas fa-heart"></i> Centres d'Intérêt</h3>
+                            <div style="text-align: center; color: #475569;">
+                                <div style="margin-bottom: 8px;">🎮 Jeux vidéos</div>
+                                <div style="margin-bottom: 8px;">✈️ Voyages</div>
+                                <div style="margin-bottom: 8px;">💻 Programmation</div>
+                                <div style="margin-bottom: 8px;">📊 Veille technologique</div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenu Expérience -->
+            <div class="tab-content" id="experience">
+                <h2 class="section-title">Expérience Professionnelle</h2>
+                
+                <div class="experience-item">
+                    <div class="exp-period">2024-2025</div>
+                    <div class="exp-title">Assistante Cheffe de Projet Numérique</div>
+                    <div class="exp-company">SNCF Connect & Tech • Secteur Ferroviaire • Saint-Denis</div>
+                    <div class="exp-highlights">
+                        <div class="highlight">Pilotage de projets de transformation numérique (DSI) en mode Agile/Scrum</div>
+                        <div class="highlight">Gestion d'un portail collaboratif médecine du travail (30% réduction délais)</div>
+                        <div class="highlight">Amélioration de 15% de la satisfaction utilisateur sur les outils déployés</div>
+                        <div class="highlight">Support technique niveau 3 et résolution d'incidents complexes</div>
+                        <div class="highlight">Animation de formations techniques pour adoption nouveaux outils</div>
+                        <div class="highlight">Rédaction cahiers des charges et documentation projet stratégique</div>
+                        <div class="highlight">Accompagnement conduite du changement et ateliers pratiques</div>
+                        <div class="highlight">Coordination MOA/équipes développement en mode collaboratif</div>
+                    </div>
                 </div>
 
-                <!-- Sidebar - Fiche technique -->
-                <div class="sidebar">
-                    <!-- Informations clés -->
-                    <div class="tech-card fade-in">
-                        <h3>📋 Fiche Technique</h3>
-                        <div class="tech-item">
-                            <span class="tech-label">Statut</span>
-                            <span class="tech-value">En recherche active</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="tech-label">Expérience</span>
-                            <span class="tech-value">2+ années</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="tech-label">Secteurs</span>
-                            <span class="tech-value">Ferroviaire, Nucléaire</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="tech-label">Mobilité</span>
-                            <span class="tech-value">Île-de-France</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="tech-label">Langues</span>
-                            <span class="tech-value">FR (Natif), EN (Pro)</span>
-                        </div>
+                <div class="experience-item">
+                    <div class="exp-period">2022-2023</div>
+                    <div class="exp-title">Chargée de Projet Digital</div>
+                    <div class="exp-company">ORANO • Secteur Nucléaire • Châtillon</div>
+                    <div class="exp-highlights">
+                        <div class="highlight">Analyse et optimisation des flux de données métier critiques</div>
+                        <div class="highlight">Évaluation qualité des données collectées et mise en place KPIs</div>
+                        <div class="highlight">Conception et intégration de solutions de visualisation données</div>
+                        <div class="highlight">Coordination d'équipes techniques pour développement outils BI</div>
+                        <div class="highlight">Formation équipes utilisation nouveaux outils analytiques</div>
+                        <div class="highlight">Création guides utilisateur et documentation technique complète</div>
+                        <div class="highlight">Support déploiement solutions data dans environnement industriel</div>
+                        <div class="highlight">Collaboration étroite avec les métiers pour besoins fonctionnels</div>
                     </div>
+                </div>
 
-                    <!-- Compétences techniques -->
-                    <div class="tech-card fade-in">
-                        <h3>⚡ Stack Technique</h3>
-                        
-                        <div class="skill-group">
-                            <h4>Data Science & IA</h4>
-                            <div class="skill-item">
-                                <span class="skill-name">Python</span>
-                                <div class="skill-level">
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Machine Learning</span>
-                                <div class="skill-level">
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">SQL/NoSQL</span>
-                                <div class="skill-level">
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="skill-group">
-                            <h4>Gestion de Projet</h4>
-                            <div class="skill-item">
-                                <span class="skill-name">Scrum/Agile</span>
-                                <div class="skill-level">
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Jira/Confluence</span>
-                                <div class="skill-level">
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="skill-group">
-                            <h4>Visualisation</h4>
-                            <div class="skill-item">
-                                <span class="skill-name">Power BI</span>
-                                <div class="skill-level">
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Jupyter/Streamlit</span>
-                                <div class="skill-level">
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                    <div class="skill-dot active"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Formation -->
-                    <div class="tech-card fade-in">
-                        <h3>🎓 Formation</h3>
-                        <div class="tech-item">
-                            <span class="tech-label">2023-2025</span>
-                            <span class="tech-value">Master Data Management</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="tech-label">2022-2023</span>
-                            <span class="tech-value">Bachelor E-commerce</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="tech-label">2020-2022</span>
-                            <span class="tech-value">DUT STID</span>
-                        </div>
-                    </div>
-
-                    <!-- Certifications -->
-                    <div class="tech-card fade-in">
-                        <h3>🏆 Certifications</h3>
+                <div style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); padding: 30px; border-radius: 15px; border-left: 4px solid #10b981; margin-top: 30px;">
+                    <h3 style="color: #10b981; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-trophy"></i> Résultats Quantifiés
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                         <div style="text-align: center;">
-                            <div class="cert-badge">Python Data Analysis</div>
-                            <div class="cert-badge">SQL Expert</div>
-                            <div class="cert-badge">ChatGPT & IA</div>
-                            <div class="cert-badge">Excel Avancé</div>
-                            <div class="cert-badge">Web Dev</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #10b981;">30%</div>
+                            <div style="color: #475569;">Réduction délais communication</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #3b82f6;">15%</div>
+                            <div style="color: #475569;">Amélioration satisfaction</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #06b6d4;">100%</div>
+                            <div style="color: #475569;">Projets livrés à temps</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6;">5+</div>
+                            <div style="color: #475569;">Équipes coordinées</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenu Projets -->
+            <div class="tab-content" id="projets">
+                <h2 class="section-title">Projets & Réalisations Techniques</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">IA Student Assistance Platform</div>
+                            <div class="project-description">
+                                Développement d'une solution d'assistance étudiante intelligente basée sur le NLP. 
+                                Architecture complète avec interface adaptive et algorithmes de traitement du langage naturel.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Machine Learning</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Contact -->
-                    <div class="tech-card fade-in">
-                        <h3>📞 Contact</h3>
-                        <div class="contact-grid">
-                            <div class="contact-item">
-                                <span class="contact-icon">📧</span>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Dashboard RH Analytics</div>
+                            <div class="project-description">
+                                Outil de visualisation et pilotage des données RH développé en Python. 
+                                Interface interactive avec Streamlit, analyses avancées et reporting automatisé.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Matplotlib</span>
+                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Base de Données SQL Optimisée</div>
+                            <div class="project-description">
+                                Conception, implémentation et optimisation d'une base de données relationnelle complexe. 
+                                Focus sur les performances et la sécurité des accès utilisateur.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">WorkBench</span>
+                                <span class="tech-tag">Optimisation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Projet Scrum Master</div>
+                            <div class="project-description">
+                                Gestion d'une équipe de développement en méthodologie Agile. 
+                                Organisation des sprints, suivi des tâches et coordination des livrables.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Scrum</span>
+                                <span class="tech-tag">Jira</span>
+                                <span class="tech-tag">Agile</span>
+                                <span class="tech-tag">Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #f8fafc; padding: 30px; border-radius: 15px; border: 1px solid #e2e8f0; margin-top: 30px;">
+                    <h3 style="color: #3b82f6; margin-bottom: 20px;">Méthodologie Projet</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div style="text-align: center; padding: 20px;">
+                            <div style="background: linear-gradient(135deg, #3b82f6, #06b6d4); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">1</div>
+                            <strong>Analyse & Conception</strong>
+                            <div style="color: #475569; font-size: 0.9rem;">Étude besoins et architecture</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px;">
+                            <div style="background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">2</div>
+                            <strong>Développement & Test</strong>
+                            <div style="color: #475569; font-size: 0.9rem;">Implémentation et validation</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px;">
+                            <div style="background: linear-gradient(135deg, #8b5cf6, #10b981); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">3</div>
+                            <strong>Mise en Production</strong>
+                            <div style="color: #475569; font-size: 0.9rem;">Déploiement et maintenance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenu Contact -->
+            <div class="tab-content" id="contact">
+                <h2 class="section-title">Contact & Disponibilités</h2>
+                
+                <div class="contact-layout">
+                    <div class="contact-form">
+                        <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Nom & Prénom</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email professionnel</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Entreprise</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Objet</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3 style="color: #3b82f6; margin-bottom: 25px; text-align: center;">Informations de Contact</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <strong>Email</strong><br>
                                 <span class="contact-text">Jniapoh@gmail.com</span>
                             </div>
-                            <div class="contact-item">
-                                <span class="contact-icon">📱</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <strong>Téléphone</strong><br>
                                 <span class="contact-text">06 22 85 53 41</span>
                             </div>
-                            <div class="contact-item">
-                                <span class="contact-icon">📍</span>
-                                <span class="contact-text">Aubervilliers (93)</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="contact-item">
-                                <span class="contact-icon">💼</span>
-                                <span class="contact-text">LinkedIn Profile</span>
+                            <div>
+                                <strong>Localisation</strong><br>
+                                <span class="contact-text">93300, Aubervilliers</span>
                             </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <strong>LinkedIn</strong><br>
+                                <span class="contact-text">Profil professionnel</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <strong>Disponibilité</strong><br>
+                                <span class="contact-text">Octobre 2025</span>
+                            </div>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #3b82f6, #06b6d4); color: white; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">
+                            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 5px;">🚀 Prête pour de nouveaux défis !</div>
+                            <div style="opacity: 0.9; font-size: 0.9rem;">En recherche active d'un premier CDI</div>
                         </div>
                     </div>
                 </div>
@@ -749,33 +1519,258 @@
         </div>
     </div>
 
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h4>💬 Assistant CV</h4>
+                <button class="chatbot-close" onclick="toggleChatbot()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot">
+                    Bonjour ! 👋 Je suis l'assistant virtuel de Juliana. Comment puis-je vous aider ?
+                </div>
+                <div class="message bot">
+                    Vous pouvez me poser des questions sur :
+                    <br>• Son expérience
+                    <br>• Ses compétences
+                    <br>• Sa formation
+                    <br>• Ses projets
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Tapez votre question...">
+                <button onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Animation au scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.fade-in');
+        // Gestion des onglets
+        function showTab(tabName) {
+            // Masquer tous les contenus
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Désactiver tous les onglets
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Désactiver tous les nav-items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Activer le contenu sélectionné
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activer l'onglet correspondant
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            // Activer le nav-item correspondant
+            document.querySelectorAll(`[data-tab="${tabName}"]`).forEach(item => {
+                item.classList.add('active');
+            });
+        }
+
+        // Event listeners pour les onglets
+        document.querySelectorAll('.tab, .nav-item').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabName = tab.getAttribute('data-tab');
+                showTab(tabName);
+            });
+        });
+
+        // Gestion du chatbot
+        let chatbotOpen = false;
+
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            chatbotOpen = !chatbotOpen;
+            
+            if (chatbotOpen) {
+                window.classList.add('open');
+            } else {
+                window.classList.remove('open');
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            // Ajouter le message utilisateur
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Simuler une réponse du bot
+            setTimeout(() => {
+                const response = generateBotResponse(message);
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            if (message.includes('expérience') || message.includes('travail')) {
+                return "Juliana a 2+ années d'expérience en alternance chez SNCF et ORANO. Elle a piloté des projets de transformation numérique avec des résultats mesurables : 30% d'amélioration des processus !";
+            }
+            
+            if (message.includes('compétence') || message.includes('technique')) {
+                return "Ses compétences clés : Python, SQL, Machine Learning, Power BI, méthodologies Agile/Scrum. Elle maîtrise tout le stack Data Science moderne !";
+            }
+            
+            if (message.includes('formation') || message.includes('diplôme')) {
+                return "Master Data Management en cours (2023-2025), Bachelor E-commerce, DUT STID. Formation solide en statistiques et informatique décisionnelle.";
+            }
+            
+            if (message.includes('projet')) {
+                return "Projets marquants : IA Student Assistance (NLP), Dashboard RH Analytics (Python/Streamlit), Base de données optimisée SQL. Du concret !";
+            }
+            
+            if (message.includes('contact') || message.includes('disponible')) {
+                return "📧 Jniapoh@gmail.com | 📞 06 22 85 53 41 | 📍 Aubervilliers (93) | Disponible dès Octobre 2025 pour un CDI !";
+            }
+            
+            if (message.includes('salaire') || message.includes('prétention')) {
+                return "Pour les questions de rémunération, je vous invite à contacter directement Juliana. Elle sera ravie de discuter de ces aspects lors d'un entretien !";
+            }
+            
+            return "Excellente question ! Pour plus de détails, n'hésitez pas à consulter les onglets du CV ou à contacter directement Juliana. Elle sera ravie de vous répondre !";
+        }
+
+        // Permettre l'envoi avec Entrée
+        document.getElementById('chatbotInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Animation des compétences au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animation d'entrée pour les éléments
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, observerOptions);
 
-            elements.forEach(el => observer.observe(el));
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Animation des barres de compétences
+            setTimeout(() => {
+                document.querySelectorAll('.skill-progress').forEach(bar => {
+                    const width = bar.getAttribute('data-width') || '0%';
+                    bar.style.width = width;
+                });
+            }, 500);
+        });
+
+        // Gestion du formulaire de contact
+        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simuler l'envoi
+            const submitBtn = document.querySelector('.btn-submit');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+                submitBtn.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                    
+                    // Reset form
+                    e.target.reset();
+                }, 2000);
+            }, 2000);
+        });
+
+        // Smooth scroll pour la navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax léger sur le header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Effet de typing sur le titre (optionnel)
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
         }
 
-        // Barre de progression du scroll
-        function updateScrollProgress() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            document.getElementById('scrollProgress').style.width = `${scrollPercent}%`;
-        }
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', () => {
-            animateOnScroll();
-            window.addEventListener('scroll', updateScrollProgress);
+        // Loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
