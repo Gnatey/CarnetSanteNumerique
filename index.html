@@ -648,9 +648,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chatbot-toggle::before {
+            content: '🤖';
+            position: absolute;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
 
         .chatbot-toggle:hover {
@@ -662,10 +676,10 @@
             position: absolute;
             bottom: 70px;
             right: 0;
-            width: 320px;
-            height: 450px;
+            width: 380px;
+            height: 520px;
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
             display: none;
             flex-direction: column;
@@ -675,26 +689,56 @@
 
         .chatbot-window.open {
             display: flex;
-            animation: slideUp 0.3s ease;
+            animation: slideUp 0.4s ease;
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(30px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .chatbot-header {
             background: linear-gradient(135deg, #3b82f6, #06b6d4);
             color: white;
-            padding: 15px 20px;
+            padding: 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 12px;
+            position: relative;
         }
 
-        .chatbot-header h4 {
-            font-size: 0.9rem;
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .chatbot-info h4 {
+            font-size: 1rem;
             font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .chatbot-status {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
         .chatbot-close {
@@ -702,7 +746,15 @@
             border: none;
             color: white;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            margin-left: auto;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255,255,255,0.2);
         }
 
         .chatbot-messages {
@@ -711,55 +763,165 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            background: #f8fafc;
+            gap: 15px;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
         }
 
         .message {
             max-width: 85%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.9rem;
             line-height: 1.4;
+            position: relative;
+            animation: messageSlide 0.3s ease;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .message.bot {
-            background: white;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
             align-self: flex-start;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            border-bottom-left-radius: 6px;
+        }
+
+        .message.bot::before {
+            content: '🤖';
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
             border: 1px solid #e2e8f0;
         }
 
         .message.user {
-            background: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             align-self: flex-end;
+            border-bottom-right-radius: 6px;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 12px 16px;
+            background: #f1f5f9;
+            border-radius: 18px;
+            border-bottom-left-radius: 6px;
+            align-self: flex-start;
+            max-width: 80px;
+        }
+
+        .typing-indicator.show {
+            display: block;
+            animation: messageSlide 0.3s ease;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #64748b;
+            border-radius: 50%;
+            animation: typingDot 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingDot {
+            0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-4px); }
+        }
+
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-action {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-1px);
         }
 
         .chatbot-input {
-            padding: 15px 20px;
+            padding: 20px;
             border-top: 1px solid #e2e8f0;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             background: white;
         }
 
         .chatbot-input input {
             flex: 1;
-            padding: 8px 12px;
+            padding: 12px 16px;
             border: 1px solid #e2e8f0;
-            border-radius: 20px;
+            border-radius: 25px;
             outline: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .chatbot-input input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .chatbot-input button {
-            background: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 12px 16px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 45px;
+        }
+
+        .chatbot-input button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .chatbot-input button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* TESTIMONIAL */
@@ -1727,33 +1889,46 @@
         </div>
     </div>
 
-    <!-- Chatbot -->
+    <!-- Chatbot IA Avancé -->
     <div class="chatbot">
-        <button class="chatbot-toggle" onclick="toggleChatbot()">
-            <i class="fas fa-comments"></i>
-        </button>
+        <button class="chatbot-toggle" onclick="toggleChatbot()"></button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
-                <h4>💬 Assistant CV</h4>
+                <div class="chatbot-avatar">🤖</div>
+                <div class="chatbot-info">
+                    <h4>Assistant IA - Juliana</h4>
+                    <div class="chatbot-status">
+                        <div class="status-dot"></div>
+                        En ligne • IA Machine Learning
+                    </div>
+                </div>
                 <button class="chatbot-close" onclick="toggleChatbot()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot">
-                    Bonjour ! 👋 Je suis l'assistant virtuel de Juliana. Comment puis-je vous aider ?
+                    👋 Salut ! Je suis l'IA de Juliana, powered by machine learning ! Comment puis-je vous aider aujourd'hui ?
                 </div>
                 <div class="message bot">
-                    Vous pouvez me poser des questions sur :
-                    <br>• Son expérience
-                    <br>• Ses compétences
-                    <br>• Sa formation
-                    <br>• Ses projets
+                    <div class="quick-actions">
+                        <div class="quick-action" onclick="askQuickQuestion('Parlez-moi de son expérience')">💼 Expérience</div>
+                        <div class="quick-action" onclick="askQuickQuestion('Quelles sont ses compétences techniques ?')">⚙️ Compétences</div>
+                        <div class="quick-action" onclick="askQuickQuestion('Ses projets les plus marquants ?')">🚀 Projets</div>
+                        <div class="quick-action" onclick="askQuickQuestion('Comment la contacter ?')">📞 Contact</div>
+                    </div>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
                 </div>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Tapez votre question...">
-                <button onclick="sendMessage()">
+                <input type="text" id="chatbotInput" placeholder="Posez votre question sur Juliana...">
+                <button onclick="sendMessage()" id="sendButton">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
@@ -1761,33 +1936,39 @@
     </div>
 
     <script>
-        // Gestion des onglets
+        // Gestion des onglets avec scroll vers le haut
         function showTab(tabName) {
-            // Masquer tous les contenus
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
+            // Scroll vers le haut de la page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // Désactiver tous les onglets
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Désactiver tous les nav-items
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Activer le contenu sélectionné
-            document.getElementById(tabName).classList.add('active');
-            
-            // Activer l'onglet correspondant
-            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-            
-            // Activer le nav-item correspondant
-            document.querySelectorAll(`[data-tab="${tabName}"]`).forEach(item => {
-                item.classList.add('active');
-            });
+            // Attendre la fin du scroll avant de changer d'onglet
+            setTimeout(() => {
+                // Masquer tous les contenus
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Désactiver tous les onglets
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Désactiver tous les nav-items
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Activer le contenu sélectionné
+                document.getElementById(tabName).classList.add('active');
+                
+                // Activer l'onglet correspondant
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+                
+                // Activer le nav-item correspondant
+                document.querySelectorAll(`[data-tab="${tabName}"]`).forEach(item => {
+                    item.classList.add('active');
+                });
+            }, 300);
         }
 
         // Event listeners pour les onglets
@@ -1799,8 +1980,10 @@
             });
         });
 
-        // Gestion du chatbot
+        // Gestion du chatbot IA avancé
         let chatbotOpen = false;
+        let isTyping = false;
+        let conversationContext = [];
 
         function toggleChatbot() {
             const window = document.getElementById('chatbotWindow');
@@ -1808,19 +1991,162 @@
             
             if (chatbotOpen) {
                 window.classList.add('open');
+                document.getElementById('chatbotInput').focus();
             } else {
                 window.classList.remove('open');
             }
         }
 
+        function askQuickQuestion(question) {
+            document.getElementById('chatbotInput').value = question;
+            sendMessage();
+        }
+
         function sendMessage() {
             const input = document.getElementById('chatbotInput');
+            const sendButton = document.getElementById('sendButton');
             const message = input.value.trim();
             
-            if (message === '') return;
+            if (message === '' || isTyping) return;
             
             // Ajouter le message utilisateur
             addMessage(message, 'user');
+            input.value = '';
+            sendButton.disabled = true;
+            
+            // Afficher l'indicateur de saisie
+            showTyping();
+            
+            // Simuler le délai de traitement IA
+            setTimeout(() => {
+                const response = generateAdvancedBotResponse(message);
+                hideTyping();
+                addMessage(response, 'bot');
+                sendButton.disabled = false;
+                
+                // Sauvegarder le contexte
+                conversationContext.push({user: message, bot: response});
+                if (conversationContext.length > 10) {
+                    conversationContext.shift(); // Garder seulement les 10 derniers échanges
+                }
+            }, Math.random() * 1500 + 1000); // 1-2.5s de délai réaliste
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            if (sender === 'bot' && text.includes('🎯')) {
+                // Message avec actions rapides
+                const parts = text.split('🎯');
+                messageDiv.innerHTML = parts[0];
+                if (parts[1]) {
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'quick-actions';
+                    actionsDiv.innerHTML = parts[1];
+                    messageDiv.appendChild(actionsDiv);
+                }
+            } else {
+                messageDiv.textContent = text;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            isTyping = true;
+            document.getElementById('typingIndicator').classList.add('show');
+            const messagesContainer = document.getElementById('chatbotMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTyping() {
+            isTyping = false;
+            document.getElementById('typingIndicator').classList.remove('show');
+        }
+
+        function generateAdvancedBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            const responses = {
+                greetings: [
+                    "Ravi de vous parler ! 😊 En quoi puis-je vous éclairer sur le profil de Juliana ?",
+                    "Bonjour ! 👋 Prêt à découvrir le talent de Juliana ? Que souhaitez-vous savoir ?",
+                    "Salut ! Je suis là pour vous parler de notre future star de la data ! 🌟"
+                ],
+                experience: [
+                    "Juliana a un parcours solide ! 💪 2+ années d'alternance chez eSNCF et ORANO dans des projets de transformation numérique. Elle a notamment réduit les délais de communication de 30% et amélioré la satisfaction utilisateur de 15%. Du concret !",
+                    "Son expérience ? Impressionnante ! 🚀 Elle a piloté des projets IT chez eSNCF en mode Agile/Scrum et géré des solutions data chez ORANO. Résultats mesurables à chaque fois !",
+                    "Parlons résultats ! 📊 Chez eSNCF : -30% délais, +15% satisfaction. Chez ORANO : optimisation des flux data critiques. Elle transforme vraiment les processus !"
+                ],
+                skills: [
+                    "Stack technique au top ! 🔥 Python, SQL, Machine Learning, Power BI, méthodes Agile/Scrum. Elle maîtrise toute la chaîne Data Science ET Project Management. Rare sur le marché !",
+                    "Polyvalence maximale ! ⚡ Data Analytics + Project Management + Agile. Python/Pandas, SQL avancé, Power BI, Jira... Elle peut s'adapter à plusieurs rôles facilement.",
+                    "Techniquement ? Une machine ! 🤖 Python, SQL, Machine Learning, BI, et expertise Scrum Master. Formation Master Data Management en cours. Elle a tout !"
+                ],
+                projects: [
+                    "Ses projets ? Du niveau ! 🎯 IA Student Assistance (NLP), Dashboard RH Analytics (Python/Streamlit), optimisation BDD SQL. Du technique ET de l'impact business !",
+                    "Projets marquants : 🚀 Plateforme IA avec NLP, outils de visualisation RH, bases de données optimisées. Elle couvre tout le spectre data !",
+                    "Portfolio solide ! 💼 De l'IA au BI en passant par l'optimisation SQL. Chaque projet montre sa capacité à livrer des solutions complètes."
+                ],
+                contact: [
+                    "Pour la contacter : 📧 Jniapoh@gmail.com | 📞 06 22 85 53 41 | 📍 Aubervilliers (93). Disponible dès Octobre 2025 pour un CDI !",
+                    "Contact direct : 💌 Jniapoh@gmail.com ou 06 22 85 53 41. Elle est basée en région parisienne et motivée pour son premier CDI !",
+                    "Coordonnées : 📞 06 22 85 53 41 | 📧 Jniapoh@gmail.com. Réactive et disponible pour échanger sur les opportunités !"
+                ],
+                salary: [
+                    "Pour les questions de rémunération, Juliana préfère en discuter directement lors d'un entretien. 💼 Elle est ouverte aux négociations selon le poste et l'entreprise !",
+                    "Côté salaire, elle adapte ses prétentions au poste et à l'entreprise. 💰 Le mieux est d'en parler directement avec elle !",
+                    "Question délicate ! 😅 Elle préfère aborder les aspects financiers en direct. Contact pour un échange personnalisé ?"
+                ],
+                motivation: [
+                    "Sa motivation ? 🔥 Transformer les données en valeur business ! Elle cherche une entreprise innovante où mettre sa polyvalence au service de projets impactants.",
+                    "Elle veut contribuer à la transformation digitale ! 🚀 Passionnée par l'IA et le Big Data, elle recherche des défis stimulants.",
+                    "Objectif : premier CDI dans une équipe dynamique ! 💪 Elle apporte fraîcheur, compétences techniques et vision business."
+                ]
+            };
+
+            // Analyse contextuelle intelligente
+            if (message.includes('salut') || message.includes('bonjour') || message.includes('hello')) {
+                return responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+            }
+            
+            if (message.includes('expérience') || message.includes('parcours') || message.includes('travail') || message.includes('alternance')) {
+                return responses.experience[Math.floor(Math.random() * responses.experience.length)];
+            }
+            
+            if (message.includes('compétence') || message.includes('technique') || message.includes('python') || message.includes('sql') || message.includes('skill')) {
+                return responses.skills[Math.floor(Math.random() * responses.skills.length)];
+            }
+            
+            if (message.includes('projet') || message.includes('réalisation') || message.includes('portfolio')) {
+                return responses.projects[Math.floor(Math.random() * responses.projects.length)];
+            }
+            
+            if (message.includes('contact') || message.includes('joindre') || message.includes('email') || message.includes('téléphone') || message.includes('disponible')) {
+                return responses.contact[Math.floor(Math.random() * responses.contact.length)];
+            }
+            
+            if (message.includes('salaire') || message.includes('rémunération') || message.includes('prétention')) {
+                return responses.salary[Math.floor(Math.random() * responses.salary.length)];
+            }
+            
+            if (message.includes('motivation') || message.includes('objectif') || message.includes('pourquoi') || message.includes('ambition')) {
+                return responses.motivation[Math.floor(Math.random() * responses.motivation.length)];
+            }
+
+            // Réponses contextuelles avancées
+            const smartResponses = [
+                "Excellente question ! 🤔 Juliana serait ravie de vous en parler directement. Voulez-vous ses coordonnées ?",
+                "Intéressant ! 💡 Pour ce niveau de détail, un échange direct avec Juliana serait parfait. Elle adore parler technique !",
+                "Bonne question ! 🎯 Juliana a sûrement des exemples concrets à partager. Contact : Jniapoh@gmail.com",
+                "Je sens que vous êtes intéressé ! 😊 Juliana serait la mieux placée pour approfondir ce point avec vous.",
+                "Question pertinente ! 🎪 Son profil polyvalent lui permet de s'adapter à différents contextes. Plus d'infos en direct ?"
+            ];
+            
+            return smartResponses[Math.floor(Math.random() * smartResponses.length)];
+        }message, 'user');
             input.value = '';
             
             // Simuler une réponse du bot
