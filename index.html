@@ -1631,7 +1631,7 @@
             <div class="tab-content" id="experience">
                 <h2 class="section-title">Expériences Professionnelles</h2>
                 
-                <div class="experience-item">
+                                    <div class="experience-item">
                     <div class="exp-period">2024-2025</div>
                     <div class="exp-title">Assistante Cheffe de Projet Numérique</div>
                     <div class="exp-company">eSNCF • Secteur Ferroviaire • Saint-Denis</div>
@@ -1799,7 +1799,7 @@
                 <div class="contact-layout">
                     <div class="contact-form">
                         <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
-                        <form id="contactForm">
+                        <form>
                             <div class="form-group">
                                 <label for="name">Nom & Prénom</label>
                                 <input type="text" id="name" name="name" required>
@@ -1810,7 +1810,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="company">Entreprise</label>
-                                <input type="text" id="company" name="company">
+                                <input type="text" id="company" name="company"required>
                             </div>
                             <div class="form-group">
                                 <label for="subject">Objet</label>
@@ -1821,7 +1821,7 @@
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
                             <button type="submit" class="btn-submit">
-                                <i class="fas fa-envelope"></i> Envoyer le message
+                                <i class="fas fa-paper-plane"></i> Envoyer le message
                             </button>
                         </form>
                     </div>
@@ -1967,50 +1967,6 @@
             });
         });
 
-        // Gestion du formulaire de contact avec mailto
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Validation simple
-            if (!name || !email || !subject || !message) {
-                alert('Veuillez remplir tous les champs obligatoires.');
-                return;
-            }
-            
-            // Construction de l'email
-            const mailtoSubject = `Portfolio Contact: ${subject}`;
-            const mailtoBody = `Bonjour Juliana,
-
-Nouveau message depuis votre portfolio :
-
-Nom: ${name}
-Email: ${email}
-Entreprise: ${company || 'Non spécifiée'}
-Sujet: ${subject}
-
-Message:
-${message}
-
-Cordialement,
-${name}`;
-            
-            // Création du lien mailto
-            const mailtoLink = `mailto:jniapoh@gmail.com?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`;
-            
-            // Ouvrir le client email
-            window.location.href = mailtoLink;
-            
-            // Confirmation et reset du formulaire
-            alert('Votre client email va s\'ouvrir avec le message pré-rempli !');
-            document.getElementById('contactForm').reset();
-        });
-
         // Gestion du chatbot
         let chatbotOpen = false;
 
@@ -2116,6 +2072,32 @@ ${name}`;
                     bar.style.width = width;
                 });
             }, 500);
+        });
+
+        // Gestion du formulaire de contact
+        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simuler l'envoi
+            const submitBtn = document.querySelector('.btn-submit');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+                submitBtn.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                    
+                    // Reset form
+                    e.target.reset();
+                }, 2000);
+            }, 2000);
         });
 
         // Smooth scroll pour la navigation
