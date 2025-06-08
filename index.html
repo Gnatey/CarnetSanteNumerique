@@ -1547,20 +1547,17 @@
         <h2 class="section-title">Contact & Disponibilités</h2>
         <div class="contact-layout">
 
-          <!-- FORMULAIRE NETLIFY -->
+          <!-- Formulaire Netlify -->
           <div class="contact-form">
             <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
             <form name="contact"
                   method="POST"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field">
-              <!-- Champ caché pour Netlify -->
               <input type="hidden" name="form-name" value="contact">
-              <!-- Honeypot anti-spam -->
               <p hidden>
                 <label>Ne pas remplir : <input name="bot-field"></label>
               </p>
-
               <div class="form-group">
                 <label for="name">Nom &amp; Prénom</label>
                 <input type="text" id="name" name="name" required>
@@ -1581,7 +1578,6 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
               </div>
-
               <button type="submit" class="btn-submit">
                 <i class="fas fa-paper-plane"></i> Envoyer le message
               </button>
