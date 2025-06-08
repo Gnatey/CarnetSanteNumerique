@@ -548,6 +548,201 @@
             height: fit-content;
         }
 
+        /* Styles pour l'upload de fichiers */
+        .file-upload-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            cursor: pointer;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-upload-wrapper:hover {
+            border-color: #3b82f6;
+            background: #f1f5f9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .file-upload-wrapper.dragover {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #eff6ff, #f1f5f9);
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+        }
+
+        .file-upload-content {
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .file-upload-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .file-upload-text {
+            color: #475569;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .file-upload-hint {
+            color: #64748b;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            max-width: 280px;
+        }
+
+        .file-preview {
+            display: none;
+            background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            animation: slideDown 0.4s ease;
+        }
+
+        .file-preview.show {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .file-preview-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .file-preview-info {
+            flex: 1;
+        }
+
+        .file-preview-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .file-preview-size {
+            font-size: 0.8rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .file-remove-btn {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        .file-remove-btn:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+
+        .file-size-warning {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #f59e0b;
+            color: #92400e;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+        }
+
+        .file-size-warning.show {
+            display: flex;
+        }
+
+        .file-size-warning::before {
+            content: '⚠️';
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .upload-success {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border: 1px solid #10b981;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+        }
+
+        .upload-success.show {
+            display: flex;
+        }
+
+        .upload-success::before {
+            content: '✅';
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
         .contact-item {
             display: flex;
             align-items: center;
@@ -1568,11 +1763,23 @@
                 </div>
             </div>
 
-            <!-- CONTENU CONTACT CORRIGÉ POUR NETLIFY -->
+            <!-- CONTENU CONTACT CORRIGÉ POUR NETLIFY AVEC UPLOAD -->
             <div class="tab-content" id="contact">
                 <h2 class="section-title">Contact & Disponibilités</h2>
+                
+                <!-- Formulaire caché pour la détection Netlify (avec upload) -->
+                <form name="juliana-contact" netlify netlify-honeypot="bot-field" hidden>
+                    <input type="text" name="name" />
+                    <input type="email" name="email" />
+                    <input type="text" name="company" />
+                    <input type="text" name="position" />
+                    <input type="text" name="subject" />
+                    <textarea name="message"></textarea>
+                    <input type="file" name="job-description" />
+                </form>
+
                 <div class="contact-layout">
-                    <!-- Formulaire de contact Netlify corrigé -->
+                    <!-- Formulaire de contact Netlify avec upload -->
                     <div class="contact-form">
                         <!-- Message de succès -->
                         <div id="successMessage" class="success-message">
@@ -1582,15 +1789,16 @@
 
                         <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
                         
-                        <!-- FORMULAIRE NETLIFY CORRIGÉ -->
+                        <!-- FORMULAIRE NETLIFY AVEC UPLOAD -->
                         <form name="juliana-contact" 
                               method="POST" 
+                              enctype="multipart/form-data"
                               data-netlify="true" 
                               data-netlify-honeypot="bot-field"
                               action="/success.html"
                               id="contactForm">
                               
-                            <!-- Champ caché requis pour Netlify -->
+                            <!-- Champ caché requis -->
                             <input type="hidden" name="form-name" value="juliana-contact">
                             
                             <!-- Champ honeypot caché pour éviter le spam -->
@@ -1639,6 +1847,58 @@
                                        name="subject" 
                                        required 
                                        placeholder="Ex: Opportunité Data Analyst - CDI">
+                            </div>
+
+                            <!-- NOUVEAU : Upload de fichier avec design intégré -->
+                            <div class="form-group">
+                                <label for="job-description">📎 Fiche de Poste (optionnel)</label>
+                                <div style="color: #64748b; font-size: 0.85rem; margin-bottom: 10px;">
+                                    💼 <strong>Recruteurs :</strong> Joignez votre fiche de poste pour une meilleure compréhension de l'opportunité
+                                </div>
+                                <div class="file-upload-container">
+                                    <div class="file-upload-wrapper" id="fileUploadWrapper">
+                                        <input type="file" 
+                                               id="job-description" 
+                                               name="job-description" 
+                                               class="file-input"
+                                               accept=".pdf,.doc,.docx,.txt"
+                                               data-max-size="10485760">
+                                        <div class="file-upload-content">
+                                            <div class="file-upload-icon">📎</div>
+                                            <div class="file-upload-text">
+                                                Cliquez ici ou glissez-déposez votre fichier
+                                            </div>
+                                            <div class="file-upload-hint">
+                                                Formats acceptés : PDF, DOC, DOCX, TXT<br>
+                                                Taille maximum : 10 MB
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Aperçu du fichier sélectionné -->
+                                    <div class="file-preview" id="filePreview">
+                                        <div class="file-preview-icon">📄</div>
+                                        <div class="file-preview-info">
+                                            <div class="file-preview-name" id="fileName"></div>
+                                            <div class="file-preview-size" id="fileSize">
+                                                <i class="fas fa-file-alt" style="margin-right: 5px;"></i>
+                                                <span id="fileSizeText"></span>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="file-remove-btn" onclick="removeFile()">
+                                            <i class="fas fa-times"></i> Supprimer
+                                        </button>
+                                    </div>
+
+                                    <!-- Messages d'état -->
+                                    <div class="file-size-warning" id="fileSizeWarning">
+                                        Le fichier dépasse la limite de 10 MB. Veuillez choisir un fichier plus petit.
+                                    </div>
+
+                                    <div class="upload-success" id="uploadSuccess">
+                                        Fichier prêt à être envoyé avec votre message !
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -2101,11 +2361,14 @@
             return smartDefaults[Math.floor(Math.random() * smartDefaults.length)];
         }
 
-        // Gestion du formulaire de contact Netlify
+        // Gestion du formulaire de contact Netlify avec upload
         function setupContactForm() {
             const contactForm = document.getElementById('contactForm');
             const submitButton = document.getElementById('submitButton');
             const successMessage = document.getElementById('successMessage');
+
+            // Configuration de l'upload de fichiers
+            setupFileUpload();
 
             if (!contactForm) return;
 
@@ -2120,8 +2383,15 @@
                 // En production, Netlify gérera l'envoi automatiquement
                 // Mais on peut quand même montrer un feedback utilisateur
                 if (submitButton) {
+                    const fileInput = document.getElementById('job-description');
+                    const hasFile = fileInput && fileInput.files.length > 0;
                     const originalText = submitButton.innerHTML;
-                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                    
+                    if (hasFile) {
+                        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours (avec fichier)...';
+                    } else {
+                        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                    }
                     submitButton.disabled = true;
                 }
             });
@@ -2129,10 +2399,16 @@
             function simulateFormSubmission() {
                 if (!submitButton || !successMessage) return;
 
+                const fileInput = document.getElementById('job-description');
+                const hasFile = fileInput && fileInput.files.length > 0;
                 const originalText = submitButton.innerHTML;
                 
                 // Animation d'envoi
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                if (hasFile) {
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours (avec fichier)...';
+                } else {
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                }
                 submitButton.disabled = true;
                 
                 setTimeout(() => {
@@ -2140,7 +2416,11 @@
                     successMessage.classList.add('show');
                     
                     // Changer le bouton
-                    submitButton.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+                    if (hasFile) {
+                        submitButton.innerHTML = '<i class="fas fa-check"></i> Message et fichier envoyés !';
+                    } else {
+                        submitButton.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+                    }
                     submitButton.style.background = '#10b981';
                     
                     // Scroll vers le message de succès
@@ -2153,13 +2433,133 @@
                         submitButton.disabled = false;
                         contactForm.reset();
                         
+                        // Reset de l'upload de fichier
+                        if (window.removeFile) {
+                            window.removeFile();
+                        }
+                        
                         // Cacher le message de succès après quelques secondes
                         setTimeout(() => {
                             successMessage.classList.remove('show');
                         }, 5000);
                     }, 2000);
-                }, 2000);
+                }, 2500);
             }
+        }
+
+        // Configuration de l'upload de fichiers
+        function setupFileUpload() {
+            const fileInput = document.getElementById('job-description');
+            const fileUploadWrapper = document.getElementById('fileUploadWrapper');
+            const filePreview = document.getElementById('filePreview');
+            const fileName = document.getElementById('fileName');
+            const fileSizeText = document.getElementById('fileSizeText');
+            const fileSizeWarning = document.getElementById('fileSizeWarning');
+            const uploadSuccess = document.getElementById('uploadSuccess');
+            
+            if (!fileInput) return;
+
+            // Gestion du drag & drop
+            fileUploadWrapper.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('dragover');
+            });
+
+            fileUploadWrapper.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+            });
+
+            fileUploadWrapper.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFileSelection(files[0]);
+                }
+            });
+
+            // Gestion de la sélection de fichier
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    handleFileSelection(this.files[0]);
+                }
+            });
+
+            function handleFileSelection(file) {
+                // Reset des messages
+                fileSizeWarning.classList.remove('show');
+                uploadSuccess.classList.remove('show');
+
+                // Validation du type de fichier
+                const allowedTypes = ['application/pdf', 'application/msword', 
+                                     'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+                                     'text/plain'];
+                
+                const fileExtension = file.name.split('.').pop().toLowerCase();
+                const allowedExtensions = ['pdf', 'doc', 'docx', 'txt'];
+                
+                if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+                    alert('⚠️ Type de fichier non autorisé.\n\nFormats acceptés : PDF, DOC, DOCX, TXT');
+                    fileInput.value = '';
+                    return;
+                }
+
+                // Validation de la taille (10 MB max)
+                const maxSize = 10 * 1024 * 1024; // 10 MB
+                if (file.size > maxSize) {
+                    fileSizeWarning.classList.add('show');
+                    filePreview.classList.remove('show');
+                    fileInput.value = '';
+                    return;
+                }
+
+                // Affichage de l'aperçu
+                fileName.textContent = file.name;
+                fileSizeText.textContent = formatFileSize(file.size);
+                filePreview.classList.add('show');
+                uploadSuccess.classList.add('show');
+                
+                // Modifier l'apparence du wrapper
+                fileUploadWrapper.style.borderColor = '#10b981';
+                fileUploadWrapper.style.background = 'linear-gradient(135deg, #f0fdf4, #f8fafc)';
+                
+                // Petit délai pour l'animation
+                setTimeout(() => {
+                    fileUploadWrapper.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        fileUploadWrapper.style.transform = 'scale(1)';
+                    }, 150);
+                }, 100);
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Fonction globale pour supprimer le fichier
+            window.removeFile = function() {
+                fileInput.value = '';
+                filePreview.classList.remove('show');
+                fileSizeWarning.classList.remove('show');
+                uploadSuccess.classList.remove('show');
+                fileUploadWrapper.style.borderColor = '#e2e8f0';
+                fileUploadWrapper.style.background = '#f8fafc';
+                fileUploadWrapper.style.transform = 'scale(1)';
+                
+                // Animation de suppression
+                filePreview.style.transform = 'scale(0.95)';
+                filePreview.style.opacity = '0';
+                setTimeout(() => {
+                    filePreview.style.transform = 'scale(1)';
+                    filePreview.style.opacity = '1';
+                }, 300);
+            };
         }
 
         // Event listeners
