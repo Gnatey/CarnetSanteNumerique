@@ -6,6 +6,7 @@
     <title>Juliana Niapoh - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         * {
             margin: 0;
@@ -586,6 +587,12 @@
             box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
         }
 
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .contact-info {
             background: #f8fafc;
             border-radius: 15px;
@@ -627,6 +634,27 @@
             font-size: 0.9rem;
             color: #475569;
             font-weight: 500;
+        }
+
+        /* Messages d'état */
+        .status-message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .status-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
         }
 
         /* CHATBOT MODERNE */
@@ -1631,7 +1659,7 @@
             <div class="tab-content" id="experience">
                 <h2 class="section-title">Expériences Professionnelles</h2>
                 
-                                    <div class="experience-item">
+                <div class="experience-item">
                     <div class="exp-period">2024-2025</div>
                     <div class="exp-title">Assistante Cheffe de Projet Numérique</div>
                     <div class="exp-company">eSNCF • Secteur Ferroviaire • Saint-Denis</div>
@@ -1799,31 +1827,43 @@
                 <div class="contact-layout">
                     <div class="contact-form">
                         <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
-                        <form>
+                        
+                        <!-- Message de statut -->
+                        <div id="statusMessage" class="status-message"></div>
+                        
+                        <form id="contactForm">
                             <div class="form-group">
-                                <label for="name">Nom & Prénom</label>
+                                <label for="name">Nom & Prénom *</label>
                                 <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email professionnel</label>
+                                <label for="email">Email professionnel *</label>
                                 <input type="email" id="email" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="company">Entreprise</label>
-                                <input type="text" id="company" name="company"required>
+                                <input type="text" id="company" name="company">
                             </div>
                             <div class="form-group">
-                                <label for="subject">Objet</label>
+                                <label for="subject">Objet *</label>
                                 <input type="text" id="subject" name="subject" required>
                             </div>
                             <div class="form-group">
-                                <label for="message">Message</label>
+                                <label for="message">Message *</label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <button type="submit" class="btn-submit">
-                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <i class="fas fa-envelope"></i> Ouvrir dans mon email
                             </button>
                         </form>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #f1f5f9, #e2e8f0); border-radius: 10px; border-left: 4px solid #10b981;">
+                            <h4 style="color: #10b981; margin-bottom: 10px; font-size: 0.9rem;">✅ Prêt à l'emploi !</h4>
+                            <p style="font-size: 0.8rem; color: #475569; line-height: 1.5;">
+                                Le formulaire ouvrira votre client email (Outlook, Gmail, etc.) avec le message pré-rempli.
+                                <br>Aucune configuration requise, ça marche immédiatement !
+                            </p>
+                        </div>
                     </div>
                     
                     <div class="contact-info">
@@ -1923,6 +1963,8 @@
     </div>
 
     <script>
+        // Solution simple avec mailto
+
         // Gestion des onglets avec scroll vers le haut
         function showTab(tabName) {
             // Scroll vers le haut de la page
@@ -1965,6 +2007,67 @@
                 const tabName = tab.getAttribute('data-tab');
                 showTab(tabName);
             });
+        });
+
+        // Fonction pour afficher un message de statut
+        function showStatusMessage(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message ${type}`;
+            statusDiv.style.display = 'block';
+            
+            // Cacher le message après 5 secondes
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Gestion du formulaire de contact avec mailto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validation simple
+            if (!name || !email || !subject || !message) {
+                showStatusMessage('⚠️ Veuillez remplir tous les champs obligatoires.', 'error');
+                return;
+            }
+            
+            // Construction de l'email
+            const mailtoSubject = `Portfolio Contact: ${subject}`;
+            const mailtoBody = `Bonjour Juliana,
+
+Nouveau message depuis votre portfolio :
+
+Nom: ${name}
+Email: ${email}
+Entreprise: ${company || 'Non spécifiée'}
+Sujet: ${subject}
+
+Message:
+${message}
+
+Cordialement,
+${name}`;
+            
+            // Création du lien mailto
+            const mailtoLink = `mailto:jniapoh@gmail.com?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`;
+            
+            // Ouvrir le client email
+            window.location.href = mailtoLink;
+            
+            // Message de confirmation
+            showStatusMessage('📧 Votre client email va s\'ouvrir avec le message pré-rempli !', 'success');
+            
+            // Reset du formulaire après 2 secondes
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+            }, 2000);
         });
 
         // Gestion du chatbot
@@ -2074,32 +2177,6 @@
             }, 500);
         });
 
-        // Gestion du formulaire de contact
-        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Simuler l'envoi
-            const submitBtn = document.querySelector('.btn-submit');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-                submitBtn.style.background = '#10b981';
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                    
-                    // Reset form
-                    e.target.reset();
-                }, 2000);
-            }, 2000);
-        });
-
         // Smooth scroll pour la navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2122,22 +2199,6 @@
                 header.style.transform = `translateY(${scrolled * 0.3}px)`;
             }
         });
-
-        // Effet de typing sur le titre (optionnel)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            
-            type();
-        }
 
         // Loading animation
         window.addEventListener('load', () => {
