@@ -1792,40 +1792,159 @@
                 </div>
             </div>
 
-            <!-- Contenu Contact -->
-            <div class="tab-content" id="contact">
-                <h2 class="section-title">Contact & Disponibilités</h2>
-                
-                <div class="contact-layout">
-                    <div class="contact-form">
-                        <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Nom & Prénom</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email professionnel</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="company">Entreprise</label>
-                                <input type="text" id="company" name="company"required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Objet</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit">
-                                <i class="fas fa-paper-plane"></i> Envoyer le message
-                            </button>
-                        </form>
-                    </div>
-                    
+<!-- Remplace ton formulaire actuel par celui-ci -->
+<div class="contact-form">
+    <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
+    
+    <!-- Formulaire avec Netlify Forms -->
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <!-- Champ honeypot caché pour anti-spam -->
+        <input type="hidden" name="form-name" value="contact" />
+        <div style="display: none;">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Nom & Prénom</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email professionnel</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="company">Entreprise</label>
+            <input type="text" id="company" name="company" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">Objet</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane"></i> Envoyer le message
+        </button>
+    </form>
+</div>
+
+<script>
+// Gestion améliorée du formulaire
+document.querySelector('form[name="contact"]').addEventListener('submit', (e) => {
+    const submitBtn = document.querySelector('.btn-submit');
+    const originalText = submitBtn.innerHTML;
+    
+    // Animation pendant l'envoi
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+    submitBtn.disabled = true;
+    
+    // Netlify gère automatiquement l'envoi
+    // La page sera redirigée vers une page de remerciement
+});
+</script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message envoyé - Juliana Niapoh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <h1>Message envoyé avec succès !</h1>
+        <p>
+            Merci pour votre message ! Je vous répondrai dans les plus brefs délais 
+            à l'adresse email que vous avez fournie.
+        </p>
+        <a href="/" class="btn">← Retour au portfolio</a>
+    </div>
+    
+    <script>
+        // Redirection automatique après 5 secondes
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 5000);
+    </script>
+</body>
+</html>         
                     <div class="contact-info">
                         <h3 style="color: #3b82f6; margin-bottom: 25px; text-align: center;">Informations de Contact</h3>
                         
