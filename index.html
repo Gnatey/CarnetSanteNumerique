@@ -26,7 +26,7 @@
             padding: 0 24px;
         }
 
-        /* Header professionnel avec navigation */
+        /* Header */
         .header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -45,40 +45,6 @@
             background: linear-gradient(45deg, #3b82f6, #06b6d4);
             clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
             opacity: 0.1;
-        }
-
-        .nav {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            z-index: 1000;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 8px 20px;
-            border: 1px solid rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-item {
-            display: inline-block;
-            margin: 0 12px;
-            color: #1e293b;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.9rem;
-            text-shadow: 0 1px 3px rgba(255,255,255,0.8);
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            transform: scale(1.05);
-            text-shadow: none;
         }
 
         .header-content {
@@ -168,7 +134,42 @@
             50% { opacity: 0.5; }
         }
 
-        /* Contenu principal avec onglets */
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 8px 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item {
+            display: inline-block;
+            margin: 0 12px;
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-shadow: 0 1px 3px rgba(255,255,255,0.8);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            transform: scale(1.05);
+            text-shadow: none;
+        }
+
+        /* Contenu principal */
         .main-content {
             background: white;
             margin: -60px auto 40px;
@@ -179,43 +180,10 @@
             z-index: 10;
         }
 
-        /* Système d'onglets professionnel */
         .tabs-container {
-            background: #f1f5f9;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0 40px;
-        }
-
-        .tabs {
-            display: flex;
-            overflow-x: auto;
-        }
-
-        .tab {
-            padding: 20px 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-            color: #64748b;
-            min-width: fit-content;
-        }
-
-        .tab.active {
-            color: #3b82f6;
-            border-bottom-color: #3b82f6;
             background: white;
-            margin: 0 -1px;
-            border-radius: 12px 12px 0 0;
-        }
-
-        .tab:hover {
-            color: #3b82f6;
-            background: rgba(59, 130, 246, 0.05);
+            border: none;
+            padding: 20px 0;
         }
 
         .tab-content {
@@ -234,7 +202,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Titres de sections */
+        /* Styles pour toutes les sections (identiques au code précédent) */
         .section-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -256,7 +224,6 @@
             border-radius: 2px;
         }
 
-        /* VALUE PROPOSITION */
         .value-prop {
             background: linear-gradient(135deg, #f8fafc, #f1f5f9);
             padding: 30px;
@@ -288,7 +255,6 @@
             line-height: 1.7;
         }
 
-        /* FICHE TECHNIQUE SIDEBAR */
         .profile-layout {
             display: grid;
             grid-template-columns: 1fr 350px;
@@ -353,21 +319,6 @@
             font-size: 0.85rem;
         }
 
-        /* COMPÉTENCES AVEC NIVEAUX */
-        .skill-group {
-            margin-bottom: 25px;
-        }
-
-        .skill-group h4 {
-            font-weight: 600;
-            color: #3b82f6;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
         .skill-item {
             display: flex;
             justify-content: space-between;
@@ -396,7 +347,6 @@
             background: linear-gradient(135deg, #3b82f6, #06b6d4);
         }
 
-        /* EXPÉRIENCE PROFESSIONNELLE */
         .experience-item {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -462,7 +412,6 @@
             flex-shrink: 0;
         }
 
-        /* PROJETS GRID */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -525,7 +474,6 @@
             font-weight: 500;
         }
 
-        /* CONTACT PROFESSIONNEL */
         .contact-layout {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -629,302 +577,6 @@
             font-weight: 500;
         }
 
-        /* CHATBOT MODERNE */
-        .chatbot {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-        }
-
-        .chatbot-toggle {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chatbot-toggle::before {
-            content: '🤖';
-            position: absolute;
-            font-size: 1.5rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-        }
-
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
-        }
-
-        .chatbot-window {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            width: 380px;
-            height: 520px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-        }
-
-        .chatbot-window.open {
-            display: flex;
-            animation: slideUp 0.4s ease;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .chatbot-header {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-        }
-
-        .chatbot-avatar {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .chatbot-info h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .chatbot-status {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.3rem;
-            margin-left: auto;
-            padding: 5px;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-
-        .chatbot-close:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .chatbot-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-        }
-
-        .message {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            position: relative;
-            animation: messageSlide 0.3s ease;
-        }
-
-        @keyframes messageSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .message.bot {
-            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-            align-self: flex-start;
-            border: 1px solid #e2e8f0;
-            color: #1e293b;
-            border-bottom-left-radius: 6px;
-        }
-
-        .message.bot::before {
-            content: '🤖';
-            position: absolute;
-            left: -25px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            border: 1px solid #e2e8f0;
-        }
-
-        .message.user {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 6px;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-        }
-
-        .typing-indicator {
-            display: none;
-            padding: 12px 16px;
-            background: #f1f5f9;
-            border-radius: 18px;
-            border-bottom-left-radius: 6px;
-            align-self: flex-start;
-            max-width: 80px;
-        }
-
-        .typing-indicator.show {
-            display: block;
-            animation: messageSlide 0.3s ease;
-        }
-
-        .typing-dots {
-            display: flex;
-            gap: 4px;
-        }
-
-        .typing-dot {
-            width: 6px;
-            height: 6px;
-            background: #64748b;
-            border-radius: 50%;
-            animation: typingDot 1.4s infinite;
-        }
-
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typingDot {
-            0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-            30% { opacity: 1; transform: translateY(-4px); }
-        }
-
-        .quick-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .quick-action {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .quick-action:hover {
-            background: #3b82f6;
-            color: white;
-            transform: translateY(-1px);
-        }
-
-        .chatbot-input {
-            padding: 20px;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            gap: 12px;
-            background: white;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid #e2e8f0;
-            border-radius: 25px;
-            outline: none;
-            font-size: 0.9rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .chatbot-input input:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .chatbot-input button {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 45px;
-        }
-
-        .chatbot-input button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-        }
-
-        .chatbot-input button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* TESTIMONIAL */
         .testimonial {
             background: #f8fafc;
             border-radius: 15px;
@@ -948,7 +600,319 @@
             font-size: 0.9rem;
         }
 
-        /* RESPONSIVE AMÉLIORÉ */
+        /* CHATBOT IA AVANCÉ */
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .chatbot-toggle::before {
+            content: '🤖';
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 85px;
+            right: 0;
+            width: 420px;
+            height: 600px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.85); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chatbot-avatar {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            animation: avatarPulse 3s infinite;
+        }
+
+        @keyframes avatarPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .chatbot-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .chatbot-status {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.4rem;
+            margin-left: auto;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            animation: messageSlide 0.4s ease;
+            word-wrap: break-word;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.bot {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            align-self: flex-start;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            border-bottom-left-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .message.bot::before {
+            content: '🤖';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 8px;
+            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 15px 20px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            border-bottom-left-radius: 8px;
+            align-self: flex-start;
+            max-width: 90px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .typing-indicator.show {
+            display: block;
+            animation: messageSlide 0.4s ease;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #64748b;
+            border-radius: 50%;
+            animation: typingDot 1.6s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingDot {
+            0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-6px); }
+        }
+
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-action {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 8px 16px;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .quick-action:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .chatbot-input {
+            padding: 25px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            background: white;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .chatbot-input input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: white;
+        }
+
+        .chatbot-input input::placeholder {
+            color: #9ca3af;
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 55px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .chatbot-input button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .chatbot-input button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
             .profile-layout,
             .contact-layout {
@@ -979,20 +943,8 @@
                 padding: 30px 0 60px;
             }
             
-            .header-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 25px;
-            }
-            
             .header h1 {
                 font-size: 2.2rem;
-                line-height: 1.1;
-            }
-            
-            .tagline {
-                font-size: 1rem;
-                line-height: 1.5;
             }
             
             .profile-image {
@@ -1004,267 +956,69 @@
             
             .main-content {
                 margin: -30px 12px 20px;
-                border-radius: 15px;
             }
             
             .tab-content {
                 padding: 25px 20px;
-                min-height: auto;
             }
             
-            .section-title {
-                font-size: 1.5rem;
-                margin-bottom: 20px;
-                padding-left: 15px;
-            }
-            
-            .section-title::before {
-                width: 3px;
-                height: 20px;
-            }
-            
-            .value-prop {
-                padding: 20px;
-                margin-bottom: 25px;
-            }
-            
-            .value-prop h3 {
-                font-size: 1rem;
-            }
-            
-            .value-prop p {
-                font-size: 1rem;
-                line-height: 1.6;
-            }
-            
-            /* Expérience mobile */
-            .experience-item {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            
-            .exp-period {
-                position: static;
-                margin-bottom: 10px;
-                display: inline-block;
-                font-size: 0.75rem;
-                padding: 4px 12px;
-            }
-            
-            .exp-title {
-                margin-right: 0;
-                font-size: 1.1rem;
-                margin-bottom: 6px;
-            }
-            
-            .exp-company {
-                font-size: 0.9rem;
-                margin-bottom: 15px;
-            }
-            
-            .exp-highlights {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            
-            .highlight {
-                font-size: 0.85rem;
-            }
-            
-            /* Compétences mobile */
-            .skills-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .skill-category {
-                padding: 20px;
-            }
-            
-            .skill-item {
-                margin-bottom: 8px;
-            }
-            
-            .skill-name {
-                font-size: 0.8rem;
-            }
-            
-            /* Projets mobile */
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .project-header {
-                height: 100px;
-                font-size: 2rem;
-            }
-            
-            .project-content {
-                padding: 20px;
-            }
-            
-            .project-title {
-                font-size: 1.1rem;
-            }
-            
-            .project-description {
-                font-size: 0.85rem;
-            }
-            
-            /* Contact mobile */
-            .contact-form,
-            .contact-info {
-                padding: 20px;
-            }
-            
-            .form-group input,
-            .form-group textarea {
-                padding: 10px 12px;
-                font-size: 0.9rem;
-            }
-            
-            .contact-item {
-                padding: 12px;
-                margin-bottom: 15px;
-            }
-            
-            .contact-icon {
-                width: 30px;
-                height: 30px;
-                font-size: 0.8rem;
-            }
-            
-            .contact-text {
-                font-size: 0.85rem;
-            }
-            
-            /* Tech sidebar mobile */
-            .tech-card {
-                margin: 15px;
-                padding: 20px;
-            }
-            
-            .tech-card h3 {
-                font-size: 1rem;
-                margin-bottom: 15px;
-            }
-            
-            .tech-item {
-                padding: 8px 0;
-            }
-            
-            .tech-label,
-            .tech-value {
-                font-size: 0.8rem;
-            }
-            
-            /* Navigation mobile */
             .nav {
                 right: 10px;
                 top: 10px;
                 padding: 6px 12px;
-                border-radius: 20px;
             }
             
             .nav-item {
                 margin: 0 6px;
                 padding: 6px 8px;
                 font-size: 0.8rem;
-                border-radius: 12px;
             }
             
-            /* Chatbot mobile */
+            .exp-period {
+                position: static;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+            
+            .exp-title {
+                margin-right: 0;
+            }
+            
             .chatbot {
                 bottom: 20px;
                 right: 20px;
             }
             
             .chatbot-toggle {
-                width: 50px;
-                height: 50px;
-                font-size: 1.1rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
             }
             
             .chatbot-window {
                 width: calc(100vw - 40px);
-                right: -25px;
-                height: 400px;
+                right: -15px;
+                height: 500px;
             }
             
             .chatbot-messages {
-                padding: 15px;
-            }
-            
-            .message {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-                max-width: 90%;
+                padding: 20px;
             }
             
             .chatbot-input {
-                padding: 12px 15px;
+                padding: 20px;
             }
             
-            .chatbot-input input {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-            
-            .chatbot-input button {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .tagline {
+            .message {
+                padding: 12px 16px;
                 font-size: 0.9rem;
+                max-width: 90%;
             }
-            
-            .tab-content {
-                padding: 20px 15px;
-            }
-            
-            .nav-item {
-                margin: 0 4px;
-                padding: 4px 6px;
-                font-size: 0.75rem;
-            }
-            
-            .value-prop {
-                padding: 15px;
-            }
-            
-            .experience-item {
-                padding: 15px;
-            }
-            
-            .tech-card {
-                margin: 10px;
-                padding: 15px;
-            }
-        }
-
-        /* ANIMATIONS */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation flottante -->
+    <!-- Navigation -->
     <nav class="nav">
         <a class="nav-item active" data-tab="profil">Profil</a>
         <a class="nav-item" data-tab="competences">Skills</a>
@@ -1294,13 +1048,10 @@
         </div>
     </header>
 
-    <!-- Contenu principal avec onglets -->
+    <!-- Contenu principal -->
     <div class="container">
         <div class="main-content">
-            <!-- Container propre sans onglets -->
-            <div class="tabs-container" style="background: white; border: none;">
-                <div style="padding: 20px 0;"></div>
-            </div>
+            <div class="tabs-container"></div>
 
             <!-- Contenu Profil -->
             <div class="tab-content active" id="profil">
@@ -1322,7 +1073,7 @@
                             <h3 style="color: #3b82f6; margin-bottom: 20px; font-size: 1.2rem;">Mon Parcours & Ambitions</h3>
                             <p style="margin-bottom: 20px; line-height: 1.7; color: #475569;">
                                 Passionnée par les données depuis mes études en DUT STID, j'ai choisi de me spécialiser en Data Management 
-                                pour maîtriser les enjeux actuels de l'IA et du Big Data. Mes expériences en alternance chez SNCF et ORANO 
+                                pour maîtriser les enjeux actuels de l'IA et du Big Data. Mes expériences en alternance chez eSNCF et ORANO 
                                 m'ont permis de développer une vision pratique de la transformation digitale et de comprendre les besoins métiers.
                             </p>
                             <p style="line-height: 1.7; color: #475569;">
@@ -1341,7 +1092,6 @@
                         </div>
                     </div>
 
-                    <!-- Sidebar technique -->
                     <div class="tech-sidebar">
                         <div class="tech-card">
                             <h3><i class="fas fa-clipboard-list"></i> Fiche Technique</h3>
@@ -1582,7 +1332,7 @@
                                         <div class="skill-dot active"></div>
                                         <div class="skill-dot active"></div>
                                         <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
+                                        <div class="skill-dot active"></div>
                                         <div class="skill-dot"></div>
                                     </div>
                                 </div>
@@ -1631,7 +1381,7 @@
             <div class="tab-content" id="experience">
                 <h2 class="section-title">Expériences Professionnelles</h2>
                 
-                                    <div class="experience-item">
+                <div class="experience-item">
                     <div class="exp-period">2024-2025</div>
                     <div class="exp-title">Assistante Cheffe de Projet Numérique</div>
                     <div class="exp-company">eSNCF • Secteur Ferroviaire • Saint-Denis</div>
@@ -1792,159 +1542,44 @@
                 </div>
             </div>
 
-<!-- Remplace ton formulaire actuel par celui-ci -->
-<div class="contact-form">
-    <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
-    
-    <!-- Formulaire avec Netlify Forms -->
-    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-        <!-- Champ honeypot caché pour anti-spam -->
-        <input type="hidden" name="form-name" value="contact" />
-        <div style="display: none;">
-            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-        </div>
-        
-        <div class="form-group">
-            <label for="name">Nom & Prénom</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="email">Email professionnel</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="company">Entreprise</label>
-            <input type="text" id="company" name="company" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="subject">Objet</label>
-            <input type="text" id="subject" name="subject" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        
-        <button type="submit" class="btn-submit">
-            <i class="fas fa-paper-plane"></i> Envoyer le message
-        </button>
-    </form>
-</div>
-
-<script>
-// Gestion améliorée du formulaire
-document.querySelector('form[name="contact"]').addEventListener('submit', (e) => {
-    const submitBtn = document.querySelector('.btn-submit');
-    const originalText = submitBtn.innerHTML;
-    
-    // Animation pendant l'envoi
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-    submitBtn.disabled = true;
-    
-    // Netlify gère automatiquement l'envoi
-    // La page sera redirigée vers une page de remerciement
-});
-</script>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message envoyé - Juliana Niapoh</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            text-align: center;
-            max-width: 500px;
-            padding: 40px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .success-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: bounce 1s ease-in-out;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        p {
-            margin-bottom: 30px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="success-icon">✅</div>
-        <h1>Message envoyé avec succès !</h1>
-        <p>
-            Merci pour votre message ! Je vous répondrai dans les plus brefs délais 
-            à l'adresse email que vous avez fournie.
-        </p>
-        <a href="/" class="btn">← Retour au portfolio</a>
-    </div>
-    
-    <script>
-        // Redirection automatique après 5 secondes
-        setTimeout(() => {
-            window.location.href = '/';
-        }, 5000);
-    </script>
-</body>
-</html>         
+            <!-- Contenu Contact -->
+            <div class="tab-content" id="contact">
+                <h2 class="section-title">Contact & Disponibilités</h2>
+                
+                <div class="contact-layout">
+                    <div class="contact-form">
+                        <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
+                        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="contact" />
+                            <div style="display: none;">
+                                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Nom & Prénom</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email professionnel</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Entreprise</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Objet</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                    
                     <div class="contact-info">
                         <h3 style="color: #3b82f6; margin-bottom: 25px; text-align: center;">Informations de Contact</h3>
                         
@@ -2008,33 +1643,46 @@ document.querySelector('form[name="contact"]').addEventListener('submit', (e) =>
         </div>
     </div>
 
-    <!-- Chatbot -->
+    <!-- Chatbot IA Avancé -->
     <div class="chatbot">
-        <button class="chatbot-toggle" onclick="toggleChatbot()">
-            <i class="fas fa-comments"></i>
-        </button>
+        <button class="chatbot-toggle" onclick="toggleChatbot()"></button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
-                <h4>💬 Assistant CV</h4>
+                <div class="chatbot-avatar">🤖</div>
+                <div class="chatbot-info">
+                    <h4>Assistant IA - Juliana</h4>
+                    <div class="chatbot-status">
+                        <div class="status-dot"></div>
+                        En ligne • IA Machine Learning
+                    </div>
+                </div>
                 <button class="chatbot-close" onclick="toggleChatbot()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot">
-                    Bonjour ! 👋 Je suis l'assistant virtuel de Juliana. Comment puis-je vous aider ?
+                    👋 Salut ! Je suis l'IA de Juliana, powered by machine learning ! Comment puis-je vous aider aujourd'hui ?
                 </div>
                 <div class="message bot">
-                    Vous pouvez me poser des questions sur :
-                    <br>• Son expérience
-                    <br>• Ses compétences
-                    <br>• Sa formation
-                    <br>• Ses projets
+                    <div class="quick-actions">
+                        <div class="quick-action" onclick="askQuickQuestion('Parlez-moi de son expérience')">💼 Expérience</div>
+                        <div class="quick-action" onclick="askQuickQuestion('Quelles sont ses compétences techniques ?')">⚙️ Compétences</div>
+                        <div class="quick-action" onclick="askQuickQuestion('Ses projets les plus marquants ?')">🚀 Projets</div>
+                        <div class="quick-action" onclick="askQuickQuestion('Comment la contacter ?')">📞 Contact</div>
+                    </div>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
                 </div>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Tapez votre question...">
-                <button onclick="sendMessage()">
+                <input type="text" id="chatbotInput" placeholder="Posez votre question sur Juliana...">
+                <button onclick="sendMessage()" id="sendButton">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
@@ -2042,83 +1690,182 @@ document.querySelector('form[name="contact"]').addEventListener('submit', (e) =>
     </div>
 
     <script>
+        // Base de connaissances complète sur Juliana
+        const julianaKnowledge = {
+            personal: {
+                name: "Juliana Niapoh",
+                age: "Jeune professionnelle",
+                location: "Aubervilliers (93), Île-de-France",
+                status: "En recherche de son premier CDI",
+                availability: "Octobre 2025",
+                personality: ["autonome", "analytique", "adaptable", "polyvalente", "motivée"]
+            },
+            experience: {
+                current: {
+                    title: "Assistante Cheffe de Projet Numérique",
+                    company: "eSNCF",
+                    period: "2024-2025",
+                    location: "Saint-Denis",
+                    achievements: [
+                        "30% de réduction des délais de communication",
+                        "15% d'amélioration de la satisfaction utilisateur",
+                        "Pilotage de projets de transformation numérique en Agile/Scrum",
+                        "Gestion d'un portail collaboratif médecine du travail",
+                        "Support technique niveau 3"
+                    ]
+                },
+                previous: {
+                    title: "Chargée de Projet Digital",
+                    company: "ORANO",
+                    period: "2022-2023",
+                    location: "Châtillon",
+                    achievements: [
+                        "Analyse et optimisation des flux de données critiques",
+                        "Conception de solutions de visualisation",
+                        "Formation des équipes aux nouveaux outils"
+                    ]
+                }
+            },
+            education: {
+                current: "Master Data Management (2023-2025) - Paris School of Business",
+                bachelor: "Bachelor E-commerce & Marketing numérique (2022-2023) - Paris School of Business",
+                dut: "DUT STID (2020-2022) - Université Sorbonne Paris Nord"
+            },
+            skills: {
+                technical: {
+                    python: "Niveau avancé - Pandas, NumPy, Machine Learning",
+                    sql: "Expert - PostgreSQL, MySQL, optimisation",
+                    powerbi: "Avancé - Dashboards et reporting",
+                    r: "Intermédiaire - Statistiques et visualisation",
+                    web: "Bases solides - HTML5, CSS3, JavaScript"
+                },
+                project: {
+                    agile: "Expert Scrum/Kanban",
+                    tools: "Jira, Confluence, Trello",
+                    leadership: "Coordination d'équipes techniques"
+                },
+                soft: ["Esprit d'analyse", "Collaboration", "Adaptabilité", "Résolution de problèmes", "Communication claire", "Autonomie"]
+            },
+            projects: [
+                {
+                    name: "IA Student Assistance Platform",
+                    description: "Solution d'assistance étudiante basée sur NLP avec interface adaptive",
+                    tech: ["Python", "NLP", "Scikit-learn", "Machine Learning"]
+                },
+                {
+                    name: "Dashboard RH Analytics",
+                    description: "Outil de visualisation des données RH avec Python et Streamlit",
+                    tech: ["Python", "Pandas", "Matplotlib", "Streamlit"]
+                },
+                {
+                    name: "Base de Données SQL Optimisée",
+                    description: "Conception et optimisation d'une BDD relationnelle complexe",
+                    tech: ["SQL", "MySQL", "WorkBench", "Optimisation"]
+                }
+            ],
+            interests: {
+                gaming: ["Elden Ring", "Undertale/Deltarune", "Ghost of Tsushima", "2048"],
+                travel: ["Allemagne", "Côte d'Ivoire"],
+                programming: "Projets personnels Python et apprentissage nouvelles technologies data"
+            },
+            contact: {
+                email: "Jniapoh@gmail.com",
+                phone: "06 22 85 53 41",
+                linkedin: "Profil LinkedIn professionnel",
+                location: "93300, Aubervilliers"
+            },
+            goals: [
+                "Obtenir son premier CDI dans la data",
+                "Contribuer à la transformation digitale d'entreprises innovantes",
+                "Développer son expertise en IA et Big Data",
+                "Évoluer vers des postes de Data Analyst, Business Analyst, Product Owner, Scrum Master ou Data Engineer"
+            ]
+        };
+
+        // Historique de conversation
+        let conversationHistory = [];
+        let chatbotOpen = false;
+        let isTyping = false;
+
         // Gestion des onglets avec scroll vers le haut
         function showTab(tabName) {
-            // Scroll vers le haut de la page
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // Attendre la fin du scroll avant de changer d'onglet
             setTimeout(() => {
-                // Masquer tous les contenus
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
                 
-                // Désactiver tous les onglets
-                document.querySelectorAll('.tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                
-                // Désactiver tous les nav-items
                 document.querySelectorAll('.nav-item').forEach(item => {
                     item.classList.remove('active');
                 });
                 
-                // Activer le contenu sélectionné
-                document.getElementById(tabName).classList.add('active');
+                const targetContent = document.getElementById(tabName);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
                 
-                // Activer l'onglet correspondant
-                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-                
-                // Activer le nav-item correspondant
                 document.querySelectorAll(`[data-tab="${tabName}"]`).forEach(item => {
                     item.classList.add('active');
                 });
             }, 300);
         }
 
-        // Event listeners pour les onglets
-        document.querySelectorAll('.tab, .nav-item').forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                e.preventDefault();
-                const tabName = tab.getAttribute('data-tab');
-                showTab(tabName);
-            });
-        });
-
-        // Gestion du chatbot
-        let chatbotOpen = false;
-
+        // Chatbot avancé
         function toggleChatbot() {
-            const window = document.getElementById('chatbotWindow');
+            const chatbotWindow = document.getElementById('chatbotWindow');
             chatbotOpen = !chatbotOpen;
             
             if (chatbotOpen) {
-                window.classList.add('open');
+                chatbotWindow.classList.add('open');
+                const input = document.getElementById('chatbotInput');
+                if (input) input.focus();
             } else {
-                window.classList.remove('open');
+                chatbotWindow.classList.remove('open');
+            }
+        }
+
+        function askQuickQuestion(question) {
+            const input = document.getElementById('chatbotInput');
+            if (input) {
+                input.value = question;
+                sendMessage();
             }
         }
 
         function sendMessage() {
             const input = document.getElementById('chatbotInput');
+            const sendButton = document.getElementById('sendButton');
+            
+            if (!input || !sendButton) return;
+            
             const message = input.value.trim();
+            if (message === '' || isTyping) return;
             
-            if (message === '') return;
+            // Ajouter à l'historique
+            conversationHistory.push({type: 'user', message: message});
             
-            // Ajouter le message utilisateur
             addMessage(message, 'user');
             input.value = '';
+            sendButton.disabled = true;
             
-            // Simuler une réponse du bot
+            showTyping();
+            
             setTimeout(() => {
-                const response = generateBotResponse(message);
+                const response = generateSmartResponse(message);
+                hideTyping();
                 addMessage(response, 'bot');
-            }, 1000);
+                sendButton.disabled = false;
+                
+                // Ajouter la réponse à l'historique
+                conversationHistory.push({type: 'bot', message: response});
+            }, Math.random() * 2000 + 1500);
         }
 
         function addMessage(text, sender) {
             const messagesContainer = document.getElementById('chatbotMessages');
+            if (!messagesContainer) return;
+            
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
             messageDiv.textContent = text;
@@ -2127,145 +1874,193 @@ document.querySelector('form[name="contact"]').addEventListener('submit', (e) =>
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
-        function generateBotResponse(userMessage) {
+        function showTyping() {
+            isTyping = true;
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.classList.add('show');
+                const messagesContainer = document.getElementById('chatbotMessages');
+                if (messagesContainer) {
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            }
+        }
+
+        function hideTyping() {
+            isTyping = false;
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.classList.remove('show');
+            }
+        }
+
+        // Intelligence conversationnelle avancée
+        function generateSmartResponse(userMessage) {
             const message = userMessage.toLowerCase();
             
-            if (message.includes('expérience') || message.includes('travail')) {
-                return "Juliana a 2+ années d'expérience en alternance chez SNCF et ORANO. Elle a piloté des projets de transformation numérique avec des résultats mesurables : 30% d'amélioration des processus !";
+            // Détection de salutations
+            if (message.includes('salut') || message.includes('bonjour') || message.includes('hello') || message.includes('hi')) {
+                const greetings = [
+                    "Salut ! 😊 Ravi de faire votre connaissance ! Je suis l'assistant IA personnel de Juliana. En quoi puis-je vous aider ?",
+                    "Bonjour ! 👋 Bienvenue sur le portfolio de Juliana ! Je connais tout sur son parcours. Qu'aimeriez-vous savoir ?",
+                    "Hello ! 🤖 Je suis là pour répondre à toutes vos questions sur Juliana Niapoh. C'est une vraie pépite dans la data !",
+                    "Coucou ! ✨ Assistant IA de Juliana à votre service ! Elle a un profil vraiment impressionnant, vous allez voir !"
+                ];
+                return greetings[Math.floor(Math.random() * greetings.length)];
             }
-            
-            if (message.includes('compétence') || message.includes('technique')) {
-                return "Ses compétences clés : Python, SQL, Machine Learning, Power BI, méthodologies Agile/Scrum. Elle maîtrise tout le stack Data Science moderne !";
+
+            // Questions sur l'assistant lui-même
+            if (message.includes('qui es-tu') || message.includes('tu es qui') || message.includes('chatbot') || message.includes('machine learning')) {
+                return "Je suis l'assistant IA personnel de Juliana ! 🤖 J'ai été entraîné avec toutes les informations sur son parcours, ses compétences, ses projets et sa personnalité. Je peux répondre à toutes vos questions sur elle de manière conversationnelle. C'est comme si vous parliez directement avec quelqu'un qui la connaît très bien ! Que voulez-vous savoir ?";
             }
-            
-            if (message.includes('formation') || message.includes('diplôme')) {
-                return "Master Data Management en cours (2023-2025), Bachelor E-commerce, DUT STID. Formation solide en statistiques et informatique décisionnelle.";
+
+            // Questions générales sur Juliana
+            if (message.includes('juliana') && (message.includes('qui') || message.includes('parle') || message.includes('dis moi') || message.includes('apprendre'))) {
+                return `Juliana Niapoh, c'est une future diplômée Master Data Management super talentueuse ! 🌟 Elle a 2+ années d'alternance chez eSNCF et ORANO avec des résultats concrets : 30% d'amélioration des processus. Elle maîtrise Python, SQL, Machine Learning, les méthodes Agile... Bref, un profil polyvalent parfait pour la data ! Elle cherche son premier CDI pour octobre 2025. Qu'est-ce qui vous intéresse le plus chez elle ?`;
             }
-            
-            if (message.includes('projet')) {
-                return "Projets marquants : IA Student Assistance (NLP), Dashboard RH Analytics (Python/Streamlit), Base de données optimisée SQL. Du concret !";
+
+            // Expérience professionnelle
+            if (message.includes('expérience') || message.includes('travail') || message.includes('alternance') || message.includes('sncf') || message.includes('orano')) {
+                const experiences = [
+                    `Alors, l'expérience de Juliana c'est du solide ! 💪 Actuellement chez eSNCF comme Assistante Cheffe de Projet Numérique, elle pilote des projets de transformation digitale en Agile/Scrum. Résultats : -30% sur les délais et +15% de satisfaction ! Avant ça, chez ORANO pour optimiser les flux de données critiques. Du concret dans des grandes boîtes !`,
+                    `Son parcours professionnel ? Impressionnant ! 🚀 2 ans d'alternance dans des secteurs de pointe : ferroviaire (eSNCF) et nucléaire (ORANO). Elle a géré un portail collaboratif, fait de la formation technique, du support niveau 3... Elle sait vraiment coordonner des équipes et livrer des résultats !`,
+                    `Les expériences de Juliana montrent sa progression ! 📈 Partie d'un poste de Chargée de Projet Digital chez ORANO, elle est maintenant Assistante Cheffe de Projet chez eSNCF. Toujours des missions data + gestion de projet. Elle a cette double casquette technique/management qui est super recherchée !`
+                ];
+                return experiences[Math.floor(Math.random() * experiences.length)];
             }
-            
-            if (message.includes('contact') || message.includes('disponible')) {
-                return "📧 Jniapoh@gmail.com | 📞 06 22 85 53 41 | 📍 Aubervilliers (93) | Disponible dès Octobre 2025 pour un CDI !";
+
+            // Compétences techniques
+            if (message.includes('compétence') || message.includes('technique') || message.includes('python') || message.includes('sql') || message.includes('skill') || message.includes('technologies')) {
+                const skills = [
+                    `Côté technique, Juliana c'est une machine ! 🔥 Python avancé (Pandas, NumPy, ML), SQL expert (PostgreSQL, MySQL), Power BI pour le BI, R pour les stats... Et côté projet : Scrum Master certifiée, Jira, Confluence. Elle a vraiment tout le stack moderne !`,
+                    `Ses compétences ? Un mix parfait ! ⚡ Data Science (Python, SQL, Machine Learning), Visualisation (Power BI, Streamlit), Project Management (Agile/Scrum), et même du web (HTML/CSS/JS). Rare de trouver quelqu'un d'aussi polyvalent !`,
+                    `Stack technique de Juliana = 🎯 Python niveau 4/5, SQL niveau 5/5 (elle est vraiment forte là-dessus !), Machine Learning 3/5, Agile/Scrum 5/5. Plus du Power BI, Jupyter, Git... Elle peut s'adapter à plein de rôles différents !`
+                ];
+                return skills[Math.floor(Math.random() * skills.length)];
             }
-            
-            if (message.includes('salaire') || message.includes('prétention')) {
-                return "Pour les questions de rémunération, je vous invite à contacter directement Juliana. Elle sera ravie de discuter de ces aspects lors d'un entretien !";
+
+            // Projets
+            if (message.includes('projet') || message.includes('réalisation') || message.includes('portfolio') || message.includes('ia') || message.includes('dashboard')) {
+                const projects = [
+                    `Ses projets montrent sa polyvalence ! 🎯 IA Student Assistance (NLP + Machine Learning), Dashboard RH Analytics (Python/Streamlit), Base de données SQL optimisée, et un projet Scrum Master. Du technique ET du management, c'est ça qui est fort chez elle !`,
+                    `Portfolio de Juliana = du concret ! 💼 Une plateforme d'assistance étudiante avec IA, des outils de visualisation RH interactifs, de l'optimisation SQL... Elle couvre tout le cycle : conception, développement, déploiement. Méthodique et efficace !`,
+                    `Projets marquants : 🚀 Son IA d'assistance étudiante avec NLP (très technique !), son dashboard RH qui montre ses compétences en visualisation, et sa gestion d'équipe en Scrum. Elle sait faire du technique ET coordonner !`
+                ];
+                return projects[Math.floor(Math.random() * projects.length)];
             }
+
+            // Formation
+            if (message.includes('formation') || message.includes('étude') || message.includes('diplôme') || message.includes('master') || message.includes('école')) {
+                return `Formation de Juliana ? Très bien structurée ! 🎓 Master Data Management en cours (2023-2025) à Paris School of Business, avant ça Bachelor E-commerce (2022-2023) et DUT STID (2020-2022) à Sorbonne Paris Nord. Plus des certifications Python Data, SQL Expert, ChatGPT & IA... Elle a construit sa montée en compétences intelligemment !`;
+            }
+
+            // Contact et coordonnées
+            if (message.includes('contact') || message.includes('coordonnées') || message.includes('joindre') || message.includes('email') || message.includes('téléphone') || message.includes('numero')) {
+                return `Pour contacter Juliana c'est simple ! 📧 Email : Jniapoh@gmail.com | 📞 Téléphone : 06 22 85 53 41 | 📍 Elle est à Aubervilliers (93). Elle a aussi un profil LinkedIn pro. Elle est super réactive et disponible pour échanger sur les opportunités !`;
+            }
+
+            // Disponibilité
+            if (message.includes('disponible') || message.includes('quand') || message.includes('octobre') || message.includes('2025')) {
+                return `Juliana sera disponible dès octobre 2025 ! 🗓️ Elle finit son Master Data Management en juillet et cherche activement son premier CDI. C'est le moment parfait pour l'approcher, elle est super motivée pour rejoindre une équipe dynamique !`;
+            }
+
+            // Salaire et prétentions
+            if (message.includes('salaire') || message.includes('prétention') || message.includes('rémunération') || message.includes('combien')) {
+                return `Pour les questions de rémunération, Juliana préfère en discuter directement selon le poste et l'entreprise ! 💰 Elle est ouverte aux négociations et s'adapte au contexte. Le mieux c'est de la contacter pour en parler : Jniapoh@gmail.com`;
+            }
+
+            // Motivation et objectifs
+            if (message.includes('motivation') || message.includes('objectif') || message.includes('pourquoi') || message.includes('ambition') || message.includes('recherche')) {
+                return `Motivation de Juliana ? 🔥 Elle veut transformer les données en valeur business ! Son objectif : rejoindre une entreprise innovante pour son premier CDI, mettre sa polyvalence Data + Project Management au service de projets impactants. Elle cherche des défis stimulants dans la transformation digitale !`;
+            }
+
+            // Centres d'intérêt
+            if (message.includes('loisir') || message.includes('passion') || message.includes('intérêt') || message.includes('elden ring') || message.includes('jeux') || message.includes('voyage')) {
+                return `Côté perso, Juliana a des passions cool ! 🎮 Gaming : Elden Ring, Undertale/Deltarune, Ghost of Tsushima, 2048. ✈️ Voyages : Allemagne, Côte d'Ivoire. 💻 Et elle code aussi pour le plaisir avec ses projets perso Python ! Équilibre parfait entre technique et détente !`;
+            }
+
+            // Secteurs et types de postes
+            if (message.includes('secteur') || message.includes('poste') || message.includes('data analyst') || message.includes('scrum master') || message.includes('product owner')) {
+                return `Juliana peut s'adapter à plusieurs rôles ! 🎯 Data Analyst, Business Analyst, Product Owner, Scrum Master, ou même Data Engineer. Ses expériences chez eSNCF (ferroviaire) et ORANO (nucléaire) montrent qu'elle s'adapte aux secteurs critiques. Elle recherche l'innovation avant tout !`;
+            }
+
+            // Qualités personnelles
+            if (message.includes('qualité') || message.includes('personnalité') || message.includes('comment') || message.includes('caractère')) {
+                return `Les qualités de Juliana ? 🌟 Autonome (prouvé en alternance), esprit analytique remarquable (dixit son manager eSNCF), adaptable aux nouveaux outils, vision business développée... Et surtout : elle est curieuse, motivée et collaborative ! Une vraie team player !`;
+            }
+
+            // Réponses contextuelles basées sur l'historique
+            const recentContext = conversationHistory.slice(-3);
+            const hasAskedAbout = (topic) => recentContext.some(conv => conv.message.toLowerCase().includes(topic));
+
+            // Si l'utilisateur redemande quelque chose
+            if (message.includes('et') || message.includes('aussi') || message.includes('encore') || message.includes('autre')) {
+                if (hasAskedAbout('expérience')) {
+                    return `Pour compléter sur son expérience : Juliana a aussi fait de la conduite du changement, de la formation d'équipes, de la rédaction de cahiers des charges... Elle touche vraiment à tout dans ses missions ! C'est ça qui la rend polyvalente.`;
+                }
+                if (hasAskedAbout('compétence')) {
+                    return `Ah oui, j'ai oublié de mentionner ses soft skills ! 💡 Communication claire, résolution de problèmes complexes, adaptabilité... Et elle parle anglais niveau intermédiaire. Parfait pour les environnements internationaux !`;
+                }
+            }
+
+            // Réponses encourageantes si l'utilisateur semble intéressé
+            if (message.includes('intéressant') || message.includes('bien') || message.includes('parfait') || message.includes('génial')) {
+                return `Je savais que son profil vous plairait ! 😊 Juliana a vraiment ce mix rare technique + business + management. Si vous voulez en savoir plus ou la rencontrer, elle sera ravie d'échanger : Jniapoh@gmail.com. Elle cherche justement des opportunités stimulantes !`;
+            }
+
+            // Questions sur les résultats et chiffres
+            if (message.includes('résultat') || message.includes('chiffre') || message.includes('30%') || message.includes('performance')) {
+                return `Les résultats de Juliana parlent d'eux-mêmes ! 📊 30% de réduction des délais de communication, 15% d'amélioration de la satisfaction utilisateur, 100% de projets livrés à temps... Elle a cette capacité à transformer les processus avec un impact mesurable. C'est ça la différence !`;
+            }
+
+            // Réponses par défaut intelligentes
+            const smartDefaults = [
+                `Hmm, question intéressante ! 🤔 Juliana serait la mieux placée pour vous répondre en détail. Elle adore parler de son domaine ! Voulez-vous que je vous donne ses coordonnées ? Jniapoh@gmail.com`,
+                `Bonne question ! 💡 Pour ce niveau de précision, un échange direct avec Juliana serait parfait. Elle est très accessible et pédagogue. Contact : 06 22 85 53 41`,
+                `Je sens que vous voulez creuser ! 🎯 Juliana a plein d'exemples concrets à partager sur ce sujet. Elle sera ravie de vous en dire plus : Jniapoh@gmail.com`,
+                `Excellente question ! 😊 Juliana pourrait vous donner des détails que moi je n'ai pas. Elle est disponible pour un échange : 06 22 85 53 41`,
+                `Ah, vous allez droit au but ! 🚀 Juliana serait parfaite pour répondre à ça avec des exemples précis. Contactez-la directement, elle est super réactive !`
+            ];
             
-            return "Excellente question ! Pour plus de détails, n'hésitez pas à consulter les onglets du CV ou à contacter directement Juliana. Elle sera ravie de vous répondre !";
+            return smartDefaults[Math.floor(Math.random() * smartDefaults.length)];
         }
 
-        // Permettre l'envoi avec Entrée
-        document.getElementById('chatbotInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabName = this.getAttribute('data-tab');
+                    if (tabName) showTab(tabName);
+                });
+            });
 
-        // Animation des compétences au chargement
-        document.addEventListener('DOMContentLoaded', () => {
-            // Animation d'entrée pour les éléments
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+            // Chatbot input
+            const chatbotInput = document.getElementById('chatbotInput');
+            if (chatbotInput) {
+                chatbotInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !isTyping) {
+                        sendMessage();
                     }
                 });
-            }, observerOptions);
+            }
 
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-
-            // Animation des barres de compétences
-            setTimeout(() => {
-                document.querySelectorAll('.skill-progress').forEach(bar => {
-                    const width = bar.getAttribute('data-width') || '0%';
-                    bar.style.width = width;
+            // Formulaire contact (simplifié pour Netlify Forms)
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    const submitBtn = document.querySelector('.btn-submit');
+                    if (submitBtn) {
+                        const originalText = submitBtn.innerHTML;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                        submitBtn.disabled = true;
+                        
+                        // Le formulaire sera traité par Netlify
+                        // On laisse la soumission normale se faire
+                    }
                 });
-            }, 500);
-        });
-
-        // Gestion du formulaire de contact
-        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Simuler l'envoi
-            const submitBtn = document.querySelector('.btn-submit');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-                submitBtn.style.background = '#10b981';
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                    
-                    // Reset form
-                    e.target.reset();
-                }, 2000);
-            }, 2000);
-        });
-
-        // Smooth scroll pour la navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Parallax léger sur le header
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const header = document.querySelector('.header');
-            if (header) {
-                header.style.transform = `translateY(${scrolled * 0.3}px)`;
             }
-        });
-
-        // Effet de typing sur le titre (optionnel)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            
-            type();
-        }
-
-        // Loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
         });
     </script>
 </body>
