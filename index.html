@@ -1546,43 +1546,46 @@
             <div class="tab-content" id="contact">
                 <h2 class="section-title">Contact & Disponibilités</h2>
                 
-                <div class="contact-layout">
-                    <div class="contact-form">
-                        <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
-                        <!-- Formulaire Netlify Forms -->
-                        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-                            <!-- Champ caché pour Netlify -->
-                            <input type="hidden" name="form-name" value="contact">
-                            <!-- Honeypot anti-spam -->
-                            <p hidden>
-                              <label>Ne pas remplir : <input name="bot-field"></label>
-                            </p>
+                <!-- FORMULAIRE NETLIFY -->
+          <div class="contact-form">
+            <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
+            <form name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field">
+              <!-- Champ caché pour Netlify -->
+              <input type="hidden" name="form-name" value="contact">
+              <!-- Honeypot anti-spam -->
+              <p hidden>
+                <label>Ne pas remplir : <input name="bot-field"></label>
+              </p>
 
-                            <div class="form-group">
-                                <label for="name">Nom & Prénom</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email professionnel</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="company">Entreprise</label>
-                                <input type="text" id="company" name="company" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Objet</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit">
-                                <i class="fas fa-paper-plane"></i> Envoyer le message
-                            </button>
-                        </form>
-                    </div>
+              <div class="form-group">
+                <label for="name">Nom & Prénom</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email professionnel</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="company">Entreprise</label>
+                <input type="text" id="company" name="company" required>
+              </div>
+              <div class="form-group">
+                <label for="subject">Objet</label>
+                <input type="text" id="subject" name="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <i class="fas fa-paper-plane"></i> Envoyer le message
+              </button>
+            </form>
+          </div>
                     
                     <div class="contact-info">
                         <h3 style="color: #3b82f6; margin-bottom: 25px; text-align: center;">Informations de Contact</h3>
