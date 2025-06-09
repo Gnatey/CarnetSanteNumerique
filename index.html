@@ -760,6 +760,19 @@
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
         }
 
+        /* Styles pour les liens de contact cliquables - design minimal */
+        .contact-link {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        /* Garde juste le hover original, rien de plus */
+        .contact-link:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
         .contact-icon {
             width: 35px;
             height: 35px;
@@ -1919,7 +1932,9 @@
                     <div class="contact-info">
                         <h3 style="color: #3b82f6; margin-bottom: 25px; text-align: center;">Informations de Contact</h3>
                         
-                        <div class="contact-item">
+                        <a href="mailto:Jniapoh@gmail.com?subject=Opportunité Professionnelle - Contact depuis Portfolio&body=Bonjour Juliana,%0D%0A%0D%0AJe vous contacte concernant une opportunité professionnelle.%0D%0A%0D%0ACordialement," 
+                           class="contact-item contact-link" 
+                           title="Envoyer un email à Juliana">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
@@ -1927,9 +1942,11 @@
                                 <strong>Email</strong><br>
                                 <span class="contact-text">Jniapoh@gmail.com</span>
                             </div>
-                        </div>
+                        </a>
                         
-                        <div class="contact-item">
+                        <a href="tel:+33622855341" 
+                           class="contact-item contact-link" 
+                           title="Appeler Juliana">
                             <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
@@ -1937,7 +1954,7 @@
                                 <strong>Téléphone</strong><br>
                                 <span class="contact-text">06 22 85 53 41</span>
                             </div>
-                        </div>
+                        </a>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
@@ -1949,23 +1966,19 @@
                             </div>
                         </div>
                         
-                                <a
-                                      href="https://www.linkedin.com/in/jniapoh/"
-                                      class="contact-item"
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                >
-                                      <div class="contact-icon">
-                                    <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div>
-                                    <strong>LinkedIn</strong><br>
-                                    <span class="contact-text">Profil professionnel</span>
-                        </div>
-                                </a>
-
-
-                        </div>
+                        <a href="https://www.linkedin.com/in/jniapoh/" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="contact-item contact-link" 
+                           title="Voir le profil LinkedIn de Juliana">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <strong>LinkedIn</strong><br>
+                                <span class="contact-text">linkedin.com/in/jniapoh</span>
+                            </div>
+                        </a>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
@@ -2300,7 +2313,7 @@
 
             // Contact et coordonnées
             if (message.includes('contact') || message.includes('coordonnées') || message.includes('joindre') || message.includes('email') || message.includes('téléphone') || message.includes('numero')) {
-                return `Pour contacter Juliana c'est simple ! 📧 Email : Jniapoh@gmail.com | 📞 Téléphone : 06 22 85 53 41 | 📍 Elle est à Aubervilliers (93). Elle a aussi un profil LinkedIn pro. Elle est super réactive et disponible pour échanger sur les opportunités !`;
+                return `Pour contacter Juliana c'est simple ! 📧 Email : Jniapoh@gmail.com | 📞 Téléphone : 06 22 85 53 41 | 🔗 LinkedIn : linkedin.com/in/jniapoh | 📍 Elle est à Aubervilliers (93). Tous les contacts sont cliquables sur le portfolio ! Elle est super réactive et disponible pour échanger sur les opportunités !`;
             }
 
             // Disponibilité
@@ -2467,6 +2480,9 @@
             
             if (!fileInput) return;
 
+            // Configuration des liens de contact interactifs
+            setupContactLinks();
+
             // Gestion du drag & drop
             fileUploadWrapper.addEventListener('dragover', function(e) {
                 e.preventDefault();
@@ -2568,6 +2584,23 @@
                     filePreview.style.opacity = '1';
                 }, 300);
             };
+        }
+
+        // Configuration des liens de contact interactifs - version simplifiée
+        function setupContactLinks() {
+            const contactLinks = document.querySelectorAll('.contact-link');
+            
+            contactLinks.forEach(link => {
+                // Amélioration de l'accessibilité seulement
+                link.addEventListener('focus', function() {
+                    this.style.outline = '2px solid #3b82f6';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                link.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
         }
 
         // Event listeners
@@ -2672,35 +2705,6 @@
 
         // Initialisation des animations
         setTimeout(animateOnScroll, 500);
-
-        // Fonction pour copier l'email dans le presse-papier
-        function copyEmail() {
-            navigator.clipboard.writeText('Jniapoh@gmail.com').then(() => {
-                // Feedback visuel pour confirmer la copie
-                const emailElement = document.querySelector('.contact-item .contact-text');
-                if (emailElement && emailElement.textContent.includes('gmail')) {
-                    const original = emailElement.textContent;
-                    emailElement.textContent = '✓ Email copié !';
-                    emailElement.style.color = '#10b981';
-                    setTimeout(() => {
-                        emailElement.textContent = original;
-                        emailElement.style.color = '';
-                    }, 2000);
-                }
-            });
-        }
-
-        // Ajout du clic pour copier l'email
-        document.addEventListener('DOMContentLoaded', function() {
-            const emailItems = document.querySelectorAll('.contact-item');
-            emailItems.forEach(item => {
-                if (item.textContent.includes('Email')) {
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', copyEmail);
-                    item.title = 'Cliquer pour copier l\'email';
-                }
-            });
-        });
 
         // Performance : lazy loading pour les images si on en ajoute
         if ('IntersectionObserver' in window) {
