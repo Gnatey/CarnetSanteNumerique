@@ -478,6 +478,9 @@
             border-radius: var(--radius);
             overflow: hidden;
             transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .project-card:hover {
@@ -525,6 +528,16 @@
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 500;
+        }
+
+        .project-link-icon {
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
         }
 
         /* ===== CONTACT ===== */
@@ -1258,7 +1271,7 @@
                         </div>
 
                         <div class="tech-card">
-                            <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                            <h3><i class="fas fa-certificate"></i> Formations complémentaires</h3>
                             <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
                                 <span style="background: var(--secondary); color: white; padding: 4px 12px; border-radius: 30px; font-size: 0.75rem;">Python Data</span>
                                 <span style="background: var(--accent); color: white; padding: 4px 12px; border-radius: 30px; font-size: 0.75rem;">SQL Expert</span>
@@ -1370,7 +1383,7 @@
                         <div><div style="font-size: 2rem; font-weight: 700; color: var(--success);">30%</div><div style="color: var(--gray);">Réduction délais</div></div>
                         <div><div style="font-size: 2rem; font-weight: 700; color: var(--secondary);">15%</div><div style="color: var(--gray);">Satisfaction +</div></div>
                         <div><div style="font-size: 2rem; font-weight: 700; color: var(--accent);">100%</div><div style="color: var(--gray);">Projets livrés</div></div>
-                        <div><div style="font-size: 2rem; font-weight: 700; color: #8B5CF6;">2+</div><div style="color: var(--gray);">Projets coordonnés</div></div>
+                        <div><div style="font-size: 2rem; font-weight: 700; color: #8B5CF6;">2</div><div style="color: var(--gray);">Plateformes déployées</div></div>
                     </div>
                 </div>
             </div>
@@ -1427,41 +1440,78 @@
                 <h2 class="section-title"><i class="fas fa-folder-open"></i> Projets &amp; Réalisations</h2>
 
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header"><i class="fas fa-robot"></i></div>
-                        <div class="project-content">
-                            <div class="project-title">IA Student Assistance</div>
-                            <div class="project-description">Solution d'assistance étudiante basée sur le NLP avec interface adaptive et algorithmes de traitement du langage naturel.</div>
-                            <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">NLP</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">ML</span></div>
-                        </div>
-                    </div>
 
-                    <div class="project-card">
-                        <div class="project-header"><i class="fas fa-chart-line"></i></div>
+                    <!-- Projet 1 : Tracker Budget Power BI -->
+                    <a href="#" target="_blank" class="project-card" aria-label="Tracker Budget Power BI">
+                        <div class="project-header"><i class="fas fa-chart-pie"></i></div>
                         <div class="project-content">
-                            <div class="project-title">Dashboard RH Analytics</div>
-                            <div class="project-description">Outil de visualisation des données RH avec Python (Pandas, Matplotlib, Streamlit). Tableaux de bord interactifs pour le pilotage RH.</div>
-                            <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Matplotlib</span></div>
+                            <div class="project-title">Tracker Budget Power BI</div>
+                            <div class="project-description">Restructuration de données et création d'un dashboard de suivi budgétaire avec mesures DAX avancées et modélisation sémantique.</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">DAX</span>
+                                <span class="tech-tag">Modélisation</span>
+                            </div>
+                            <div class="project-link-icon">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="project-card">
-                        <div class="project-header"><i class="fas fa-database"></i></div>
+                    <!-- Projet 2 : Jeu multijoueur Vue.js / Socket.io -->
+                    <a href="#" target="_blank" class="project-card" aria-label="Jeu de déduction multijoueur">
+                        <div class="project-header"><i class="fas fa-gamepad"></i></div>
                         <div class="project-content">
-                            <div class="project-title">Base de Données SQL</div>
-                            <div class="project-description">Conception, implémentation et optimisation d'une base de données relationnelle complexe (MySQL WorkBench).</div>
-                            <div class="project-tech"><span class="tech-tag">SQL</span><span class="tech-tag">MySQL</span><span class="tech-tag">Optimisation</span></div>
+                            <div class="project-title">Jeu de déduction multijoueur</div>
+                            <div class="project-description">Jeu en temps réel avec Vue.js 3, Node/Express et Socket.io. Architecture full-stack avec salons de jeu et gestion d'état en temps réel.</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Socket.io</span>
+                                <span class="tech-tag">Express</span>
+                            </div>
+                            <div class="project-link-icon">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="project-card">
-                        <div class="project-header"><i class="fas fa-users-cog"></i></div>
+                    <!-- Projet 3 : Mémoire DeepFakes -->
+                    <a href="https://m-moiredeepfake.streamlit.app/" target="_blank" class="project-card" aria-label="Mémoire DeepFakes">
+                        <div class="project-header"><i class="fas fa-microchip"></i></div>
                         <div class="project-content">
-                            <div class="project-title">Projet Scrum Master</div>
-                            <div class="project-description">Gestion d'une équipe Agile : organisation des sprints, suivi des tâches et coordination des livrables.</div>
-                            <div class="project-tech"><span class="tech-tag">Scrum</span><span class="tech-tag">Jira</span><span class="tech-tag">Agile</span><span class="tech-tag">Management</span></div>
+                            <div class="project-title">Mémoire DeepFakes</div>
+                            <div class="project-description">Dashboard interactif Streamlit avec clustering, Machine Learning et NLP pour analyser les perceptions des DeepFakes.</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Streamlit</span>
+                                <span class="tech-tag">ML</span>
+                                <span class="tech-tag">NLP</span>
+                            </div>
+                            <div class="project-link-icon">
+                                <i class="fas fa-external-link-alt"></i> Voir la démo
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
+                    <!-- Projet 4 : Refonte du portfolio -->
+                    <a href="https://github.com/Gnatey" target="_blank" class="project-card" aria-label="Refonte du portfolio">
+                        <div class="project-header"><i class="fas fa-code"></i></div>
+                        <div class="project-content">
+                            <div class="project-title">Refonte du portfolio</div>
+                            <div class="project-description">Conception et développement de ce site vitrine en HTML/CSS/JS pur. Déploiement sur Netlify avec formulaire de contact intégré.</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Netlify</span>
+                            </div>
+                            <div class="project-link-icon">
+                                <i class="fas fa-external-link-alt"></i> Voir le code
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
 
                 <div style="margin-top: 30px; background: var(--light); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
@@ -1617,13 +1667,13 @@
             <div class="chatbot-header">
                 <div class="chatbot-avatar">🤖</div>
                 <div class="chatbot-info">
-                    <h4>Assistant IA</h4>
+                    <h4>Assistant FAQ</h4>
                     <div class="chatbot-status"><span class="status-dot"></span> En ligne</div>
                 </div>
                 <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Fermer le chatbot"><i class="fas fa-times"></i></button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
-                <div class="message bot">👋 Bonjour ! Je suis l'assistant IA de Juliana. Je peux vous parler de son parcours, ses compétences, ses disponibilités, et ses modalités d'intervention (CDI / freelance).</div>
+                <div class="message bot">👋 Bonjour ! Je suis l'assistant FAQ de Juliana. Je peux vous parler de son parcours, ses compétences, ses disponibilités, et ses modalités d'intervention (CDI / freelance).</div>
                 <div class="message bot">
                     <div class="quick-actions">
                         <span class="quick-action" onclick="askQuick('Expérience')">💼 Expérience</span>
@@ -1715,7 +1765,7 @@
                 return "Juliana maîtrise Python (Pandas, Scikit-learn), SQL (PostgreSQL, MySQL), Power BI (DAX, Reporting), R (ggplot2, dplyr), Machine Learning, et les méthodes Agile/Scrum. Elle a aussi des bases en HTML/CSS/JS et Git. C'est un profil data complet !";
             }
             if (m.includes('projet') || m.includes('ia') || m.includes('dashboard') || m.includes('réalisation')) {
-                return "Ses projets phares : une IA Student Assistance (NLP), un Dashboard RH Analytics (Python/Streamlit), une base de données SQL optimisée, et la gestion d'une équipe Agile en tant que Scrum Master. Elle a aussi développé un mémoire sur les DeepFakes avec une démo interactive.";
+                return "Ses projets phares : un tracker budget Power BI, un jeu multijoueur Vue.js/Socket.io, un mémoire DeepFakes avec Streamlit, et la refonte de ce portfolio. Chaque projet est disponible sur GitHub ou en démo.";
             }
             if (m.includes('contact') || m.includes('email') || m.includes('téléphone') || m.includes('joindre')) {
                 return "Vous pouvez contacter Juliana par email : Jniapoh@gmail.com, ou par téléphone : 06 22 85 53 41. Elle est aussi sur LinkedIn : linkedin.com/in/jniapoh. Elle est disponible immédiatement !";
@@ -1730,7 +1780,7 @@
                 return "Pour les questions de rémunération, Juliana préfère en discuter directement selon le contexte (CDI ou freelance). Le mieux est de la contacter par email : Jniapoh@gmail.com";
             }
             if (m.includes('formation') || m.includes('étude') || m.includes('master')) {
-                return "Juliana est diplômée d'un Master Data Management (décembre 2025) à Paris School of Business. Avant ça, elle a fait un Bachelor E-commerce (2022-2023) et un DUT STID (2020-2022) à Sorbonne Paris Nord. Elle a aussi des certifications Python Data, SQL Expert, et ChatGPT & IA.";
+                return "Juliana est diplômée d'un Master Data Management (décembre 2025) à Paris School of Business. Avant ça, elle a fait un Bachelor E-commerce (2022-2023) et un DUT STID (2020-2022) à Sorbonne Paris Nord. Elle a aussi des formations complémentaires en Python Data, SQL Expert, et ChatGPT & IA.";
             }
             if (m.includes('motivation') || m.includes('objectif') || m.includes('pourquoi')) {
                 return "Juliana est passionnée par les données et la transformation digitale. Elle souhaite accompagner les entreprises dans leur stratégie data, que ce soit en CDI ou en freelance. Elle est très motivée pour apporter des solutions concrètes et mesurables !";
