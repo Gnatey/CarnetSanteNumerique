@@ -1,3074 +1,954 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juliana Niapoh - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juliana NIAPOH · Data & BI</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
     <style>
-        * {
+        /* ----- RESET & VARIABLES ----- */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #1E293B;
+            /* bleu‑gris profond */
+            --secondary: #0EA5E9;
+            /* bleu vif */
+            --accent: #10B981;
+            /* vert émeraude */
+            --light: #F8FAFC;
+            --dark: #0F172A;
+            --gray: #64748B;
+            --border: #E2E8F0;
+            --radius: 1.25rem;
+            --shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--light);
+            color: var(--primary);
             line-height: 1.6;
-            color: #1e293b;
-            background: #f8fafc;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 1.5rem;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 60px 0 120px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40%;
-            height: 100%;
-            background: linear-gradient(45deg, #3b82f6, #06b6d4);
-            clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
-            opacity: 0.1;
-        }
-
-        .header-content {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 40px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-image {
-            width: 160px;
-            height: 160px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
+        /* ----- TYPOGRAPHIE ----- */
+        h1,
+        h2,
+        h3 {
             font-weight: 600;
-            color: white;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            position: relative;
+            letter-spacing: -0.02em;
         }
 
-        .profile-image::after {
-            content: 'Photo à ajouter';
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.7rem;
-            opacity: 0.7;
-            white-space: nowrap;
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
         }
 
-        .header-info h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #ffffff, #e2e8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .title {
-            font-size: 1.3rem;
-            color: #06b6d4;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
+        .section-subtitle {
+            color: var(--gray);
             font-weight: 400;
-            opacity: 0.9;
-            margin-bottom: 20px;
-            max-width: 550px;
-            line-height: 1.6;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--secondary);
+            padding-left: 1rem;
         }
 
-        .availability {
+        .section {
+            padding: 5rem 0;
+        }
+
+        /* ----- BOUTONS ----- */
+        .btn {
             display: inline-flex;
             align-items: center;
-            background: rgba(6, 182, 212, 0.2);
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid #06b6d4;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .availability-dot {
-            width: 6px;
-            height: 6px;
-            background: #06b6d4;
-            border-radius: 50%;
-            margin-right: 6px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            z-index: 1000;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 8px 20px;
-            border: 1px solid rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-item {
-            display: inline-block;
-            margin: 0 12px;
-            color: #1e293b;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
             text-decoration: none;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.9rem;
-            text-shadow: 0 1px 3px rgba(255,255,255,0.8);
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            transform: scale(1.05);
-            text-shadow: none;
-        }
-
-        /* Contenu principal */
-        .main-content {
-            background: white;
-            margin: -60px auto 40px;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            overflow: hidden;
-            position: relative;
-            z-index: 10;
-        }
-
-        .tabs-container {
-            background: white;
+            transition: var(--transition);
             border: none;
-            padding: 20px 0;
-        }
-
-        .tab-content {
-            padding: 50px;
-            display: none;
-            min-height: 600px;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Styles pour toutes les sections (identiques au code précédent) */
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 30px;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 28px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            border-radius: 2px;
-        }
-
-        .value-prop {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 4px solid #3b82f6;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .value-prop::before {
-            content: '💡';
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 1.5rem;
-        }
-
-        .value-prop h3 {
-            color: #3b82f6;
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .value-prop p {
-            font-size: 1.1rem;
-            color: #475569;
-            font-weight: 500;
-            line-height: 1.7;
-        }
-
-        .profile-layout {
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 40px;
-        }
-
-        .tech-sidebar {
-            background: #f8fafc;
-            padding: 0;
-            border-radius: 15px;
-            height: fit-content;
-            border: 1px solid #e2e8f0;
-        }
-
-        .tech-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #f1f5f9;
-        }
-
-        .tech-card:last-child {
-            margin-bottom: 20px;
-        }
-
-        .tech-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 20px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .tech-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #f8fafc;
-        }
-
-        .tech-item:last-child {
-            border-bottom: none;
-        }
-
-        .tech-label {
-            font-weight: 600;
-            color: #475569;
-            font-size: 0.85rem;
-        }
-
-        .tech-value {
-            font-weight: 500;
-            color: #0f172a;
-            font-size: 0.85rem;
-        }
-
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .skill-name {
-            font-size: 0.85rem;
-            color: #475569;
-        }
-
-        .skill-level {
-            display: flex;
-            gap: 3px;
-        }
-
-        .skill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #e2e8f0;
-        }
-
-        .skill-dot.active {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-        }
-
-        .experience-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .experience-item:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-
-        .exp-period {
-            background: #3b82f6;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            position: absolute;
-            top: 25px;
-            right: 25px;
-        }
-
-        .exp-title {
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: #0f172a;
-            margin-bottom: 8px;
-            margin-right: 120px;
-        }
-
-        .exp-company {
-            color: #3b82f6;
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
-        .exp-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 12px;
-        }
-
-        .highlight {
-            display: flex;
-            align-items: flex-start;
-            color: #475569;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .highlight::before {
-            content: '▶';
-            color: #06b6d4;
-            margin-right: 10px;
-            font-size: 0.7rem;
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: #f8fafc;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-header {
-            height: 120px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #0f172a;
-        }
-
-        .project-description {
-            color: #475569;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .tech-tag {
-            background: #3b82f6;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-        }
-
-        .contact-form {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #0f172a;
-            font-size: 0.9rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .btn-submit {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
         }
 
-        .btn-submit:hover {
+        .btn-primary {
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+        }
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.45);
         }
 
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
         }
 
-        .contact-info {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid #e2e8f0;
-            height: fit-content;
+        .btn-accent {
+            background: var(--accent);
+            color: #fff;
         }
-
-        /* Styles pour l'upload de fichiers */
-        .file-upload-container {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .file-upload-wrapper {
-            position: relative;
-            border: 2px dashed #e2e8f0;
-            border-radius: 12px;
-            padding: 25px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            background: #f8fafc;
-            cursor: pointer;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .file-upload-wrapper:hover {
-            border-color: #3b82f6;
-            background: #f1f5f9;
+        .btn-accent:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
 
-        .file-upload-wrapper.dragover {
-            border-color: #3b82f6;
-            background: linear-gradient(135deg, #eff6ff, #f1f5f9);
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
-        }
-
-        .file-input {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
+        /* ----- NAVIGATION ----- */
+        .navbar {
+            position: fixed;
             top: 0;
             left: 0;
-        }
-
-        .file-upload-content {
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .file-upload-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .file-upload-text {
-            color: #475569;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-
-        .file-upload-hint {
-            color: #64748b;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            max-width: 280px;
-        }
-
-        .file-preview {
-            display: none;
-            background: linear-gradient(135deg, #f1f5f9, #f8fafc);
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 15px;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            animation: slideDown 0.4s ease;
-        }
-
-        .file-preview.show {
-            display: flex;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .file-preview-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .file-preview-info {
-            flex: 1;
-        }
-
-        .file-preview-name {
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 4px;
-            font-size: 0.95rem;
-        }
-
-        .file-preview-size {
-            font-size: 0.8rem;
-            color: #64748b;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .file-remove-btn {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 14px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
-        }
-
-        .file-remove-btn:hover {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
-        }
-
-        .file-size-warning {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border: 1px solid #f59e0b;
-            color: #92400e;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            margin-top: 15px;
-            display: none;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-        }
-
-        .file-size-warning.show {
-            display: flex;
-        }
-
-        .file-size-warning::before {
-            content: '⚠️';
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .upload-success {
-            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-            border: 1px solid #10b981;
-            color: #065f46;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            margin-top: 15px;
-            display: none;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
-        }
-
-        .upload-success.show {
-            display: flex;
-        }
-
-        .upload-success::before {
-            content: '✅';
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
-        }
-
-        /* Styles pour les liens de contact cliquables - design minimal */
-        .contact-link {
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
-
-        /* Garde juste le hover original, rien de plus */
-        .contact-link:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
-        }
-
-        .contact-icon {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        .contact-text {
-            font-size: 0.9rem;
-            color: #475569;
-            font-weight: 500;
-        }
-
-        .testimonial {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 30px;
-            border-left: 4px solid #3b82f6;
-            margin: 30px 0;
-            border: 1px solid #e2e8f0;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: #475569;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: #3b82f6;
-            font-size: 0.9rem;
-        }
-
-        .success-message {
-            display: none;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            animation: slideDown 0.5s ease;
-        }
-
-        .success-message.show {
-            display: block;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* CHATBOT IA AVANCÉ */
-        .chatbot {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+            right: 0;
             z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
         }
 
-        .chatbot-toggle {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
+        .navbar .container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-            transition: all 0.3s ease;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
             position: relative;
         }
-
-        .chatbot-toggle::before {
-            content: '🤖';
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6);
-        }
-
-        .chatbot-window {
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            bottom: 85px;
-            right: 0;
-            width: 420px;
-            height: 600px;
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hamburger (mobile) */
+        .hamburger {
             display: none;
             flex-direction: column;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-        }
-
-        .chatbot-window.open {
-            display: flex;
-            animation: slideUp 0.5s ease;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px) scale(0.85); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .chatbot-header {
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            color: white;
-            padding: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .chatbot-avatar {
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            border: 2px solid rgba(255,255,255,0.3);
-            animation: avatarPulse 3s infinite;
-        }
-
-        @keyframes avatarPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .chatbot-info h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 3px;
-        }
-
-        .chatbot-status {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .chatbot-close {
+            gap: 5px;
+            cursor: pointer;
             background: none;
             border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.4rem;
-            margin-left: auto;
-            padding: 8px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 2.5px;
+            background: var(--primary);
+            border-radius: 4px;
+            transition: var(--transition);
         }
 
-        .chatbot-close:hover {
-            background: rgba(255,255,255,0.2);
-            transform: rotate(90deg);
+        /* ----- HERO ----- */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #F1F5F9 0%, #ffffff 100%);
+            border-bottom: 1px solid var(--border);
         }
 
-        .chatbot-messages {
-            flex: 1;
-            padding: 25px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-        }
-
-        .message {
-            max-width: 85%;
-            padding: 15px 20px;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            position: relative;
-            animation: messageSlide 0.4s ease;
-            word-wrap: break-word;
-        }
-
-        @keyframes messageSlide {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .message.bot {
-            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-            align-self: flex-start;
-            border: 1px solid #e2e8f0;
-            color: #1e293b;
-            border-bottom-left-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .message.bot::before {
-            content: '🤖';
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        .message.user {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 8px;
-            box-shadow: 0 3px 12px rgba(59, 130, 246, 0.3);
+        .hero-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
         }
-
-        .typing-indicator {
-            display: none;
-            padding: 15px 20px;
-            background: #f1f5f9;
-            border-radius: 20px;
-            border-bottom-left-radius: 8px;
-            align-self: flex-start;
-            max-width: 90px;
-            border: 1px solid #e2e8f0;
+        .hero-content h1 span {
+            color: var(--secondary);
         }
-
-        .typing-indicator.show {
-            display: block;
-            animation: messageSlide 0.4s ease;
+        .hero-content .tagline {
+            font-size: 1.25rem;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
         }
-
-        .typing-dots {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
+        .hero-content .description {
+            font-size: 1.05rem;
+            color: var(--primary);
+            max-width: 500px;
+            margin-bottom: 2rem;
+            opacity: 0.85;
         }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: #64748b;
-            border-radius: 50%;
-            animation: typingDot 1.6s infinite;
-        }
-
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typingDot {
-            0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-            30% { opacity: 1; transform: translateY(-6px); }
-        }
-
-        .quick-actions {
+        .hero-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 1rem;
         }
 
-        .quick-action {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            padding: 8px 16px;
-            border-radius: 18px;
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* ----- ABOUT ----- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            opacity: 0.9;
+        }
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+        .tag {
+            background: #E2E8F0;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
             font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .about-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .about-card i {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            width: 2.5rem;
+            text-align: center;
+        }
+        .about-card h4 {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+        .about-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* ----- SKILLS ----- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        .skill-card {
+            background: #fff;
+            padding: 2rem 1.8rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+        }
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .skill-card ul {
+            list-style: none;
+        }
+        .skill-card ul li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .skill-card ul li:last-child {
+            border-bottom: none;
+        }
+        .skill-card ul li i {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0;
+        }
+
+        /* ----- EXPERIENCE ----- */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.65rem;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+        .timeline-item h3 {
+            font-size: 1.25rem;
+        }
+        .timeline-meta {
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-item p {
+            opacity: 0.9;
+            max-width: 700px;
+        }
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .timeline-tag {
+            background: #E2E8F0;
+            padding: 0.2rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
-        .quick-action:hover {
-            background: #3b82f6;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        /* ----- PROJECTS ----- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
-
-        .chatbot-input {
-            padding: 25px;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            gap: 15px;
-            background: white;
+        .project-card {
+            background: #fff;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
         }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 15px 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 25px;
-            outline: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: #f8fafc;
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
         }
-
-        .chatbot-input input:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            background: white;
-        }
-
-        .chatbot-input input::placeholder {
-            color: #9ca3af;
-        }
-
-        .chatbot-input button {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+        .project-cover {
+            height: 180px;
+            background: linear-gradient(135deg, #E2E8F0, #F1F5F9);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 55px;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            font-size: 3rem;
+            color: var(--gray);
+            border-bottom: 1px solid var(--border);
+        }
+        .project-body {
+            padding: 1.5rem;
+        }
+        .project-body h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-body p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .project-body .btn {
+            font-size: 0.85rem;
+            padding: 0.5rem 1.2rem;
         }
 
-        .chatbot-input button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        /* ----- CONTACT ----- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .contact-item {
+            background: #fff;
+            padding: 1.8rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .contact-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--secondary);
+        }
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        .contact-item h4 {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .contact-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
         }
 
-        .chatbot-input button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+        /* ----- FOOTER ----- */
+        footer {
+            background: var(--primary);
+            color: #fff;
+            padding: 2.5rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        footer .socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        footer .socials a {
+            color: #fff;
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+        footer .socials a:hover {
+            color: var(--secondary);
         }
 
-        /* RESPONSIVE DESIGN AMÉLIORÉ */
-        @media (max-width: 1024px) {
-            .profile-layout,
-            .contact-layout {
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 992px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 2.5rem;
             }
-            
-            .tech-sidebar {
-                order: -1;
-            }
-            
-            .header-content {
+            .about-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
-                gap: 30px;
-            }
-            
-            .main-content {
-                margin: -40px 20px 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .exp-highlights {
-                grid-template-columns: 1fr;
-                gap: 10px;
             }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 12px;
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1.2rem;
+                align-items: center;
             }
-            
-            .header {
-                padding: 20px 0 40px;
-                text-align: center;
+            .nav-links.open {
+                display: flex;
             }
-            
-            .header h1 {
-                font-size: 2rem;
+            .hamburger {
+                display: flex;
             }
-
-            .title {
-                font-size: 1rem;
+            .hero-content h1 {
+                font-size: 2.4rem;
             }
-
-            .tagline {
-                font-size: 0.95rem;
-                max-width: 100%;
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
             }
-            
-            .profile-image {
-                width: 100px;
-                height: 100px;
-                font-size: 2rem;
-                margin: 0 auto;
-            }
-            
-            .main-content {
-                margin: -20px 8px 20px;
-                border-radius: 15px;
-            }
-            
-            .tab-content {
-                padding: 20px 16px;
-                min-height: auto;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-                margin-bottom: 20px;
-                padding-left: 15px;
-            }
-
-            .section-title::before {
-                height: 20px;
-            }
-            
-            .nav {
-                right: 8px;
-                top: 8px;
-                padding: 4px 8px;
-                border-radius: 15px;
-            }
-            
-            .nav-item {
-                margin: 0 4px;
-                padding: 4px 6px;
-                font-size: 0.7rem;
-                border-radius: 8px;
-            }
-
-            /* PROJETS - Correction responsive critique */
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .project-card {
-                margin: 0;
-                max-width: 100%;
-            }
-
-            .project-header {
-                height: 80px;
-                font-size: 2rem;
-            }
-
-            .project-content {
-                padding: 15px;
-            }
-
-            .project-title {
-                font-size: 1rem;
-                margin-bottom: 8px;
-            }
-
-            .project-description {
-                font-size: 0.85rem;
-                line-height: 1.5;
-            }
-
-            .tech-tag {
-                font-size: 0.7rem;
-                padding: 3px 8px;
-            }
-
-            /* EXPÉRIENCE - Amélioration mobile */
-            .experience-item {
-                padding: 20px 15px;
-                margin-bottom: 15px;
-            }
-            
-            .exp-period {
-                position: static;
-                margin-bottom: 10px;
-                display: inline-block;
-                font-size: 0.7rem;
-                padding: 4px 10px;
-            }
-            
-            .exp-title {
-                margin-right: 0;
-                font-size: 1.1rem;
-                line-height: 1.3;
-            }
-
-            .exp-company {
-                font-size: 0.9rem;
-                margin-bottom: 15px;
-            }
-
-            .highlight {
-                font-size: 0.85rem;
-                margin-bottom: 8px;
-            }
-
-            /* COMPÉTENCES - Grille responsive */
-            .profile-layout .main-profile > div[style*="grid"] {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-
-            .skill-item {
-                margin-bottom: 8px;
-            }
-
-            .skill-name {
-                font-size: 0.8rem;
-            }
-
-            /* TECH SIDEBAR - Mobile optimisé */
-            .tech-card {
-                margin: 10px;
-                padding: 15px;
-            }
-
-            .tech-card h3 {
-                font-size: 0.95rem;
-                margin-bottom: 15px;
-            }
-
-            .tech-item {
-                padding: 8px 0;
-            }
-
-            .tech-label,
-            .tech-value {
-                font-size: 0.8rem;
-            }
-
-            /* CONTACT - Responsive amélioré */
-            .contact-layout {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .contact-form,
-            .contact-info {
-                padding: 20px;
-            }
-
-            .contact-item {
-                padding: 12px;
-                gap: 12px;
-            }
-
-            .contact-icon {
-                width: 30px;
-                height: 30px;
-                font-size: 0.8rem;
-            }
-
-            .contact-text {
-                font-size: 0.85rem;
-            }
-
-            /* FORMULAIRE - Mobile friendly */
-            .form-group {
-                margin-bottom: 15px;
-            }
-
-            .form-group label {
-                font-size: 0.85rem;
-                margin-bottom: 6px;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                padding: 10px 12px;
-                font-size: 0.85rem;
-            }
-
-            .btn-submit {
-                padding: 10px 20px;
-                font-size: 0.85rem;
-                width: 100%;
-            }
-
-            /* FILE UPLOAD - Mobile responsive */
-            .file-upload-wrapper {
-                padding: 20px 15px;
-                min-height: 100px;
-            }
-
-            .file-upload-icon {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
-
-            .file-upload-text {
-                font-size: 0.9rem;
-            }
-
-            .file-upload-hint {
-                font-size: 0.8rem;
-                max-width: 100%;
-            }
-
-            .file-preview {
-                padding: 15px;
-                gap: 10px;
-            }
-
-            .file-preview-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1.2rem;
-            }
-
-            .file-remove-btn {
-                padding: 6px 10px;
-                font-size: 0.75rem;
-            }
-
-            /* CHATBOT - Mobile responsive */
-            .chatbot {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            .chatbot-toggle {
-                width: 50px;
-                height: 50px;
-                font-size: 1.4rem;
-            }
-            
-            .chatbot-window {
-                width: calc(100vw - 30px);
-                right: -7px;
-                height: 450px;
-                bottom: 70px;
-            }
-            
-            .chatbot-messages {
-                padding: 15px;
-                gap: 12px;
-            }
-            
-            .chatbot-input {
-                padding: 15px;
-                gap: 10px;
-            }
-
-            .chatbot-input input {
-                padding: 12px 15px;
-                font-size: 0.9rem;
-            }
-
-            .chatbot-input button {
-                padding: 12px 15px;
-                min-width: 45px;
-            }
-            
-            .message {
-                padding: 10px 14px;
-                font-size: 0.85rem;
-                max-width: 85%;
-            }
-
-            .quick-action {
-                font-size: 0.8rem;
-                padding: 6px 12px;
-            }
-
-            /* VALUE PROP - Mobile */
-            .value-prop {
-                padding: 20px;
-                margin-bottom: 25px;
-            }
-
-            .value-prop h3 {
-                font-size: 1rem;
-                margin-bottom: 12px;
-            }
-
-            .value-prop p {
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
-
-            /* TESTIMONIALS - Mobile */
-            .testimonial {
-                padding: 20px;
-                margin: 20px 0;
-            }
-
-            .testimonial-text {
-                font-size: 0.95rem;
-                margin-bottom: 12px;
-            }
-
-            .testimonial-author {
-                font-size: 0.85rem;
+            .section {
+                padding: 3rem 0;
             }
         }
 
-        /* TRÈS PETITS ÉCRANS - Amélioration supplémentaire */
         @media (max-width: 480px) {
-            .container {
-                padding: 0 8px;
+            .hero-stats {
+                grid-template-columns: 1fr;
             }
-
-            .main-content {
-                margin: -15px 4px 15px;
+            .hero-content h1 {
+                font-size: 2rem;
             }
-
-            .tab-content {
-                padding: 15px 12px;
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
             }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .section-title {
-                font-size: 1.2rem;
-                padding-left: 12px;
-            }
-
-            .nav-item {
-                margin: 0 2px;
-                padding: 3px 5px;
-                font-size: 0.65rem;
-            }
-
-            .project-title {
-                font-size: 0.95rem;
-            }
-
-            .exp-title {
-                font-size: 1rem;
-            }
-
-            .chatbot-window {
-                width: calc(100vw - 20px);
-                right: -2px;
-                height: 400px;
-            }
-
-            .tech-card {
-                margin: 8px;
-                padding: 12px;
-            }
-        }
-
-        /* LANDSCAPE MOBILE - Optimisation */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .header {
-                padding: 15px 0 30px;
-            }
-
-            .main-content {
-                margin: -15px 8px 15px;
-            }
-
-            .chatbot-window {
-                height: 350px;
-            }
-
-            .tab-content {
-                padding: 15px;
-            }
-        }
-
-        /* OVERFLOW FIXES - Prévention débordement */
-        * {
-            box-sizing: border-box;
-        }
-
-        .container,
-        .main-content,
-        .tab-content {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        img,
-        .project-card,
-        .experience-item,
-        .tech-card {
-            max-width: 100%;
-            height: auto;
         }
     </style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <a class="nav-item active" data-tab="profil">Profil</a>
-        <a class="nav-item" data-tab="competences">Skills</a>
-        <a class="nav-item" data-tab="experience">Expériences</a>
-        <a class="nav-item" data-tab="projets">Projets</a>
-        <a class="nav-item" data-tab="contact">Contact</a>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">J<span>N</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
 
-    <!-- Header -->
-    <header class="header">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Juliana <span>Niapoh</span></h1>
+                <p class="tagline">Data Analyst &amp; BI · Gestion de projet &amp; IA</p>
+                <p class="description">
+                    2 ans d'expérience en alternance chez <strong>SNCF</strong> et <strong>ORANO</strong>.
+                    Spécialiste en analyse de données, Business Intelligence et coordination d'équipes Agile.
+                    Prête à relever de nouveaux défis dès <strong>Octobre 2025</strong>.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Voir mes projets
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Me contacter
+                    </a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Années d'expérience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Projets majeurs</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Projets livrés à temps</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
         <div class="container">
-            <div class="header-content">
-                <div class="profile-image">JN</div>
-                <div class="header-info">
-                    <h1>JULIANA NIAPOH</h1>
-                    <div class="title">Data & Digital Transformation Consultant</div>
-                    <p class="tagline">
-                        Future diplômée Master Data Management avec 2+ années d'alternance chez SNCF et ORANO. 
-                        Polyvalente en Data Analytics, Project Management et méthodologies Agiles. Prête pour des postes de Data Analyst, Business Analyst, Product Owner, Scrum Master ou Data Engineer.
+            <h2>À propos</h2>
+            <div class="section-subtitle">Data &amp; Transformation Digitale</div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        <strong>Passionnée par les données</strong> depuis mon DUT STID, j'ai choisi de me spécialiser
+                        en <strong>Data Management</strong> pour maîtriser les enjeux de l'IA et du Big Data.
+                        Mes expériences en alternance chez SNCF et ORANO m'ont permis de développer une vision
+                        <strong>pratique</strong> de la transformation digitale et de comprendre les besoins métiers.
                     </p>
-                    <div class="availability">
-                        <div class="availability-dot"></div>
-                        Disponible dès Octobre 2025
+                    <p>
+                        Ma force : allier compétences techniques solides (Python, SQL, Power BI, Machine Learning)
+                        et approche métier pour traduire les besoins business en solutions data concrètes.
+                        Je recherche un environnement stimulant où mettre mon potentiel au service de
+                        projets à fort impact.
+                    </p>
+                    <div class="about-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Agile / Scrum</span>
+                        <span class="tag">Gestion de projet</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Contenu principal -->
-    <div class="container">
-        <div class="main-content">
-            <div class="tabs-container"></div>
-
-            <!-- Contenu Profil -->
-            <div class="tab-content active" id="profil">
-                <div class="profile-layout">
-                    <div class="main-profile">
-                        <h2 class="section-title">À Propos & Objectifs Professionnels</h2>
-                        
-                        <div class="value-prop">
-                            <h3>Value Proposition</h3>
-                            <p>
-                                <strong>Future experte Data & Transformation Digitale en quête de son premier CDI.</strong> 
-                                Formée aux dernières technologies (Python, ML, SQL) avec une expérience terrain solide acquise 
-                                chez des leaders industriels. Polyvalente Data Analytics, Project Management et Agile, 
-                                je recherche un poste stimulant pour contribuer à l'innovation d'une entreprise ambitieuse.
-                            </p>
-                        </div>
-
-                        <div style="margin-bottom: 40px;">
-                            <h3 style="color: #3b82f6; margin-bottom: 20px; font-size: 1.2rem;">Mon Parcours & Ambitions</h3>
-                            <p style="margin-bottom: 20px; line-height: 1.7; color: #475569;">
-                                Passionnée par les données depuis mes études en DUT STID, j'ai choisi de me spécialiser en Data Management 
-                                pour maîtriser les enjeux actuels de l'IA et du Big Data. Mes expériences en alternance chez eSNCF et ORANO 
-                                m'ont permis de développer une vision pratique de la transformation digitale et de comprendre les besoins métiers.
-                            </p>
-                            <p style="line-height: 1.7; color: #475569;">
-                                <strong>Ma force :</strong> Allier compétences techniques solides et approche métier pour traduire les besoins business 
-                                en solutions data concrètes. Je recherche un environnement stimulant où mettre mon potentiel au service 
-                                de projets à fort impact.
-                            </p>
-                        </div>
-
-                        <div class="testimonial">
-                            <p class="testimonial-text">
-                                "Juliana a fait preuve d'une grande autonomie et d'un esprit analytique remarquable. 
-                                Sa capacité à s'adapter rapidement aux nouveaux outils et sa vision business ont été des atouts précieux pour notre équipe."
-                            </p>
-                            <p class="testimonial-author">- Manager eSNCF</p>
+                <div>
+                    <div class="about-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h4>Master Data Management</h4>
+                            <p>Paris School of Business · 2023-2025</p>
                         </div>
                     </div>
-
-                    <div class="tech-sidebar">
-                        <div class="tech-card">
-                            <h3><i class="fas fa-clipboard-list"></i> Fiche Technique</h3>
-                            <div class="tech-item">
-                                <span class="tech-label">Statut</span>
-                                <span class="tech-value">En recherche CDI</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-label">Expérience</span>
-                                <span class="tech-value">2+ années alternance</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-label">Secteurs</span>
-                                <span class="tech-value">Ferroviaire, Nucléaire</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-label">Mobilité</span>
-                                <span class="tech-value">Île-de-France</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-label">Niveau</span>
-                                <span class="tech-value">Junior/Confirmé</span>
-                            </div>
-                        </div>
-
-                        <div class="tech-card">
-                            <h3><i class="fas fa-graduation-cap"></i> Formation</h3>
-                            <div class="tech-item">
-                                <span class="tech-label">2023-2025</span>
-                                <span class="tech-value">Master Data Management</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-label">2022-2023</span>
-                                <span class="tech-value">Bachelor E-commerce</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-label">2020-2022</span>
-                                <span class="tech-value">DUT STID</span>
-                            </div>
-                        </div>
-
-                        <div class="tech-card">
-                            <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                            <div style="text-align: center; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
-                                <span style="background: #3b82f6; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">Python Data</span>
-                                <span style="background: #06b6d4; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">SQL Expert</span>
-                                <span style="background: #8b5cf6; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">ChatGPT & IA</span>
-                                <span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">Excel Avancé</span>
-                                <span style="background: #f59e0b; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">Web Dev</span>
-                            </div>
+                    <div class="about-card">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <h4>Alternance chez SNCF &amp; ORANO</h4>
+                            <p>2 ans d'expérience en projet digital et data</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Contenu Compétences -->
-            <div class="tab-content" id="competences">
-                <div class="profile-layout">
-                    <div class="main-profile">
-                        <h2 class="section-title">Stack Technique & Expertise</h2>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
-                                <h3 style="color: #3b82f6; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
-                                    <i class="fas fa-database"></i> Data Science & Analyse
-                                </h3>
-                                <div class="skill-item">
-                                    <span class="skill-name">Python (Pandas, NumPy)</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">SQL (PostgreSQL, MySQL)</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">R & Statistiques</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Machine Learning</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
-                                <h3 style="color: #06b6d4; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
-                                    <i class="fas fa-chart-bar"></i> Visualisation & BI
-                                </h3>
-                                <div class="skill-item">
-                                    <span class="skill-name">Power BI</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Jupyter Notebook</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Matplotlib/Streamlit</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Tableau</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
-                                <h3 style="color: #8b5cf6; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
-                                    <i class="fas fa-project-diagram"></i> Gestion de Projet
-                                </h3>
-                                <div class="skill-item">
-                                    <span class="skill-name">Méthodologie Agile/Scrum</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Jira/Confluence</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Kanban/Trello</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Gestion d'équipe</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
-                                <h3 style="color: #10b981; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
-                                    <i class="fas fa-code"></i> Développement
-                                </h3>
-                                <div class="skill-item">
-                                    <span class="skill-name">HTML5/CSS3</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">JavaScript</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">WordPress</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Git/GitHub</span>
-                                    <div class="skill-level">
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot active"></div>
-                                        <div class="skill-dot"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tech-sidebar">
-                        <div class="tech-card">
-                            <h3><i class="fas fa-brain"></i> Soft Skills</h3>
-                            <div style="text-align: left;">
-                                <div style="margin-bottom: 12px; color: #475569;">• Esprit d'analyse</div>
-                                <div style="margin-bottom: 12px; color: #475569;">• Collaboration équipe</div>
-                                <div style="margin-bottom: 12px; color: #475569;">• Adaptabilité</div>
-                                <div style="margin-bottom: 12px; color: #475569;">• Résolution problèmes</div>
-                                <div style="margin-bottom: 12px; color: #475569;">• Communication claire</div>
-                                <div style="margin-bottom: 12px; color: #475569;">• Autonomie</div>
-                            </div>
-                        </div>
-
-                        <div class="tech-card">
-                            <h3><i class="fas fa-language"></i> Langues</h3>
-                            <div class="tech-item">
-                                <span class="tech-label">Français</span>
-                                <span class="tech-value">Natif</span>
-                            </div>
-                            <div class="tech-item">
-                                <span class="tech-label">Anglais</span>
-                                <span class="tech-value">Intermédiaire</span>
-                            </div>
-                        </div>
-
-                        <div class="tech-card">
-                            <h3><i class="fas fa-heart"></i> Centres d'Intérêt</h3>
-                            <div style="text-align: left; color: #475569; font-size: 0.85rem;">
-                                <div style="margin-bottom: 10px;"><strong>🎮 Jeux vidéos :</strong> Elden Ring, Undertale/Deltarune, Ghost of Tsushima, 2048</div>
-                                <div style="margin-bottom: 10px;"><strong>✈️ Voyages :</strong> Allemagne, Côte d'Ivoire</div>
-                                <div style="margin-bottom: 10px;"><strong>💻 Programmation :</strong> Projets personnels Python, apprentissage nouvelles technologies data</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contenu Expérience -->
-            <div class="tab-content" id="experience">
-                <h2 class="section-title">Expériences Professionnelles</h2>
-                
-                <div class="experience-item">
-                    <div class="exp-period">2024-2025</div>
-                    <div class="exp-title">Assistante Cheffe de Projet Numérique</div>
-                    <div class="exp-company">eSNCF • Secteur Ferroviaire • Saint-Denis</div>
-                    <div class="exp-highlights">
-                        <div class="highlight">Pilotage de projets de transformation numérique (DSI) en mode Agile/Scrum</div>
-                        <div class="highlight">Gestion d'un portail collaboratif médecine du travail (30% réduction délais)</div>
-                        <div class="highlight">Amélioration de 15% de la satisfaction utilisateur sur les outils déployés</div>
-                        <div class="highlight">Support technique niveau 3 et résolution d'incidents complexes</div>
-                        <div class="highlight">Animation de formations techniques pour adoption nouveaux outils</div>
-                        <div class="highlight">Rédaction cahiers des charges et documentation projet stratégique</div>
-                        <div class="highlight">Accompagnement conduite du changement et ateliers pratiques</div>
-                        <div class="highlight">Coordination MOA/équipes développement en mode collaboratif</div>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="exp-period">2022-2023</div>
-                    <div class="exp-title">Chargée de Projet Digital</div>
-                    <div class="exp-company">ORANO • Secteur Nucléaire • Châtillon</div>
-                    <div class="exp-highlights">
-                        <div class="highlight">Analyse et optimisation des flux de données métier critiques</div>
-                        <div class="highlight">Évaluation qualité des données collectées et mise en place KPIs</div>
-                        <div class="highlight">Conception et intégration de solutions de visualisation données</div>
-                        <div class="highlight">Coordination d'équipes techniques pour développement outils BI</div>
-                        <div class="highlight">Formation équipes utilisation nouveaux outils analytiques</div>
-                        <div class="highlight">Création guides utilisateur et documentation technique complète</div>
-                        <div class="highlight">Support déploiement solutions data dans environnement industriel</div>
-                        <div class="highlight">Collaboration étroite avec les métiers pour besoins fonctionnels</div>
-                    </div>
-                </div>
-
-                <div style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); padding: 30px; border-radius: 15px; border-left: 4px solid #10b981; margin-top: 30px;">
-                    <h3 style="color: #10b981; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-trophy"></i> Résultats Quantifiés
-                    </h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #10b981;">30%</div>
-                            <div style="color: #475569;">Réduction délais communication</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #3b82f6;">15%</div>
-                            <div style="color: #475569;">Amélioration satisfaction</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #06b6d4;">100%</div>
-                            <div style="color: #475569;">Projets livrés à temps</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6;">2+</div>
-                            <div style="color: #475569;">Projets coordonnés</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contenu Projets -->
-            <div class="tab-content" id="projets">
-                <h2 class="section-title">Projets & Réalisations Techniques</h2>
-                
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-title">IA Student Assistance Platform</div>
-                            <div class="project-description">
-                                Développement d'une solution d'assistance étudiante intelligente basée sur le NLP. 
-                                Architecture complète avec interface adaptive et algorithmes de traitement du langage naturel.
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">NLP</span>
-                                <span class="tech-tag">Scikit-learn</span>
-                                <span class="tech-tag">Machine Learning</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-title">Dashboard RH Analytics</div>
-                            <div class="project-description">
-                                Outil de visualisation et pilotage des données RH développé en Python. 
-                                Interface interactive avec Streamlit, analyses avancées et reporting automatisé.
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Pandas</span>
-                                <span class="tech-tag">Matplotlib</span>
-                                <span class="tech-tag">Streamlit</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-title">Base de Données SQL Optimisée</div>
-                            <div class="project-description">
-                                Conception, implémentation et optimisation d'une base de données relationnelle complexe. 
-                                Focus sur les performances et la sécurité des accès utilisateur.
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">SQL</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">WorkBench</span>
-                                <span class="tech-tag">Optimisation</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <i class="fas fa-users-cog"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-title">Projet Scrum Master</div>
-                            <div class="project-description">
-                                Gestion d'une équipe de développement en méthodologie Agile. 
-                                Organisation des sprints, suivi des tâches et coordination des livrables.
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">Scrum</span>
-                                <span class="tech-tag">Jira</span>
-                                <span class="tech-tag">Agile</span>
-                                <span class="tech-tag">Management</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: #f8fafc; padding: 30px; border-radius: 15px; border: 1px solid #e2e8f0; margin-top: 30px;">
-                    <h3 style="color: #3b82f6; margin-bottom: 20px;">Méthodologie Projet</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                        <div style="text-align: center; padding: 20px;">
-                            <div style="background: linear-gradient(135deg, #3b82f6, #06b6d4); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">1</div>
-                            <strong>Analyse & Conception</strong>
-                            <div style="color: #475569; font-size: 0.9rem;">Étude besoins et architecture</div>
-                        </div>
-                        <div style="text-align: center; padding: 20px;">
-                            <div style="background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">2</div>
-                            <strong>Développement & Test</strong>
-                            <div style="color: #475569; font-size: 0.9rem;">Implémentation et validation</div>
-                        </div>
-                        <div style="text-align: center; padding: 20px;">
-                            <div style="background: linear-gradient(135deg, #8b5cf6, #10b981); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">3</div>
-                            <strong>Mise en Production</strong>
-                            <div style="color: #475569; font-size: 0.9rem;">Déploiement et maintenance</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONTENU CONTACT CORRIGÉ POUR NETLIFY AVEC UPLOAD -->
-            <div class="tab-content" id="contact">
-                <h2 class="section-title">Contact & Disponibilités</h2>
-                
-                <!-- Formulaire caché pour la détection Netlify (avec upload) -->
-                <form name="juliana-contact" netlify netlify-honeypot="bot-field" hidden>
-                    <input type="text" name="name" />
-                    <input type="email" name="email" />
-                    <input type="text" name="company" />
-                    <input type="text" name="position" />
-                    <input type="text" name="subject" />
-                    <textarea name="message"></textarea>
-                    <input type="file" name="job-description" />
-                </form>
-
-                <div class="contact-layout">
-                    <!-- Formulaire de contact Netlify avec upload -->
-                    <div class="contact-form">
-                        <!-- Message de succès -->
-                        <div id="successMessage" class="success-message">
-                            <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
-                            Votre message a été envoyé avec succès ! Juliana vous répondra rapidement.
-                        </div>
-
-                        <h3 style="color: #3b82f6; margin-bottom: 20px;">Envoyez-moi un message</h3>
-                        
-                        <!-- FORMULAIRE NETLIFY AVEC UPLOAD -->
-                        <form name="juliana-contact" 
-                              method="POST" 
-                              enctype="multipart/form-data"
-                              data-netlify="true" 
-                              data-netlify-honeypot="bot-field"
-                              action="/success.html"
-                              id="contactForm">
-                              
-                            <!-- Champ caché requis -->
-                            <input type="hidden" name="form-name" value="juliana-contact">
-                            
-                            <!-- Champ honeypot caché pour éviter le spam -->
-                            <p style="display: none;">
-                                <label>Ne pas remplir si vous êtes humain : <input name="bot-field"></label>
-                            </p>
-
-                            <div class="form-group">
-                                <label for="name">Nom & Prénom *</label>
-                                <input type="text" 
-                                       id="name" 
-                                       name="name" 
-                                       required 
-                                       placeholder="Ex: Jean Dupont">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email professionnel *</label>
-                                <input type="email" 
-                                       id="email" 
-                                       name="email" 
-                                       required 
-                                       placeholder="Ex: jean.dupont@entreprise.com">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="company">Entreprise</label>
-                                <input type="text" 
-                                       id="company" 
-                                       name="company" 
-                                       placeholder="Ex: Google France">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="position">Poste proposé</label>
-                                <input type="text" 
-                                       id="position" 
-                                       name="position" 
-                                       placeholder="Ex: Data Analyst Junior">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="subject">Objet *</label>
-                                <input type="text" 
-                                       id="subject" 
-                                       name="subject" 
-                                       required 
-                                       placeholder="Ex: Opportunité Data Analyst - CDI">
-                            </div>
-
-                            <!-- NOUVEAU : Upload de fichier avec design intégré -->
-                            <div class="form-group">
-                                <label for="job-description">📎 Fiche de Poste (optionnel)</label>
-                                <div style="color: #64748b; font-size: 0.85rem; margin-bottom: 10px;">
-                                    💼 <strong>Recruteurs :</strong> Joignez votre fiche de poste pour une meilleure compréhension de l'opportunité
-                                </div>
-                                <div class="file-upload-container">
-                                    <div class="file-upload-wrapper" id="fileUploadWrapper">
-                                        <input type="file" 
-                                               id="job-description" 
-                                               name="job-description" 
-                                               class="file-input"
-                                               accept=".pdf,.doc,.docx,.txt"
-                                               data-max-size="10485760">
-                                        <div class="file-upload-content">
-                                            <div class="file-upload-icon">📎</div>
-                                            <div class="file-upload-text">
-                                                Cliquez ici ou glissez-déposez votre fichier
-                                            </div>
-                                            <div class="file-upload-hint">
-                                                Formats acceptés : PDF, DOC, DOCX, TXT<br>
-                                                Taille maximum : 10 MB
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Aperçu du fichier sélectionné -->
-                                    <div class="file-preview" id="filePreview">
-                                        <div class="file-preview-icon">📄</div>
-                                        <div class="file-preview-info">
-                                            <div class="file-preview-name" id="fileName"></div>
-                                            <div class="file-preview-size" id="fileSize">
-                                                <i class="fas fa-file-alt" style="margin-right: 5px;"></i>
-                                                <span id="fileSizeText"></span>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="file-remove-btn" onclick="removeFile()">
-                                            <i class="fas fa-times"></i> Supprimer
-                                        </button>
-                                    </div>
-
-                                    <!-- Messages d'état -->
-                                    <div class="file-size-warning" id="fileSizeWarning">
-                                        Le fichier dépasse la limite de 10 MB. Veuillez choisir un fichier plus petit.
-                                    </div>
-
-                                    <div class="upload-success" id="uploadSuccess">
-                                        Fichier prêt à être envoyé avec votre message !
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" 
-                                          name="message" 
-                                          rows="5" 
-                                          required 
-                                          placeholder="Décrivez votre entreprise, le poste proposé et pourquoi le profil de Juliana vous intéresse..."></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-submit" id="submitButton">
-                                <i class="fas fa-paper-plane"></i> Envoyer le message
-                            </button>
-                        </form>
-                    </div>
-                    
-                    <div class="contact-info">
-                        <h3 style="color: #3b82f6; margin-bottom: 25px; text-align: center;">Informations de Contact</h3>
-                        
-                        <a href="mailto:Jniapoh@gmail.com?subject=Opportunité Professionnelle - Contact depuis Portfolio&body=Bonjour Juliana,%0D%0A%0D%0AJe vous contacte concernant une opportunité professionnelle.%0D%0A%0D%0ACordialement," 
-                           class="contact-item contact-link" 
-                           title="Envoyer un email à Juliana">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <strong>Email</strong><br>
-                                <span class="contact-text">Jniapoh@gmail.com</span>
-                            </div>
-                        </a>
-                        
-                        <a href="tel:+33622855341" 
-                           class="contact-item contact-link" 
-                           title="Appeler Juliana">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <strong>Téléphone</strong><br>
-                                <span class="contact-text">06 22 85 53 41</span>
-                            </div>
-                        </a>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <strong>Localisation</strong><br>
-                                <span class="contact-text">93300, Aubervilliers</span>
-                            </div>
-                        </div>
-                        
-                        <a href="https://www.linkedin.com/in/jniapoh/" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="contact-item contact-link" 
-                           title="Voir le profil LinkedIn de Juliana">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div>
-                                <strong>LinkedIn</strong><br>
-                                <span class="contact-text">linkedin.com/in/jniapoh</span>
-                            </div>
-                        </a>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div>
-                                <strong>Disponibilité</strong><br>
-                                <span class="contact-text">Octobre 2025</span>
-                            </div>
-                        </div>
-                        
-                        <div style="background: linear-gradient(135deg, #3b82f6, #06b6d4); color: white; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: center;">
-                            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 5px;">🚀 Prête pour de nouveaux défis !</div>
-                            <div style="opacity: 0.9; font-size: 0.9rem;">En recherche active d'un premier CDI</div>
+                    <div class="about-card">
+                        <i class="fas fa-award"></i>
+                        <div>
+                            <h4>Certifications Data &amp; IA</h4>
+                            <p>SQL, Python, ChatGPT &amp; productivité</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Chatbot IA Avancé -->
-    <div class="chatbot">
-        <button class="chatbot-toggle" onclick="toggleChatbot()"></button>
-        <div class="chatbot-window" id="chatbotWindow">
-            <div class="chatbot-header">
-                <div class="chatbot-avatar">🤖</div>
-                <div class="chatbot-info">
-                    <h4>Assistant IA - Juliana</h4>
-                    <div class="chatbot-status">
-                        <div class="status-dot"></div>
-                        En ligne • IA Machine Learning
-                    </div>
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills" style="background: #fff;">
+        <div class="container">
+            <h2>Compétences</h2>
+            <div class="section-subtitle">Stack technique &amp; méthodologies</div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Langages &amp; Data</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Python (Pandas, Scikit-learn)</li>
+                        <li><i class="fas fa-check-circle"></i> R (ggplot2, dplyr)</li>
+                        <li><i class="fas fa-check-circle"></i> SQL (PostgreSQL, MySQL)</li>
+                        <li><i class="fas fa-check-circle"></i> Git / GitHub</li>
+                    </ul>
                 </div>
-                <button class="chatbot-close" onclick="toggleChatbot()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages">
-                <div class="message bot">
-                    👋 Salut ! Je suis l'IA de Juliana, powered by machine learning ! Comment puis-je vous aider aujourd'hui ?
+                <div class="skill-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Visualisation &amp; BI</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Power BI (DAX, Reporting)</li>
+                        <li><i class="fas fa-check-circle"></i> Matplotlib / Seaborn</li>
+                        <li><i class="fas fa-check-circle"></i> Streamlit</li>
+                        <li><i class="fas fa-check-circle"></i> Excel avancé</li>
+                    </ul>
                 </div>
-                <div class="message bot">
-                    <div class="quick-actions">
-                        <div class="quick-action" onclick="askQuickQuestion('Parlez-moi de son expérience')">💼 Expérience</div>
-                        <div class="quick-action" onclick="askQuickQuestion('Quelles sont ses compétences techniques ?')">⚙️ Compétences</div>
-                        <div class="quick-action" onclick="askQuickQuestion('Ses projets les plus marquants ?')">🚀 Projets</div>
-                        <div class="quick-action" onclick="askQuickQuestion('Comment la contacter ?')">📞 Contact</div>
-                    </div>
+                <div class="skill-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Gestion de projet</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Agile / Scrum</li>
+                        <li><i class="fas fa-check-circle"></i> Kanban</li>
+                        <li><i class="fas fa-check-circle"></i> Jira / Trello / Confluence</li>
+                        <li><i class="fas fa-check-circle"></i> MS Project</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="typing-indicator" id="typingIndicator">
-                <div class="typing-dots">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning &amp; IA</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> NLP &amp; traitement du langage</li>
+                        <li><i class="fas fa-check-circle"></i> Modèles prédictifs</li>
+                        <li><i class="fas fa-check-circle"></i> Scikit-learn</li>
+                        <li><i class="fas fa-check-circle"></i> Évaluation de modèles</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Posez votre question sur Juliana...">
-                <button onclick="sendMessage()" id="sendButton">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
             </div>
         </div>
-    </div>
+    </section>
 
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2>Expérience</h2>
+            <div class="section-subtitle">Parcours professionnel</div>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <h3>Assistante Cheffe de Projet Numérique</h3>
+                    <div class="timeline-meta">SNCF · Saint-Denis · Sept 2024 - Sept 2025</div>
+                    <p>
+                        Pilotage de projets de transformation numérique (DSI) en mode Agile/Scrum.
+                        Gestion d'un portail collaboratif pour la médecine du travail :
+                        <strong>réduction de 30 % des délais</strong> de communication et
+                        <strong>+15 % de satisfaction</strong> utilisateur.
+                        Support technique niveau 3, animation de formations, rédaction de cahiers des charges.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Agile / Scrum</span>
+                        <span class="timeline-tag">Gestion de projet</span>
+                        <span class="timeline-tag">Change management</span>
+                        <span class="timeline-tag">SharePoint</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Chargée de Projet Digital</h3>
+                    <div class="timeline-meta">ORANO · Châtillon · Sept 2022 - Sept 2023</div>
+                    <p>
+                        Analyse et optimisation des flux de données métier critiques.
+                        Évaluation de la qualité des données, mise en place de KPIs et
+                        conception de dashboards interactifs avec <strong>Power BI</strong>.
+                        Coordination d'équipes techniques pour le développement d'outils BI
+                        et formation des utilisateurs.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Power BI</span>
+                        <span class="timeline-tag">SQL</span>
+                        <span class="timeline-tag">Data Quality</span>
+                        <span class="timeline-tag">Kanban</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects" style="background: #fff;">
+        <div class="container">
+            <h2>Projets</h2>
+            <div class="section-subtitle">Réalisations concrètes</div>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-cover">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>IA Student Assistance</h3>
+                        <p>Solution d'assistance étudiante basée sur le <strong>NLP</strong>.
+                            Architecture complète avec interface adaptive et algorithmes de traitement du langage naturel.</p>
+                        <a href="#" class="btn btn-primary" style="font-size:0.85rem; padding:0.5rem 1.2rem;">
+                            <i class="fab fa-github"></i> Voir le code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-cover">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>Base de données SQL</h3>
+                        <p>Conception, implémentation et optimisation d'une base de données relationnelle
+                            avec <strong>MySQL Workbench</strong> – modélisation, requêtes complexes et
+                            optimisation des performances.</p>
+                        <a href="#" class="btn btn-primary" style="font-size:0.85rem; padding:0.5rem 1.2rem;">
+                            <i class="fab fa-github"></i> Voir le projet
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-cover">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>Dashboard RH (Python)</h3>
+                        <p>Outil de visualisation des données RH avec <strong>Python</strong>
+                            (Pandas, Matplotlib, Streamlit). Tableaux de bord interactifs pour
+                            le pilotage des indicateurs RH.</p>
+                        <a href="#" class="btn btn-primary" style="font-size:0.85rem; padding:0.5rem 1.2rem;">
+                            <i class="fas fa-external-link-alt"></i> Voir la démo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-cover">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>DeepFakes – Mémoire</h3>
+                        <p>Analyse et modélisation des perceptions des DeepFakes.
+                            Dashboard interactif avec <strong>Streamlit</strong> et analyses
+                            statistiques avancées (clustering, ML, NLP).</p>
+                        <a href="https://m-moiredeepfake.streamlit.app/" target="_blank" class="btn btn-primary" style="font-size:0.85rem; padding:0.5rem 1.2rem;">
+                            <i class="fas fa-external-link-alt"></i> Voir la démo
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="section-subtitle">Parlons de vos projets data</div>
+            <div class="contact-grid">
+                <a href="mailto:jniapoh@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p>jniapoh@gmail.com</p>
+                </a>
+                <a href="tel:0622855341" class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>Téléphone</h4>
+                    <p>06 22 85 53 41</p>
+                </a>
+                <a href="https://www.linkedin.com/in/jniapoh/" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin-in"></i>
+                    <h4>LinkedIn</h4>
+                    <p>@jniapoh</p>
+                </a>
+                <a href="https://github.com/Gnatey" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <h4>GitHub</h4>
+                    <p>Gnatey</p>
+                </a>
+            </div>
+            <div style="text-align:center; margin-top:2rem;">
+                <a href="mailto:jniapoh@gmail.com" class="btn btn-accent">
+                    <i class="fas fa-paper-plane"></i> Envoyer un message
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/jniapoh/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Gnatey" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:jniapoh@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="opacity:0.7; font-size:0.9rem;">
+                &copy; 2025 Juliana Niapoh · Tous droits réservés
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // Base de connaissances complète sur Juliana
-        const julianaKnowledge = {
-            personal: {
-                name: "Juliana Niapoh",
-                age: "Jeune professionnelle",
-                location: "Aubervilliers (93), Île-de-France",
-                status: "En recherche de son premier CDI",
-                availability: "Octobre 2025",
-                personality: ["autonome", "analytique", "adaptable", "polyvalente", "motivée"]
-            },
-            experience: {
-                current: {
-                    title: "Assistante Cheffe de Projet Numérique",
-                    company: "eSNCF",
-                    period: "2024-2025",
-                    location: "Saint-Denis",
-                    achievements: [
-                        "30% de réduction des délais de communication",
-                        "15% d'amélioration de la satisfaction utilisateur",
-                        "Pilotage de projets de transformation numérique en Agile/Scrum",
-                        "Gestion d'un portail collaboratif médecine du travail",
-                        "Support technique niveau 3"
-                    ]
-                },
-                previous: {
-                    title: "Chargée de Projet Digital",
-                    company: "ORANO",
-                    period: "2022-2023",
-                    location: "Châtillon",
-                    achievements: [
-                        "Analyse et optimisation des flux de données critiques",
-                        "Conception de solutions de visualisation",
-                        "Formation des équipes aux nouveaux outils"
-                    ]
-                }
-            },
-            education: {
-                current: "Master Data Management (2023-2025) - Paris School of Business",
-                bachelor: "Bachelor E-commerce & Marketing numérique (2022-2023) - Paris School of Business",
-                dut: "DUT STID (2020-2022) - Université Sorbonne Paris Nord"
-            },
-            skills: {
-                technical: {
-                    python: "Niveau avancé - Pandas, NumPy, Machine Learning",
-                    sql: "Expert - PostgreSQL, MySQL, optimisation",
-                    powerbi: "Avancé - Dashboards et reporting",
-                    r: "Intermédiaire - Statistiques et visualisation",
-                    web: "Bases solides - HTML5, CSS3, JavaScript"
-                },
-                project: {
-                    agile: "Expert Scrum/Kanban",
-                    tools: "Jira, Confluence, Trello",
-                    leadership: "Coordination d'équipes techniques"
-                },
-                soft: ["Esprit d'analyse", "Collaboration", "Adaptabilité", "Résolution de problèmes", "Communication claire", "Autonomie"]
-            },
-            projects: [
-                {
-                    name: "IA Student Assistance Platform",
-                    description: "Solution d'assistance étudiante basée sur NLP avec interface adaptive",
-                    tech: ["Python", "NLP", "Scikit-learn", "Machine Learning"]
-                },
-                {
-                    name: "Dashboard RH Analytics",
-                    description: "Outil de visualisation des données RH avec Python et Streamlit",
-                    tech: ["Python", "Pandas", "Matplotlib", "Streamlit"]
-                },
-                {
-                    name: "Base de Données SQL Optimisée",
-                    description: "Conception et optimisation d'une BDD relationnelle complexe",
-                    tech: ["SQL", "MySQL", "WorkBench", "Optimisation"]
-                }
-            ],
-            interests: {
-                gaming: ["Elden Ring", "Undertale/Deltarune", "Ghost of Tsushima", "2048"],
-                travel: ["Allemagne", "Côte d'Ivoire"],
-                programming: "Projets personnels Python et apprentissage nouvelles technologies data"
-            },
-            contact: {
-                email: "Jniapoh@gmail.com",
-                phone: "06 22 85 53 41",
-                linkedin: "Profil LinkedIn professionnel",
-                location: "93300, Aubervilliers"
-            },
-            goals: [
-                "Obtenir son premier CDI dans la data",
-                "Contribuer à la transformation digitale d'entreprises innovantes",
-                "Développer son expertise en IA et Big Data",
-                "Évoluer vers des postes de Data Analyst, Business Analyst, Product Owner, Scrum Master ou Data Engineer"
-            ]
-        };
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
-        // Historique de conversation
-        let conversationHistory = [];
-        let chatbotOpen = false;
-        let isTyping = false;
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
 
-        // Gestion des onglets avec scroll vers le haut
-        function showTab(tabName) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(() => {
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                const targetContent = document.getElementById(tabName);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
-                
-                document.querySelectorAll(`[data-tab="${tabName}"]`).forEach(item => {
-                    item.classList.add('active');
-                });
-            }, 300);
-        }
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
 
-        // Chatbot avancé
-        function toggleChatbot() {
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            chatbotOpen = !chatbotOpen;
-            
-            if (chatbotOpen) {
-                chatbotWindow.classList.add('open');
-                const input = document.getElementById('chatbotInput');
-                if (input) input.focus();
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                navbar.style.boxShadow = '0 4px 20px rgba(15,23,42,0.06)';
             } else {
-                chatbotWindow.classList.remove('open');
-            }
-        }
-
-        function askQuickQuestion(question) {
-            const input = document.getElementById('chatbotInput');
-            if (input) {
-                input.value = question;
-                sendMessage();
-            }
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatbotInput');
-            const sendButton = document.getElementById('sendButton');
-            
-            if (!input || !sendButton) return;
-            
-            const message = input.value.trim();
-            if (message === '' || isTyping) return;
-            
-            // Ajouter à l'historique
-            conversationHistory.push({type: 'user', message: message});
-            
-            addMessage(message, 'user');
-            input.value = '';
-            sendButton.disabled = true;
-            
-            showTyping();
-            
-            setTimeout(() => {
-                const response = generateSmartResponse(message);
-                hideTyping();
-                addMessage(response, 'bot');
-                sendButton.disabled = false;
-                
-                // Ajouter la réponse à l'historique
-                conversationHistory.push({type: 'bot', message: response});
-            }, Math.random() * 2000 + 1500);
-        }
-
-        function addMessage(text, sender) {
-            const messagesContainer = document.getElementById('chatbotMessages');
-            if (!messagesContainer) return;
-            
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = text;
-            
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function showTyping() {
-            isTyping = true;
-            const indicator = document.getElementById('typingIndicator');
-            if (indicator) {
-                indicator.classList.add('show');
-                const messagesContainer = document.getElementById('chatbotMessages');
-                if (messagesContainer) {
-                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                }
-            }
-        }
-
-        function hideTyping() {
-            isTyping = false;
-            const indicator = document.getElementById('typingIndicator');
-            if (indicator) {
-                indicator.classList.remove('show');
-            }
-        }
-
-        // Intelligence conversationnelle avancée
-        function generateSmartResponse(userMessage) {
-            const message = userMessage.toLowerCase();
-            
-            // Détection de salutations
-            if (message.includes('salut') || message.includes('bonjour') || message.includes('hello') || message.includes('hi')) {
-                const greetings = [
-                    "Salut ! 😊 Ravi de faire votre connaissance ! Je suis l'assistant IA personnel de Juliana. En quoi puis-je vous aider ?",
-                    "Bonjour ! 👋 Bienvenue sur le portfolio de Juliana ! Je connais tout sur son parcours. Qu'aimeriez-vous savoir ?",
-                    "Hello ! 🤖 Je suis là pour répondre à toutes vos questions sur Juliana Niapoh. C'est une vraie pépite dans la data !",
-                    "Coucou ! ✨ Assistant IA de Juliana à votre service ! Elle a un profil vraiment impressionnant, vous allez voir !"
-                ];
-                return greetings[Math.floor(Math.random() * greetings.length)];
-            }
-
-            // Questions sur l'assistant lui-même
-            if (message.includes('qui es-tu') || message.includes('tu es qui') || message.includes('chatbot') || message.includes('machine learning')) {
-                return "Je suis l'assistant IA personnel de Juliana ! 🤖 J'ai été entraîné avec toutes les informations sur son parcours, ses compétences, ses projets et sa personnalité. Je peux répondre à toutes vos questions sur elle de manière conversationnelle. C'est comme si vous parliez directement avec quelqu'un qui la connaît très bien ! Que voulez-vous savoir ?";
-            }
-
-            // Questions générales sur Juliana
-            if (message.includes('juliana') && (message.includes('qui') || message.includes('parle') || message.includes('dis moi') || message.includes('apprendre'))) {
-                return `Juliana Niapoh, c'est une future diplômée Master Data Management super talentueuse ! 🌟 Elle a 2+ années d'alternance chez eSNCF et ORANO avec des résultats concrets : 30% d'amélioration des processus. Elle maîtrise Python, SQL, Machine Learning, les méthodes Agile... Bref, un profil polyvalent parfait pour la data ! Elle cherche son premier CDI pour octobre 2025. Qu'est-ce qui vous intéresse le plus chez elle ?`;
-            }
-
-            // Expérience professionnelle
-            if (message.includes('expérience') || message.includes('travail') || message.includes('alternance') || message.includes('sncf') || message.includes('orano')) {
-                const experiences = [
-                    `Alors, l'expérience de Juliana c'est du solide ! 💪 Actuellement chez eSNCF comme Assistante Cheffe de Projet Numérique, elle pilote des projets de transformation digitale en Agile/Scrum. Résultats : -30% sur les délais et +15% de satisfaction ! Avant ça, chez ORANO pour optimiser les flux de données critiques. Du concret dans des grandes boîtes !`,
-                    `Son parcours professionnel ? Impressionnant ! 🚀 2 ans d'alternance dans des secteurs de pointe : ferroviaire (eSNCF) et nucléaire (ORANO). Elle a géré un portail collaboratif, fait de la formation technique, du support niveau 3... Elle sait vraiment coordonner des équipes et livrer des résultats !`,
-                    `Les expériences de Juliana montrent sa progression ! 📈 Partie d'un poste de Chargée de Projet Digital chez ORANO, elle est maintenant Assistante Cheffe de Projet chez eSNCF. Toujours des missions data + gestion de projet. Elle a cette double casquette technique/management qui est super recherchée !`
-                ];
-                return experiences[Math.floor(Math.random() * experiences.length)];
-            }
-
-            // Compétences techniques
-            if (message.includes('compétence') || message.includes('technique') || message.includes('python') || message.includes('sql') || message.includes('skill') || message.includes('technologies')) {
-                const skills = [
-                    `Côté technique, Juliana c'est une machine ! 🔥 Python avancé (Pandas, NumPy, ML), SQL expert (PostgreSQL, MySQL), Power BI pour le BI, R pour les stats... Et côté projet : Scrum Master certifiée, Jira, Confluence. Elle a vraiment tout le stack moderne !`,
-                    `Ses compétences ? Un mix parfait ! ⚡ Data Science (Python, SQL, Machine Learning), Visualisation (Power BI, Streamlit), Project Management (Agile/Scrum), et même du web (HTML/CSS/JS). Rare de trouver quelqu'un d'aussi polyvalent !`,
-                    `Stack technique de Juliana = 🎯 Python niveau 4/5, SQL niveau 5/5 (elle est vraiment forte là-dessus !), Machine Learning 3/5, Agile/Scrum 5/5. Plus du Power BI, Jupyter, Git... Elle peut s'adapter à plein de rôles différents !`
-                ];
-                return skills[Math.floor(Math.random() * skills.length)];
-            }
-
-            // Projets
-            if (message.includes('projet') || message.includes('réalisation') || message.includes('portfolio') || message.includes('ia') || message.includes('dashboard')) {
-                const projects = [
-                    `Ses projets montrent sa polyvalence ! 🎯 IA Student Assistance (NLP + Machine Learning), Dashboard RH Analytics (Python/Streamlit), Base de données SQL optimisée, et un projet Scrum Master. Du technique ET du management, c'est ça qui est fort chez elle !`,
-                    `Portfolio de Juliana = du concret ! 💼 Une plateforme d'assistance étudiante avec IA, des outils de visualisation RH interactifs, de l'optimisation SQL... Elle couvre tout le cycle : conception, développement, déploiement. Méthodique et efficace !`,
-                    `Projets marquants : 🚀 Son IA d'assistance étudiante avec NLP (très technique !), son dashboard RH qui montre ses compétences en visualisation, et sa gestion d'équipe en Scrum. Elle sait faire du technique ET coordonner !`
-                ];
-                return projects[Math.floor(Math.random() * projects.length)];
-            }
-
-            // Formation
-            if (message.includes('formation') || message.includes('étude') || message.includes('diplôme') || message.includes('master') || message.includes('école')) {
-                return `Formation de Juliana ? Très bien structurée ! 🎓 Master Data Management en cours (2023-2025) à Paris School of Business, avant ça Bachelor E-commerce (2022-2023) et DUT STID (2020-2022) à Sorbonne Paris Nord. Plus des certifications Python Data, SQL Expert, ChatGPT & IA... Elle a construit sa montée en compétences intelligemment !`;
-            }
-
-            // Contact et coordonnées
-            if (message.includes('contact') || message.includes('coordonnées') || message.includes('joindre') || message.includes('email') || message.includes('téléphone') || message.includes('numero')) {
-                return `Pour contacter Juliana c'est simple ! 📧 Email : Jniapoh@gmail.com | 📞 Téléphone : 06 22 85 53 41 | 🔗 LinkedIn : linkedin.com/in/jniapoh | 📍 Elle est à Aubervilliers (93). Tous les contacts sont cliquables sur le portfolio ! Elle est super réactive et disponible pour échanger sur les opportunités !`;
-            }
-
-            // Disponibilité
-            if (message.includes('disponible') || message.includes('quand') || message.includes('octobre') || message.includes('2025')) {
-                return `Juliana sera disponible dès octobre 2025 ! 🗓️ Elle finit son Master Data Management en juillet et cherche activement son premier CDI. C'est le moment parfait pour l'approcher, elle est super motivée pour rejoindre une équipe dynamique !`;
-            }
-
-            // Salaire et prétentions
-            if (message.includes('salaire') || message.includes('prétention') || message.includes('rémunération') || message.includes('combien')) {
-                return `Pour les questions de rémunération, Juliana préfère en discuter directement selon le poste et l'entreprise ! 💰 Elle est ouverte aux négociations et s'adapte au contexte. Le mieux c'est de la contacter pour en parler : Jniapoh@gmail.com`;
-            }
-
-            // Motivation et objectifs
-            if (message.includes('motivation') || message.includes('objectif') || message.includes('pourquoi') || message.includes('ambition') || message.includes('recherche')) {
-                return `Motivation de Juliana ? 🔥 Elle veut transformer les données en valeur business ! Son objectif : rejoindre une entreprise innovante pour son premier CDI, mettre sa polyvalence Data + Project Management au service de projets impactants. Elle cherche des défis stimulants dans la transformation digitale !`;
-            }
-
-            // Centres d'intérêt
-            if (message.includes('loisir') || message.includes('passion') || message.includes('intérêt') || message.includes('elden ring') || message.includes('jeux') || message.includes('voyage')) {
-                return `Côté perso, Juliana a des passions cool ! 🎮 Gaming : Elden Ring, Undertale/Deltarune, Ghost of Tsushima, 2048. ✈️ Voyages : Allemagne, Côte d'Ivoire. 💻 Et elle code aussi pour le plaisir avec ses projets perso Python ! Équilibre parfait entre technique et détente !`;
-            }
-
-            // Secteurs et types de postes
-            if (message.includes('secteur') || message.includes('poste') || message.includes('data analyst') || message.includes('scrum master') || message.includes('product owner')) {
-                return `Juliana peut s'adapter à plusieurs rôles ! 🎯 Data Analyst, Business Analyst, Product Owner, Scrum Master, ou même Data Engineer. Ses expériences chez eSNCF (ferroviaire) et ORANO (nucléaire) montrent qu'elle s'adapte aux secteurs critiques. Elle recherche l'innovation avant tout !`;
-            }
-
-            // Qualités personnelles
-            if (message.includes('qualité') || message.includes('personnalité') || message.includes('comment') || message.includes('caractère')) {
-                return `Les qualités de Juliana ? 🌟 Autonome (prouvé en alternance), esprit analytique remarquable (dixit son manager eSNCF), adaptable aux nouveaux outils, vision business développée... Et surtout : elle est curieuse, motivée et collaborative ! Une vraie team player !`;
-            }
-
-            // Réponses contextuelles basées sur l'historique
-            const recentContext = conversationHistory.slice(-3);
-            const hasAskedAbout = (topic) => recentContext.some(conv => conv.message.toLowerCase().includes(topic));
-
-            // Si l'utilisateur redemande quelque chose
-            if (message.includes('et') || message.includes('aussi') || message.includes('encore') || message.includes('autre')) {
-                if (hasAskedAbout('expérience')) {
-                    return `Pour compléter sur son expérience : Juliana a aussi fait de la conduite du changement, de la formation d'équipes, de la rédaction de cahiers des charges... Elle touche vraiment à tout dans ses missions ! C'est ça qui la rend polyvalente.`;
-                }
-                if (hasAskedAbout('compétence')) {
-                    return `Ah oui, j'ai oublié de mentionner ses soft skills ! 💡 Communication claire, résolution de problèmes complexes, adaptabilité... Et elle parle anglais niveau intermédiaire. Parfait pour les environnements internationaux !`;
-                }
-            }
-
-            // Réponses encourageantes si l'utilisateur semble intéressé
-            if (message.includes('intéressant') || message.includes('bien') || message.includes('parfait') || message.includes('génial')) {
-                return `Je savais que son profil vous plairait ! 😊 Juliana a vraiment ce mix rare technique + business + management. Si vous voulez en savoir plus ou la rencontrer, elle sera ravie d'échanger : Jniapoh@gmail.com. Elle cherche justement des opportunités stimulantes !`;
-            }
-
-            // Questions sur les résultats et chiffres
-            if (message.includes('résultat') || message.includes('chiffre') || message.includes('30%') || message.includes('performance')) {
-                return `Les résultats de Juliana parlent d'eux-mêmes ! 📊 30% de réduction des délais de communication, 15% d'amélioration de la satisfaction utilisateur, 100% de projets livrés à temps... Elle a cette capacité à transformer les processus avec un impact mesurable. C'est ça la différence !`;
-            }
-
-            // Réponses par défaut intelligentes
-            const smartDefaults = [
-                `Hmm, question intéressante ! 🤔 Juliana serait la mieux placée pour vous répondre en détail. Elle adore parler de son domaine ! Voulez-vous que je vous donne ses coordonnées ? Jniapoh@gmail.com`,
-                `Bonne question ! 💡 Pour ce niveau de précision, un échange direct avec Juliana serait parfait. Elle est très accessible et pédagogue. Contact : 06 22 85 53 41`,
-                `Je sens que vous voulez creuser ! 🎯 Juliana a plein d'exemples concrets à partager sur ce sujet. Elle sera ravie de vous en dire plus : Jniapoh@gmail.com`,
-                `Excellente question ! 😊 Juliana pourrait vous donner des détails que moi je n'ai pas. Elle est disponible pour un échange : 06 22 85 53 41`,
-                `Ah, vous allez droit au but ! 🚀 Juliana serait parfaite pour répondre à ça avec des exemples précis. Contactez-la directement, elle est super réactive !`
-            ];
-            
-            return smartDefaults[Math.floor(Math.random() * smartDefaults.length)];
-        }
-
-        // Gestion du formulaire de contact Netlify avec upload
-        function setupContactForm() {
-            const contactForm = document.getElementById('contactForm');
-            const submitButton = document.getElementById('submitButton');
-            const successMessage = document.getElementById('successMessage');
-
-            // Configuration de l'upload de fichiers
-            setupFileUpload();
-
-            if (!contactForm) return;
-
-            contactForm.addEventListener('submit', function(e) {
-                // Si on est en mode développement local, on empêche l'envoi et on simule
-                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                    e.preventDefault();
-                    simulateFormSubmission();
-                    return;
-                }
-
-                // En production, Netlify gérera l'envoi automatiquement
-                // Mais on peut quand même montrer un feedback utilisateur
-                if (submitButton) {
-                    const fileInput = document.getElementById('job-description');
-                    const hasFile = fileInput && fileInput.files.length > 0;
-                    const originalText = submitButton.innerHTML;
-                    
-                    if (hasFile) {
-                        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours (avec fichier)...';
-                    } else {
-                        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-                    }
-                    submitButton.disabled = true;
-                }
-            });
-
-            function simulateFormSubmission() {
-                if (!submitButton || !successMessage) return;
-
-                const fileInput = document.getElementById('job-description');
-                const hasFile = fileInput && fileInput.files.length > 0;
-                const originalText = submitButton.innerHTML;
-                
-                // Animation d'envoi
-                if (hasFile) {
-                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours (avec fichier)...';
-                } else {
-                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-                }
-                submitButton.disabled = true;
-                
-                setTimeout(() => {
-                    // Afficher le message de succès
-                    successMessage.classList.add('show');
-                    
-                    // Changer le bouton
-                    if (hasFile) {
-                        submitButton.innerHTML = '<i class="fas fa-check"></i> Message et fichier envoyés !';
-                    } else {
-                        submitButton.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-                    }
-                    submitButton.style.background = '#10b981';
-                    
-                    // Scroll vers le message de succès
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    
-                    setTimeout(() => {
-                        // Remettre le formulaire dans son état initial
-                        submitButton.innerHTML = originalText;
-                        submitButton.style.background = '';
-                        submitButton.disabled = false;
-                        contactForm.reset();
-                        
-                        // Reset de l'upload de fichier
-                        if (window.removeFile) {
-                            window.removeFile();
-                        }
-                        
-                        // Cacher le message de succès après quelques secondes
-                        setTimeout(() => {
-                            successMessage.classList.remove('show');
-                        }, 5000);
-                    }, 2000);
-                }, 2500);
-            }
-        }
-
-        // Configuration de l'upload de fichiers
-        function setupFileUpload() {
-            const fileInput = document.getElementById('job-description');
-            const fileUploadWrapper = document.getElementById('fileUploadWrapper');
-            const filePreview = document.getElementById('filePreview');
-            const fileName = document.getElementById('fileName');
-            const fileSizeText = document.getElementById('fileSizeText');
-            const fileSizeWarning = document.getElementById('fileSizeWarning');
-            const uploadSuccess = document.getElementById('uploadSuccess');
-            
-            if (!fileInput) return;
-
-            // Configuration des liens de contact interactifs
-            setupContactLinks();
-
-            // Gestion du drag & drop
-            fileUploadWrapper.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                this.classList.add('dragover');
-            });
-
-            fileUploadWrapper.addEventListener('dragleave', function(e) {
-                e.preventDefault();
-                this.classList.remove('dragover');
-            });
-
-            fileUploadWrapper.addEventListener('drop', function(e) {
-                e.preventDefault();
-                this.classList.remove('dragover');
-                
-                const files = e.dataTransfer.files;
-                if (files.length > 0) {
-                    handleFileSelection(files[0]);
-                }
-            });
-
-            // Gestion de la sélection de fichier
-            fileInput.addEventListener('change', function() {
-                if (this.files.length > 0) {
-                    handleFileSelection(this.files[0]);
-                }
-            });
-
-            function handleFileSelection(file) {
-                // Reset des messages
-                fileSizeWarning.classList.remove('show');
-                uploadSuccess.classList.remove('show');
-
-                // Validation du type de fichier
-                const allowedTypes = ['application/pdf', 'application/msword', 
-                                     'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
-                                     'text/plain'];
-                
-                const fileExtension = file.name.split('.').pop().toLowerCase();
-                const allowedExtensions = ['pdf', 'doc', 'docx', 'txt'];
-                
-                if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
-                    alert('⚠️ Type de fichier non autorisé.\n\nFormats acceptés : PDF, DOC, DOCX, TXT');
-                    fileInput.value = '';
-                    return;
-                }
-
-                // Validation de la taille (10 MB max)
-                const maxSize = 10 * 1024 * 1024; // 10 MB
-                if (file.size > maxSize) {
-                    fileSizeWarning.classList.add('show');
-                    filePreview.classList.remove('show');
-                    fileInput.value = '';
-                    return;
-                }
-
-                // Affichage de l'aperçu
-                fileName.textContent = file.name;
-                fileSizeText.textContent = formatFileSize(file.size);
-                filePreview.classList.add('show');
-                uploadSuccess.classList.add('show');
-                
-                // Modifier l'apparence du wrapper
-                fileUploadWrapper.style.borderColor = '#10b981';
-                fileUploadWrapper.style.background = 'linear-gradient(135deg, #f0fdf4, #f8fafc)';
-                
-                // Petit délai pour l'animation
-                setTimeout(() => {
-                    fileUploadWrapper.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        fileUploadWrapper.style.transform = 'scale(1)';
-                    }, 150);
-                }, 100);
-            }
-
-            function formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-            }
-
-            // Fonction globale pour supprimer le fichier
-            window.removeFile = function() {
-                fileInput.value = '';
-                filePreview.classList.remove('show');
-                fileSizeWarning.classList.remove('show');
-                uploadSuccess.classList.remove('show');
-                fileUploadWrapper.style.borderColor = '#e2e8f0';
-                fileUploadWrapper.style.background = '#f8fafc';
-                fileUploadWrapper.style.transform = 'scale(1)';
-                
-                // Animation de suppression
-                filePreview.style.transform = 'scale(0.95)';
-                filePreview.style.opacity = '0';
-                setTimeout(() => {
-                    filePreview.style.transform = 'scale(1)';
-                    filePreview.style.opacity = '1';
-                }, 300);
-            };
-        }
-
-        // Configuration des liens de contact interactifs - version simplifiée
-        function setupContactLinks() {
-            const contactLinks = document.querySelectorAll('.contact-link');
-            
-            contactLinks.forEach(link => {
-                // Amélioration de l'accessibilité seulement
-                link.addEventListener('focus', function() {
-                    this.style.outline = '2px solid #3b82f6';
-                    this.style.outlineOffset = '2px';
-                });
-                
-                link.addEventListener('blur', function() {
-                    this.style.outline = 'none';
-                });
-            });
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navigation
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tabName = this.getAttribute('data-tab');
-                    if (tabName) showTab(tabName);
-                });
-            });
-
-            // Setup du formulaire de contact
-            setupContactForm();
-
-            // Chatbot input
-            const chatbotInput = document.getElementById('chatbotInput');
-            if (chatbotInput) {
-                chatbotInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter' && !isTyping) {
-                        sendMessage();
-                    }
-                });
-            }
-
-            // Amélioration UX : focus automatique sur le premier champ du formulaire
-            const firstInput = document.getElementById('name');
-            if (firstInput) {
-                firstInput.addEventListener('focus', function() {
-                    // Scroll doux vers le formulaire quand l'utilisateur commence à le remplir
-                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
-            }
-
-            // Validation en temps réel des champs email
-            const emailInput = document.getElementById('email');
-            if (emailInput) {
-                emailInput.addEventListener('blur', function() {
-                    const email = this.value;
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    
-                    if (email && !emailRegex.test(email)) {
-                        this.style.borderColor = '#ef4444';
-                        this.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
-                    } else if (email) {
-                        this.style.borderColor = '#10b981';
-                        this.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
-                    } else {
-                        this.style.borderColor = '#e2e8f0';
-                        this.style.boxShadow = '';
-                    }
-                });
-            }
-
-            // Amélioration UX : compteur de caractères pour le message
-            const messageTextarea = document.getElementById('message');
-            if (messageTextarea) {
-                const charCounter = document.createElement('div');
-                charCounter.style.cssText = `
-                    font-size: 0.8rem;
-                    color: #64748b;
-                    text-align: right;
-                    margin-top: 5px;
-                `;
-                messageTextarea.parentNode.appendChild(charCounter);
-
-                function updateCharCounter() {
-                    const length = messageTextarea.value.length;
-                    const minLength = 20;
-                    
-                    if (length < minLength) {
-                        charCounter.textContent = `${length} caractères (minimum ${minLength} recommandé)`;
-                        charCounter.style.color = '#f59e0b';
-                    } else {
-                        charCounter.textContent = `${length} caractères`;
-                        charCounter.style.color = '#10b981';
-                    }
-                }
-
-                messageTextarea.addEventListener('input', updateCharCounter);
-                updateCharCounter(); // Initialisation
+                navbar.style.boxShadow = 'none';
             }
         });
 
-        // Fonctions utilitaires pour améliorer l'expérience
-        
-        // Animation d'apparition des éléments au scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.experience-item, .project-card, .tech-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = 'fadeIn 0.6s ease forwards';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            elements.forEach(el => observer.observe(el));
-        }
-
-        // Initialisation des animations
-        setTimeout(animateOnScroll, 500);
-
-        // Performance : lazy loading pour les images si on en ajoute
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
-                    }
-                });
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
+        });
     </script>
+
 </body>
 </html>
