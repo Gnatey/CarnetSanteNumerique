@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Juliana Niapoh · Consultante Data & BI</title>
+    <meta name="description" content="Consultante Data & Business Intelligence, diplômée Master Data Management, disponible immédiatement en CDI ou freelance (SIRET). 2 ans d'alternance chez SNCF et ORANO." />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -74,16 +75,18 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: 700;
-            color: white;
             flex-shrink: 0;
             box-shadow: 0 15px 35px rgba(29, 78, 216, 0.3);
             border: 4px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            background: var(--secondary);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .header-info h1 {
@@ -416,7 +419,7 @@
             margin-top: 4px;
         }
 
-        /* ===== SERVICES (FREELANCE) ===== */
+        /* ===== SERVICES ===== */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -431,10 +434,11 @@
             padding: 24px;
             text-align: center;
             transition: var(--transition);
+            cursor: default;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow);
             border-color: var(--secondary);
         }
@@ -443,6 +447,11 @@
             font-size: 2.5rem;
             color: var(--secondary);
             margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover i {
+            transform: scale(1.1);
         }
 
         .service-card h4 {
@@ -777,6 +786,7 @@
             margin-bottom: 20px;
             text-align: center;
             font-weight: 600;
+            animation: fadeIn 0.5s ease;
         }
 
         .success-message.show {
@@ -1093,7 +1103,6 @@
             .profile-image {
                 width: 100px;
                 height: 100px;
-                font-size: 2rem;
             }
             .tab-content {
                 padding: 20px 14px;
@@ -1158,35 +1167,39 @@
 <body>
 
     <!-- ===== NAVIGATION ===== -->
-    <nav class="nav" id="mainNav">
-        <button class="nav-item active" data-tab="profil"><i class="fas fa-user"></i> Profil</button>
-        <button class="nav-item" data-tab="competences"><i class="fas fa-code"></i> Skills</button>
-        <button class="nav-item" data-tab="experience"><i class="fas fa-briefcase"></i> Exp.</button>
-        <button class="nav-item" data-tab="services"><i class="fas fa-rocket"></i> Services</button>
-        <button class="nav-item" data-tab="projets"><i class="fas fa-folder-open"></i> Projets</button>
-        <button class="nav-item" data-tab="contact"><i class="fas fa-envelope"></i> Contact</button>
+    <nav class="nav" id="mainNav" aria-label="Navigation principale">
+        <button class="nav-item active" data-tab="profil" aria-label="Profil"><i class="fas fa-user"></i> Profil</button>
+        <button class="nav-item" data-tab="competences" aria-label="Compétences"><i class="fas fa-code"></i> Skills</button>
+        <button class="nav-item" data-tab="experience" aria-label="Expérience"><i class="fas fa-briefcase"></i> Exp.</button>
+        <button class="nav-item" data-tab="services" aria-label="Services"><i class="fas fa-rocket"></i> Services</button>
+        <button class="nav-item" data-tab="projets" aria-label="Projets"><i class="fas fa-folder-open"></i> Projets</button>
+        <button class="nav-item" data-tab="contact" aria-label="Contact"><i class="fas fa-envelope"></i> Contact</button>
     </nav>
 
     <!-- ===== HEADER ===== -->
     <header class="header">
-    <div class="container header-content">
-        <div class="profile-image">
-            <img src="https://raw.githubusercontent.com/Gnatey/CarnetSanteNumerique/main/IMG-3855.jpg" 
-                 alt="Juliana Niapoh"
-                 style="width:100%; height:100%; object-fit:cover; border-radius:50%;" />
-        </div>
-        <div class="header-info">
+        <div class="container header-content">
+            <div class="profile-image">
+                <img src="https://raw.githubusercontent.com/Gnatey/CarnetSanteNumerique/main/IMG-3855.jpg" alt="Juliana Niapoh, consultante Data & BI" />
+            </div>
+            <div class="header-info">
                 <h1>Juliana Niapoh</h1>
                 <div class="title">Consultante Data &amp; Business Intelligence</div>
                 <p class="tagline">
                     <strong>Diplômée Master Data Management (décembre 2025)</strong> · 2+ années d'alternance chez SNCF et ORANO.
                     Je combine expertise technique (Python, SQL, Power BI, ML) et vision business pour accompagner
-                    les entreprises dans leur transformation data, que ce soit en <strong>CDI</strong> ou en <strong>FREELANCE</strong> (SIRET).
+                    les entreprises dans leur transformation data, que ce soit en <strong>CDI</strong> ou en <strong>freelance</strong> (SIRET).
                 </p>
                 <div class="badge-group">
                     <span class="badge"><i class="fas fa-calendar-check"></i> Disponible <span class="highlight">immédiatement</span></span>
                     <span class="badge"><i class="fas fa-map-marker-alt"></i> Mobile sur toute la France</span>
                     <span class="badge"><i class="fas fa-briefcase"></i> CDI · Freelance (SIRET)</span>
+                </div>
+                <div style="margin-top: 16px;">
+                    <span class="availability">
+                        <span class="availability-dot"></span>
+                        Disponible immédiatement
+                    </span>
                 </div>
             </div>
         </div>
@@ -1197,7 +1210,7 @@
         <div class="main-content">
 
             <!-- ========== ONGLET PROFIL ========== -->
-            <div class="tab-content active" id="profil">
+            <div class="tab-content active" id="profil" role="tabpanel">
                 <div class="profile-layout">
                     <div>
                         <h2 class="section-title"><i class="fas fa-user-circle"></i> À Propos</h2>
@@ -1245,7 +1258,7 @@
 
                         <div class="tech-card">
                             <h3><i class="fas fa-graduation-cap"></i> Formation</h3>
-                            <div class="tech-item"><span class="tech-label">2023-2025</span><span class="tech-value">Master Data Management <span style="color: var(--success); font-size:0.7rem;"></span></span></div>
+                            <div class="tech-item"><span class="tech-label">2023-2025</span><span class="tech-value">Master Data Management <span style="color: var(--success); font-size:0.7rem;">✓ Diplômée</span></span></div>
                             <div class="tech-item"><span class="tech-label">2022-2023</span><span class="tech-value">Bachelor E-commerce</span></div>
                             <div class="tech-item"><span class="tech-label">2020-2022</span><span class="tech-value">DUT STID</span></div>
                         </div>
@@ -1265,7 +1278,7 @@
             </div>
 
             <!-- ========== ONGLET COMPÉTENCES ========== -->
-            <div class="tab-content" id="competences">
+            <div class="tab-content" id="competences" role="tabpanel">
                 <h2 class="section-title"><i class="fas fa-code"></i> Compétences Techniques</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
                     <div style="background: var(--light); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
@@ -1326,7 +1339,7 @@
             </div>
 
             <!-- ========== ONGLET EXPÉRIENCE ========== -->
-            <div class="tab-content" id="experience">
+            <div class="tab-content" id="experience" role="tabpanel">
                 <h2 class="section-title"><i class="fas fa-briefcase"></i> Expériences Professionnelles</h2>
 
                 <div class="experience-item">
@@ -1368,8 +1381,8 @@
                 </div>
             </div>
 
-            <!-- ========== ONGLET SERVICES (FREELANCE) ========== -->
-            <div class="tab-content" id="services">
+            <!-- ========== ONGLET SERVICES ========== -->
+            <div class="tab-content" id="services" role="tabpanel">
                 <h2 class="section-title"><i class="fas fa-rocket"></i> Prestations Data &amp; BI</h2>
                 <div class="section-subtitle">
                     En tant que consultante indépendante (SIRET), je propose des missions sur mesure.
@@ -1416,7 +1429,7 @@
             </div>
 
             <!-- ========== ONGLET PROJETS ========== -->
-            <div class="tab-content" id="projets">
+            <div class="tab-content" id="projets" role="tabpanel">
                 <h2 class="section-title"><i class="fas fa-folder-open"></i> Projets &amp; Réalisations</h2>
 
                 <div class="projects-grid">
@@ -1460,20 +1473,22 @@
                 <div style="margin-top: 30px; background: var(--light); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
                     <h3 style="color: var(--secondary); margin-bottom: 12px;"><i class="fas fa-link"></i> Liens utiles</h3>
                     <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-                        <a href="https://github.com/Gnatey" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;">GitHub <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
-                        <a href="https://m-moiredeepfake.streamlit.app/" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;">Mémoire DeepFakes <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
+                        <a href="https://github.com/Gnatey" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;" aria-label="GitHub">GitHub <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
+                        <a href="https://m-moiredeepfake.streamlit.app/" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;" aria-label="Mémoire DeepFakes">Mémoire DeepFakes <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
+                        <a href="https://juliana-niapoh-portfolio.netlify.app/" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;" aria-label="Portfolio">Portfolio actuel <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- ========== ONGLET CONTACT ========== -->
-            <div class="tab-content" id="contact">
+            <div class="tab-content" id="contact" role="tabpanel">
                 <h2 class="section-title"><i class="fas fa-envelope"></i> Contact &amp; Disponibilités</h2>
 
                 <!-- Formulaire Netlify (caché) -->
                 <form name="juliana-contact" netlify netlify-honeypot="bot-field" hidden>
                     <input type="text" name="name" />
                     <input type="email" name="email" />
+                    <input type="tel" name="phone" />
                     <input type="text" name="company" />
                     <input type="text" name="position" />
                     <input type="text" name="subject" />
@@ -1500,6 +1515,10 @@
                             <div class="form-group">
                                 <label for="email">Email professionnel *</label>
                                 <input type="email" id="email" name="email" required placeholder="jean.dupont@entreprise.com" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Téléphone (optionnel)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" />
                             </div>
                             <div class="form-group">
                                 <label for="company">Entreprise</label>
@@ -1562,7 +1581,7 @@
                             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div><div class="contact-label">Mobilité</div><div class="contact-text">France entière</div></div>
                         </div>
-                        <a href="https://www.linkedin.com/in/jniapoh/" target="_blank" class="contact-item" style="text-decoration: none; color: inherit;">
+                        <a href="https://www.linkedin.com/in/jniapoh/" target="_blank" class="contact-item" style="text-decoration: none; color: inherit;" aria-label="LinkedIn">
                             <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
                             <div><div class="contact-label">LinkedIn</div><div class="contact-text">linkedin.com/in/jniapoh</div></div>
                         </a>
@@ -1588,9 +1607,9 @@
     <footer>
         <div class="container">
             <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 12px;">
-                <a href="https://www.linkedin.com/in/jniapoh/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Gnatey" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:Jniapoh@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/jniapoh/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Gnatey" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:Jniapoh@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
             <p>&copy; 2025 Juliana Niapoh · Consultante Data &amp; BI · Tous droits réservés</p>
         </div>
@@ -1598,7 +1617,7 @@
 
     <!-- ===== CHATBOT ===== -->
     <div class="chatbot">
-        <button class="chatbot-toggle" onclick="toggleChatbot()">
+        <button class="chatbot-toggle" onclick="toggleChatbot()" aria-label="Ouvrir le chatbot">
             <i class="fas fa-comment-dots"></i>
         </button>
         <div class="chatbot-window" id="chatbotWindow">
@@ -1608,7 +1627,7 @@
                     <h4>Assistant IA</h4>
                     <div class="chatbot-status"><span class="status-dot"></span> En ligne</div>
                 </div>
-                <button class="chatbot-close" onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+                <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Fermer le chatbot"><i class="fas fa-times"></i></button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot">👋 Bonjour ! Je suis l'assistant IA de Juliana. Je peux vous parler de son parcours, ses compétences, ses disponibilités, et ses modalités d'intervention (CDI / freelance).</div>
@@ -1625,8 +1644,8 @@
                 <div class="typing-dots"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Votre question..." />
-                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="chatbotInput" placeholder="Votre question..." aria-label="Saisir votre question" />
+                <button onclick="sendChatMessage()" aria-label="Envoyer"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
@@ -1803,13 +1822,16 @@
                             successMsg.classList.add('show');
                             submitBtn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
                             submitBtn.style.background = 'var(--success)';
+                            // Masquer le message après 5 secondes
+                            setTimeout(() => {
+                                successMsg.classList.remove('show');
+                            }, 5000);
                             setTimeout(() => {
                                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message';
                                 submitBtn.style.background = '';
                                 submitBtn.disabled = false;
                                 form.reset();
                                 window.removeFile();
-                                setTimeout(() => successMsg.classList.remove('show'), 4000);
                             }, 2000);
                         }, 1500);
                     }
