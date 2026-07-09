@@ -466,170 +466,6 @@
         }
 
         /* ===== PROJECTS ===== */
-
-        /* ===== MODALE PROJET ===== */
-.project-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-}
-
-.project-modal.open {
-    display: flex;
-}
-
-.project-modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-}
-
-.project-modal-content {
-    position: relative;
-    background: white;
-    border-radius: var(--radius);
-    max-width: 900px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 30px 35px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-    animation: modalFadeIn 0.3s ease;
-    z-index: 10000;
-}
-
-@keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.95) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.project-modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--gray);
-    transition: var(--transition);
-    line-height: 1;
-}
-
-.project-modal-close:hover {
-    color: var(--primary);
-    transform: rotate(90deg);
-}
-
-.project-modal-body {
-    margin-top: 10px;
-}
-
-.project-modal-header h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 12px;
-}
-
-.project-modal-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.project-modal-tags .tech-tag {
-    background: var(--secondary);
-    color: white;
-    padding: 4px 14px;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.project-modal-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin: 20px 0;
-}
-
-.project-modal-image img {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    object-fit: cover;
-    max-height: 300px;
-}
-
-.project-modal-info p {
-    color: var(--gray);
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-.project-modal-links {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.project-modal-links .btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    border-radius: 30px;
-}
-
-.project-modal-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
-}
-
-.modal-nav-btn {
-    background: none;
-    border: 1px solid var(--border);
-    padding: 8px 18px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: var(--transition);
-    color: var(--primary);
-}
-
-.modal-nav-btn:hover {
-    background: var(--secondary);
-    color: white;
-    border-color: var(--secondary);
-}
-
-@media (max-width: 768px) {
-    .project-modal-main {
-        grid-template-columns: 1fr;
-    }
-    .project-modal-content {
-        padding: 20px;
-        width: 95%;
-    }
-    .project-modal-header h2 {
-        font-size: 1.4rem;
-    }
-}
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -645,6 +481,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -702,6 +539,180 @@
             color: var(--secondary);
             font-weight: 600;
             font-size: 0.85rem;
+        }
+
+        /* ===== MODALE PROJET ===== */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project-modal.open {
+            display: flex;
+        }
+
+        .project-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        .project-modal-content {
+            position: relative;
+            background: white;
+            border-radius: var(--radius);
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px 35px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease;
+            z-index: 10000;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .project-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+            line-height: 1;
+        }
+
+        .project-modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .project-modal-body {
+            margin-top: 10px;
+        }
+
+        .project-modal-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .project-modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-modal-tags .tech-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-modal-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .project-modal-image img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            max-height: 300px;
+        }
+
+        .project-modal-info p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-modal-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .project-modal-links .btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-modal-links .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .project-modal-links .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        .project-modal-links .btn-secondary {
+            background: var(--light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .project-modal-links .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .project-modal-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .modal-nav-btn {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .modal-nav-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
         }
 
         /* ===== CONTACT ===== */
@@ -1256,6 +1267,12 @@
             .badge-group {
                 justify-content: center;
             }
+            .project-modal-main {
+                grid-template-columns: 1fr;
+            }
+            .project-modal-content {
+                padding: 20px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1297,6 +1314,13 @@
                 width: calc(100vw - 30px);
                 right: -10px;
                 max-height: 450px;
+            }
+            .project-modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            .project-modal-header h2 {
+                font-size: 1.4rem;
             }
         }
 
@@ -1600,57 +1624,51 @@
             </div>
 
             <!-- ========== ONGLET PROJETS ========== -->
+            <div class="tab-content" id="projets" role="tabpanel">
+                <h2 class="section-title"><i class="fas fa-folder-open"></i> Projets &amp; Réalisations</h2>
 
-                    <!-- Projet 1 : Mémoire DeepFakes -->
-
-<div class="tab-content" id="projets" role="tabpanel">
-    <h2 class="section-title"><i class="fas fa-folder-open"></i> Projets &amp; Réalisations</h2>
-
-    <div class="projects-grid" id="projectsGrid">
-        <!-- Les cartes seront générées dynamiquement par JavaScript -->
-    </div>
-
-    <div style="margin-top: 30px; background: var(--light); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
-        <h3 style="color: var(--secondary); margin-bottom: 12px;"><i class="fas fa-link"></i> Liens utiles</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-            <a href="https://github.com/Gnatey" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;" aria-label="GitHub">GitHub <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
-            <a href="https://m-moiredeepfake.streamlit.app/" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;" aria-label="Mémoire DeepFakes">Mémoire DeepFakes <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
-        </div>
-    </div>
-</div>
-
-<!-- ===== MODALE PROJET ===== -->
-<div class="project-modal" id="projectModal">
-    <div class="project-modal-overlay" onclick="closeModal()"></div>
-    <div class="project-modal-content">
-        <button class="project-modal-close" onclick="closeModal()" aria-label="Fermer">&times;</button>
-        <div class="project-modal-body">
-            <div class="project-modal-header">
-                <h2 id="modalTitle">Titre</h2>
-                <div id="modalTags" class="project-modal-tags"></div>
-            </div>
-            <div class="project-modal-main">
-                <div class="project-modal-image">
-                    <img id="modalImage" src="" alt="Capture du projet" />
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Les cartes seront générées dynamiquement par JavaScript -->
                 </div>
-                <div class="project-modal-info">
-                    <p id="modalDescription">Description</p>
-                    <div class="project-modal-links">
-                        <a id="modalDemoLink" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Voir la démo</a>
-                        <a id="modalCodeLink" href="#" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Voir le code</a>
+
+                <div style="margin-top: 30px; background: var(--light); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
+                    <h3 style="color: var(--secondary); margin-bottom: 12px;"><i class="fas fa-link"></i> Liens utiles</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        <a href="https://github.com/Gnatey" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;" aria-label="GitHub">GitHub <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
+                        <a href="https://m-moiredeepfake.streamlit.app/" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: 500;" aria-label="Mémoire DeepFakes">Mémoire DeepFakes <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="project-modal-nav">
-            <button class="modal-nav-btn" onclick="prevProject()"><i class="fas fa-chevron-left"></i> Précédent</button>
-            <button class="modal-nav-btn" onclick="nextProject()">Suivant <i class="fas fa-chevron-right"></i></button>
-        </div>
-    </div>
-</div>
 
-                    <!-- Projet 2 : Jeu multijoueur Vue.js / Socket.io -->
-            
+            <!-- ===== MODALE PROJET ===== -->
+            <div class="project-modal" id="projectModal">
+                <div class="project-modal-overlay" onclick="closeModal()"></div>
+                <div class="project-modal-content">
+                    <button class="project-modal-close" onclick="closeModal()" aria-label="Fermer">&times;</button>
+                    <div class="project-modal-body">
+                        <div class="project-modal-header">
+                            <h2 id="modalTitle">Titre</h2>
+                            <div id="modalTags" class="project-modal-tags"></div>
+                        </div>
+                        <div class="project-modal-main">
+                            <div class="project-modal-image">
+                                <img id="modalImage" src="" alt="Capture du projet" />
+                            </div>
+                            <div class="project-modal-info">
+                                <p id="modalDescription">Description</p>
+                                <div class="project-modal-links">
+                                    <a id="modalDemoLink" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Voir la démo</a>
+                                    <a id="modalCodeLink" href="#" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Voir le code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-modal-nav">
+                        <button class="modal-nav-btn" onclick="prevProject()"><i class="fas fa-chevron-left"></i> Précédent</button>
+                        <button class="modal-nav-btn" onclick="nextProject()">Suivant <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
 
             <!-- ========== ONGLET CONTACT ========== -->
             <div class="tab-content" id="contact" role="tabpanel">
@@ -1994,7 +2012,6 @@
                             successMsg.classList.add('show');
                             submitBtn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
                             submitBtn.style.background = 'var(--success)';
-                            // Masquer le message après 5 secondes
                             setTimeout(() => {
                                 successMsg.classList.remove('show');
                             }, 5000);
@@ -2015,135 +2032,140 @@
         document.getElementById('chatbotInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') sendChatMessage();
         });
-    </script>
-// ===== DONNÉES DES PROJETS =====
-const projectsData = [
-    {
-        id: 'budget',
-        title: 'Tracker Budget Power BI',
-        description: 'Restructuration de données et création d\'un dashboard de suivi budgétaire avec mesures DAX avancées et modélisation sémantique. Permet un pilotage financier en temps réel.',
-        tags: ['Power BI', 'DAX', 'Modélisation'],
-        image: 'https://via.placeholder.com/600x300/1D4ED8/FFFFFF?text=Power+BI+Dashboard', // Remplace par une vraie capture
-        demoLink: '#',
-        codeLink: '#'
-    },
-    {
-        id: 'multijoueur',
-        title: 'Jeu de déduction multijoueur',
-        description: 'Jeu en temps réel avec Vue.js 3, Node/Express et Socket.io. Architecture full-stack avec salons de jeu, gestion d\'état en temps réel et interface réactive.',
-        tags: ['Vue.js', 'Node.js', 'Socket.io', 'Express'],
-        image: 'https://via.placeholder.com/600x300/06B6D4/FFFFFF?text=Jeu+Multijoueur',
-        demoLink: '#',
-        codeLink: '#'
-    },
-    {
-        id: 'deepfake',
-        title: 'Mémoire DeepFakes',
-        description: 'Dashboard interactif Streamlit avec clustering, Machine Learning et NLP pour analyser les perceptions des DeepFakes. Visualisations avancées, modèles prédictifs et analyse de personas.',
-        tags: ['Python', 'Streamlit', 'ML', 'NLP'],
-        image: 'https://via.placeholder.com/600x300/10B981/FFFFFF?text=DeepFakes+Dashboard',
-        demoLink: 'https://m-moiredeepfake.streamlit.app/',
-        codeLink: 'https://github.com/Gnatey/M-moire_Deepfake'
-    },
-    {
-        id: 'portfolio',
-        title: 'Refonte du portfolio',
-        description: 'Conception et développement de ce site vitrine en HTML/CSS/JS pur. Intégration d\'un formulaire de contact avec upload, d\'un chatbot FAQ, et d\'une galerie de projets modale. Déploiement sur Netlify.',
-        tags: ['HTML5', 'CSS3', 'JavaScript', 'Netlify'],
-        image: 'https://via.placeholder.com/600x300/8B5CF6/FFFFFF?text=Portfolio',
-        demoLink: 'https://juliana-niapoh-portfolio.netlify.app/',
-        codeLink: 'https://github.com/Gnatey'
-    }
-];
 
-// ===== GÉNÉRATION DES CARTES =====
-function renderProjects() {
-    const grid = document.getElementById('projectsGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-    projectsData.forEach((project, index) => {
-        const card = document.createElement('a');
-        card.className = 'project-card';
-        card.href = '#';
-        card.setAttribute('data-index', index);
-        card.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal(index);
+        // ===== DONNÉES DES PROJETS =====
+        const projectsData = [
+            {
+                id: 'budget',
+                title: 'Tracker Budget Power BI',
+                description: 'Restructuration de données et création d\'un dashboard de suivi budgétaire avec mesures DAX avancées et modélisation sémantique. Permet un pilotage financier en temps réel.',
+                tags: ['Power BI', 'DAX', 'Modélisation'],
+                image: 'https://via.placeholder.com/600x300/1D4ED8/FFFFFF?text=Power+BI+Dashboard',
+                demoLink: '#',
+                codeLink: '#'
+            },
+            {
+                id: 'multijoueur',
+                title: 'Jeu de déduction multijoueur',
+                description: 'Jeu en temps réel avec Vue.js 3, Node/Express et Socket.io. Architecture full-stack avec salons de jeu, gestion d\'état en temps réel et interface réactive.',
+                tags: ['Vue.js', 'Node.js', 'Socket.io', 'Express'],
+                image: 'https://via.placeholder.com/600x300/06B6D4/FFFFFF?text=Jeu+Multijoueur',
+                demoLink: '#',
+                codeLink: '#'
+            },
+            {
+                id: 'deepfake',
+                title: 'Mémoire DeepFakes',
+                description: 'Dashboard interactif Streamlit avec clustering, Machine Learning et NLP pour analyser les perceptions des DeepFakes. Visualisations avancées, modèles prédictifs et analyse de personas.',
+                tags: ['Python', 'Streamlit', 'ML', 'NLP'],
+                image: 'https://via.placeholder.com/600x300/10B981/FFFFFF?text=DeepFakes+Dashboard',
+                demoLink: 'https://m-moiredeepfake.streamlit.app/',
+                codeLink: 'https://github.com/Gnatey/M-moire_Deepfake'
+            },
+            {
+                id: 'portfolio',
+                title: 'Refonte du portfolio',
+                description: 'Conception et développement de ce site vitrine en HTML/CSS/JS pur. Intégration d\'un formulaire de contact avec upload, d\'un chatbot FAQ, et d\'une galerie de projets modale. Déploiement sur Netlify.',
+                tags: ['HTML5', 'CSS3', 'JavaScript', 'Netlify'],
+                image: 'https://via.placeholder.com/600x300/8B5CF6/FFFFFF?text=Portfolio',
+                demoLink: 'https://juliana-niapoh-portfolio.netlify.app/',
+                codeLink: 'https://github.com/Gnatey'
+            }
+        ];
+
+        // ===== GÉNÉRATION DES CARTES =====
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            projectsData.forEach((project, index) => {
+                const card = document.createElement('a');
+                card.className = 'project-card';
+                card.href = '#';
+                card.setAttribute('data-index', index);
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal(index);
+                });
+                card.innerHTML = `
+                    <div class="project-header"><i class="fas ${getIcon(project.id)}"></i></div>
+                    <div class="project-content">
+                        <div class="project-title">${project.title}</div>
+                        <div class="project-description">${project.description.substring(0, 80)}...</div>
+                        <div class="project-tech">
+                            ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="project-link-icon">
+                            <i class="fas fa-search-plus"></i> Cliquez pour voir le détail
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function getIcon(id) {
+            const map = {
+                'budget': 'fa-chart-pie',
+                'multijoueur': 'fa-gamepad',
+                'deepfake': 'fa-microchip',
+                'portfolio': 'fa-code'
+            };
+            return map[id] || 'fa-folder-open';
+        }
+
+        // ===== GESTION DE LA MODALE =====
+        let currentProjectIndex = 0;
+
+        function openModal(index) {
+            currentProjectIndex = index;
+            const modal = document.getElementById('projectModal');
+            const project = projectsData[index];
+            if (!project) return;
+
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalDescription').textContent = project.description;
+            document.getElementById('modalImage').src = project.image || 'https://via.placeholder.com/600x300/1D4ED8/FFFFFF?text=Projet';
+            document.getElementById('modalImage').alt = project.title;
+
+            // Tags
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
+
+            // Liens
+            document.getElementById('modalDemoLink').href = project.demoLink || '#';
+            document.getElementById('modalCodeLink').href = project.codeLink || '#';
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function nextProject() {
+            const next = (currentProjectIndex + 1) % projectsData.length;
+            openModal(next);
+        }
+
+        function prevProject() {
+            const prev = (currentProjectIndex - 1 + projectsData.length) % projectsData.length;
+            openModal(prev);
+        }
+
+        // Fermeture avec la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
         });
-        card.innerHTML = `
-            <div class="project-header"><i class="fas ${getIcon(project.id)}"></i></div>
-            <div class="project-content">
-                <div class="project-title">${project.title}</div>
-                <div class="project-description">${project.description.substring(0, 80)}...</div>
-                <div class="project-tech">
-                    ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
-                </div>
-                <div class="project-link-icon">
-                    <i class="fas fa-search-plus"></i> Cliquez pour voir le détail
-                </div>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-}
 
-function getIcon(id) {
-    const map = {
-        'budget': 'fa-chart-pie',
-        'multijoueur': 'fa-gamepad',
-        'deepfake': 'fa-microchip',
-        'portfolio': 'fa-code'
-    };
-    return map[id] || 'fa-folder-open';
-}
+        // Fermeture en cliquant sur l'overlay
+        document.querySelector('.project-modal-overlay').addEventListener('click', closeModal);
 
-// ===== GESTION DE LA MODALE =====
-let currentProjectIndex = 0;
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', renderProjects);
+    </script>
 
-function openModal(index) {
-    currentProjectIndex = index;
-    const modal = document.getElementById('projectModal');
-    const project = projectsData[index];
-    if (!project) return;
-
-    document.getElementById('modalTitle').textContent = project.title;
-    document.getElementById('modalDescription').textContent = project.description;
-    document.getElementById('modalImage').src = project.image || 'https://via.placeholder.com/600x300/1D4ED8/FFFFFF?text=Projet';
-    document.getElementById('modalImage').alt = project.title;
-
-    // Tags
-    const tagsContainer = document.getElementById('modalTags');
-    tagsContainer.innerHTML = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
-
-    // Liens
-    document.getElementById('modalDemoLink').href = project.demoLink || '#';
-    document.getElementById('modalCodeLink').href = project.codeLink || '#';
-
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden'; // empêche le scroll
-}
-
-function closeModal() {
-    document.getElementById('projectModal').classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-function nextProject() {
-    const next = (currentProjectIndex + 1) % projectsData.length;
-    openModal(next);
-}
-
-function prevProject() {
-    const prev = (currentProjectIndex - 1 + projectsData.length) % projectsData.length;
-    openModal(prev);
-}
-
-// Fermeture avec la touche Échap
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-});
-
-// Initialisation
-document.addEventListener('DOMContentLoaded', renderProjects);
 </body>
 </html>
